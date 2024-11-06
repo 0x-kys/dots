@@ -1,32 +1,16 @@
-***dotfiles***
+<div align="center">
+  
+  ***dotfiles***
 
-### Hero Image
+</div>
 
-- Arch Linux
-- BSPWM + SXHKD
-- Polybar
-- Picom
-- Kitty
-- Brave
-- NeoVim
+![image](https://github.com/user-attachments/assets/e740dfb3-ddb1-4a37-be65-34e819a149db)
 
----
+<div align="center">
 
-### Showcase
-
----
-
-### Setup
-
----
-
-### Extra Config
-
----
-
-### ToDo
-
----
-
-### Reference Links
+| - | - | - | - | - | - | - |
+| - | - | - | - | - | - | - |
+| Arch Linux | BSPWM + SXHKD | Polybar | Picom | Alacritty | Brave | NeoVim |
+  
+</div>
 
