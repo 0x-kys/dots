@@ -7,13 +7,16 @@ flameshot &
 picom --config ~/.config/picom/picom.conf --daemon &
 xclip -selection clipboard &
 
-# Kill existing polybar instances and then start a new one
+if pgrep "redshift" > /dev/null; then
+  pkill -x redshift
+fi
+redshift &
+
 if pgrep "polybar" > /dev/null; then
   pkill -x polybar    
 fi
 polybar bar &
 
-# Restart dunst if it's already running
 if pgrep -x "dunst" > /dev/null; then
     pkill -x dunst
 fi
