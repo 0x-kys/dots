@@ -10,7 +10,7 @@
 
 | - | - | - | - | - | - | - |
 | - | - | - | - | - | - | - |
-| Arch Linux | BSPWM + SXHKD | Polybar | Picom | Alacritty | Brave | NeoVim |
+| Arch Linux | BSPWM + SXHKD | Polybar | Picom | Ghostty | Brave | NeoVim |
   
 </div>
 
