@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIRS_TO_COPY="alacritty betterlockscreen bspwm btop dunst fish nvim picom polybar sxhkd"
+DIRS_TO_COPY="alacritty betterlockscreen bspwm btop dunst fish ghostty nvim picom polybar sxhkd"
 
 SOURCE_DIR="$HOME/.config"
 
