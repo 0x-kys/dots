@@ -4,4 +4,5 @@ set -gx PATH /opt/cuda/bin $PATH
 set -g LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
 
 if status is-interactive
+  alias todo="nvim ~/.stuff.md"
 end

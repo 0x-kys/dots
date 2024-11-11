@@ -16,3 +16,7 @@ for dir in $DIRS_TO_COPY; do
     echo "Directory $src_dir does not exist in $SOURCE_DIR"
   fi
 done
+
+echo "Copying scripts"
+cp -r ~/scripts .
+

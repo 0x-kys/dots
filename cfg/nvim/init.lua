@@ -32,35 +32,6 @@ vim.o.showmode = false
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- local colors = {
---   dark_grey         = '#333333',
---   medium_dark_grey  = '#555555',
---   black             = '#000000',
---   less_black        = '#232323',
---   white             = '#FFFFFF',
---   medium_grey       = '#777777',
---   medium_light_grey = '#999999',
---   medium_grey       = '#444444',
--- }
---
--- local bubbles_theme = {
---   normal = {
---     a = { fg = colors.white, bg = colors.medium_grey },
---     b = { fg = colors.white, bg = colors.less_black },
---     c = { fg = colors.white },
---   },
---
---   insert = { a = { fg = colors.white, bg = colors.dark_grey } },
---   visual = { a = { fg = colors.white, bg = colors.medium_dark_grey } },
---   replace = { a = { fg = colors.white, bg = colors.dark_grey } },
---
---   inactive = {
---     a = { fg = colors.dark_grey, bg = colors.medium_light_grey },
---     b = { fg = colors.white, bg = colors.less_black },
---     c = { fg = colors.white },
---   },
--- }
-
 require("lazy").setup({
   spec = {
     {
@@ -339,54 +310,44 @@ require("lazy").setup({
         require('telescope').setup()
       end,
     },
-    -- {
-    --   "xiyaowong/transparent.nvim",
-    --   lazy = false,
-    --   priority = 999,
-    --   config = function()
-    --     require("transparent").setup({
-    --       groups = {
-    --         "Normal",
-    --         "NormalNC",
-    --         "Comment",
-    --         "Constant",
-    --         "Special",
-    --         "Identifier",
-    --         "Statement",
-    --         "PreProc",
-    --         "Type",
-    --         "Underlined",
-    --         "Todo",
-    --         "String",
-    --         "Function",
-    --         "Conditional",
-    --         "Repeat",
-    --         "Operator",
-    --         "Structure",
-    --         "LineNr",
-    --         "NonText",
-    --         "SignColumn",
-    --         "CursorLine",
-    --         "CursorLineNr",
-    --         "StatusLine",
-    --         "StatusLineNC",
-    --         "EndOfBuffer",
-    --       },
-    --       extra_groups = { "NormalFloat", "NvimTreeNormal" },
-    --       exclude_groups = {},
-    --     })
-    --     require("transparent").clear_prefix("NvimTreeNormal")
-    --   end,
-    -- },
     {
       'boganworld/crackboard.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' },
       config = function()
-        require('crackboard').setup({
-          session_key = '5ad3531a98c2429b084bb080dbc7639c0e2fb68a2664f9db9c936a71bd5b5cc7',
-        })
+        local function read_session_key()
+          local path = vim.fn.expand("~/.crackboard.cfg")
+          local file = io.open(path, "r")
+
+          if not file then
+            print("Error: Unable to open ~/.crackboard.cfg")
+            return nil
+          end
+
+          for line in file:lines() do
+            local key, value = line:match("^(%S+)%s*=%s*(%S+)")
+            if key == "session_key" then
+              file:close()
+              return value
+            end
+          end
+
+          file:close()
+          return nil
+        end
+
+        local session_key = read_session_key()
+        if session_key then
+          require('crackboard').setup({
+            session_key = session_key,
+          })
+        else
+          print("Error: session_key not found in ~/.crackboard.cfg")
+        end
       end,
     },
+    {
+      'wakatime/vim-wakatime', lazy = false
+    }
   },
   -- darkvoid
   install = { colorscheme = { "darkvoid" } }, --
