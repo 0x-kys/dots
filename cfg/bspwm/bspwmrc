@@ -49,6 +49,10 @@ bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+# bspc config pointer_follows_focus true                                          
+# bspc config pointer_follows_monitor true
+bspc config focus_follows_pointer true
+
 wmname LG3D
 
 # Window rules for specific applications
