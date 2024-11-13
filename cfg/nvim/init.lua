@@ -390,6 +390,9 @@ require('lspconfig').ts_ls.setup {
 -- Tailwind CSS
 require('lspconfig').tailwindcss.setup { capabilities = capabilities }
 
+-- Astro
+require 'lspconfig'.astro.setup { capabilities = capabilities }
+
 -- CSS LS
 require('lspconfig').cssls.setup {
   capabilities = vsclangserver_capabilities,
