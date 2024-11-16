@@ -27,7 +27,7 @@ mouse-scroll-multiplier = 2
 cursor-invert-fg-bg = true
 
 theme = Monokai Soda 
-background-opacity = 0.9
+background-opacity = 1
 window-theme = ghostty
 
 focus-follows-mouse = true
