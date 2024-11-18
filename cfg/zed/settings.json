@@ -73,5 +73,25 @@
     "wakatime": {
       "settings": {}
     }
+  },
+  "languages": {
+    "Go": {
+      "code_actions_on_format": {
+        "enabled": true
+      },
+      "format_on_save": {
+        "external": {
+          "command": "goimports",
+          "arguments": []
+        }
+      },
+      "gopls": {
+        "analyses": {
+          "unusedparams": true,
+          "shadow": true
+        },
+        "staticcheck": true
+      }
+    }
   }
 }
