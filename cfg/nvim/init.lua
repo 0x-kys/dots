@@ -119,6 +119,10 @@ require("lazy").setup({
           ['neo-tree'] = { event = 'BufWipeout' },
           Outline = { event = 'BufWinLeave', text = 'symbols-outline', align = 'right' },
         },
+        name_formatter = function(buf)
+          -- Only return the filename
+          return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t')
+        end,
       },
       version = '^1.0.0',
     },
@@ -223,12 +227,10 @@ require("lazy").setup({
       "nvim-treesitter/nvim-treesitter",
       config = function()
         require('nvim-treesitter').setup({
-          ensure_installed = { "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", },
+          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "javascript", "css", "typescript", "svelte" },
           sync_install = true,
 
           auto_install = true,
-
-          -- ignore_install = { "javascript" },
 
           highlight = {
             enable = true,
@@ -315,7 +317,7 @@ require("lazy").setup({
       dependencies = { 'nvim-lua/plenary.nvim' },
       config = function()
         local function read_session_key()
-          local path = vim.fn.expand("~/.crackboard.cfg")
+          local path = vim.fn.expand("~/.config/.crackboard.cfg")
           local file = io.open(path, "r")
 
           if not file then
@@ -350,13 +352,13 @@ require("lazy").setup({
     }
   },
   -- darkvoid
-  install = { colorscheme = { "darkvoid" } }, --
+  install = { colorscheme = { "kanagawa" } }, --
   checker = { enabled = true },
 })
 
 -- Colorscheme
-vim.opt.background = "dark"     -- switch between dark or light
-vim.cmd("colorscheme darkvoid") -- darkvoid, ( kanagawa-(wave/dragon/lotus) )
+vim.opt.background = "dark"            -- switch between dark or light
+vim.cmd("colorscheme kanagawa-dragon") -- darkvoid, ( kanagawa-(wave/dragon/lotus) )
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
@@ -397,6 +399,7 @@ require 'lspconfig'.astro.setup { capabilities = capabilities }
 require('lspconfig').cssls.setup {
   capabilities = vsclangserver_capabilities,
 }
+require('lspconfig').css_variables.setup {}
 
 -- C, C++
 require('lspconfig').clangd.setup { capabilities = capabilities, }
@@ -537,6 +540,16 @@ vim.o.textwidth = 0
 vim.o.wrapmargin = 0
 -- visual wrap (no real line cutting is made)
 vim.o.linebreak = true -- breaks by word rather than character
+
+-- Create directory + file with :E
+vim.api.nvim_create_user_command('E', function(opts)
+  local filepath = vim.fn.expand(opts.args)
+  local dir = vim.fn.fnamemodify(filepath, ":p:h")
+  if not vim.loop.fs_stat(dir) then
+    vim.fn.mkdir(dir, "p")
+  end
+  vim.cmd("edit " .. filepath)
+end, { nargs = 1, complete = "file" })
 
 -- make sutff transparent
 vim.cmd [[
