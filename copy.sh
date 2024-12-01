@@ -18,11 +18,9 @@ done
 echo "Copying scripts"
 cp -r ~/scripts .
 
-# Remove the API key from the Zed configuration
 ZED_CONFIG="$DEST_DIR/zed/settings.json"
 
 if [ -f "$ZED_CONFIG" ]; then
-  # Remove comments and delete the API key using jq
   sed '/\/\//d' "$ZED_CONFIG" | jq 'del(.lsp.wakatime.settings."api-key")' > "$ZED_CONFIG.tmp" && mv "$ZED_CONFIG.tmp" "$ZED_CONFIG"
   echo "Removed API key from Zed config"
 else
