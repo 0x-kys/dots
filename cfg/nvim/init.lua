@@ -67,6 +67,15 @@ require("lazy").setup({
             end,
         },
         {
+            "iamcco/markdown-preview.nvim",
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            build = "cd app && bun install",
+            init = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end,
+            ft = { "markdown" },
+        },
+        {
             "hedyhli/outline.nvim",
             lazy = true,
             cmd = { "Outline", "OutlineOpen" },
@@ -193,23 +202,49 @@ require("lazy").setup({
                 }
             end,
         },
-
         {
-            'goolord/alpha-nvim',
+            "goolord/alpha-nvim",
             dependencies = {
-                'echasnovski/mini.icons',
-                'nvim-lua/plenary.nvim'
+                "nvim-tree/nvim-web-devicons",
+                "nvim-lua/plenary.nvim",
             },
             config = function()
-                require 'alpha'.setup(require 'alpha.themes.theta'.config)
-            end
-        },
+                local dashboard = require("alpha.themes.startify")
 
+                -- Helper function to generate a random color in hex format
+                local function randomColor()
+                    local function randHex()
+                        return string.format("%02x", math.random(0, 255))
+                    end
+                    return "#" .. randHex() .. randHex() .. randHex()
+                end
+
+                local function applyRandomColor(logo)
+                    dashboard.section.header.val = logo
+
+                    -- Generate a random color and create a highlight group for it
+                    local random_fg_color = randomColor()
+                    local hl_group = "AlphaRandomColor"
+                    vim.api.nvim_set_hl(0, hl_group, { fg = random_fg_color })
+
+                    -- Apply the highlight group to the entire header
+                    dashboard.section.header.opts.hl = hl_group
+                    return dashboard.opts
+                end
+
+                require("alpha").setup(applyRandomColor({
+                    [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+                    [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+                    [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+                    [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+                    [[██   ████ ███████  ██████    ████   ██ ██      ██]]
+                }))
+            end,
+        },
         {
             "akinsho/bufferline.nvim",
             version = "*",
         },
-
         {
             'numToStr/Comment.nvim',
             opts = {},
