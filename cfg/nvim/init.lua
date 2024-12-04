@@ -1,14 +1,14 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "--branch=stable",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath,
-    })
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -16,9 +16,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.hidden = true
 vim.opt.wrap = true
 vim.opt.smartcase = true
@@ -33,386 +33,386 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
-    spec = {
-        {
-            "aliqyan-21/darkvoid.nvim",
-            priority = 1000,
-        },
-        {
-            -- darkvoid: "aliqyan-21/darkvoid.nvim",
-            -- kanagawa: "rebelot/kanagawa.nvim"
-            "rebelot/kanagawa.nvim",
-            priority = 1000,
-        },
-        {
-
-            "nvim-tree/nvim-web-devicons",
-            config = function()
-                require("nvim-web-devicons").setup({})
-            end,
-        },
-        {
-            'IogaMaster/neocord',
-            event = "VeryLazy"
-        },
-        {
-            "phaazon/hop.nvim",
-            lazy = true,
-            config = function()
-                require('hop').setup({
-                    keys = 'etovxqpdygfblzhckisuran',
-                    case_insensitive = true,
-                    multi_windows = true,
-                })
-            end,
-        },
-        {
-            "iamcco/markdown-preview.nvim",
-            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-            build = "cd app && bun install",
-            init = function()
-                vim.g.mkdp_filetypes = { "markdown" }
-            end,
-            ft = { "markdown" },
-        },
-        {
-            "hedyhli/outline.nvim",
-            lazy = true,
-            cmd = { "Outline", "OutlineOpen" },
-            keys = {
-                { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-            },
-            opts = {},
-            config = function()
-                require("outline").setup({
-                    outline_window = {
-                        position = 'right',
-                        split_command = nil,
-                        width = 25,
-                        relative_width = true,
-                        auto_close = false,
-                        auto_jump = false,
-                        jump_highlight_duration = 300,
-                        center_on_jump = true,
-                        show_numbers = false,
-                        show_relative_numbers = false,
-                        wrap = false,
-                        show_cursorline = true,
-                        hide_cursor = false,
-                        focus_on_open = true,
-                        winhl = '',
-                    },
-
-                })
-            end,
-        },
-        {
-            "lukas-reineke/indent-blankline.nvim",
-            main = "ibl",
-            config = function()
-                require("ibl").setup({})
-            end,
-        },
-        {
-            "pmizio/typescript-tools.nvim",
-            dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-            opts = {},
-            config = function()
-                require("typescript-tools").setup {
-                    on_attach =
-                        function(client, bufnr)
-                            client.server_capabilities.documentFormattingProvider = false
-                            client.server_capabilities.documentRangeFormattingProvider = false
-                        end,
-                    settings = {
-                        jsx_close_tag = {
-                            enable = true,
-                            filetypes = { "javascriptreact", "typescriptreact" },
-                        }
-                    }
-                }
-            end
-        },
-        {
-            'romgrk/barbar.nvim',
-            dependencies = {
-                'lewis6991/gitsigns.nvim',     -- for git status
-                'nvim-tree/nvim-web-devicons', -- for file icons
-            },
-            init = function() vim.g.barbar_auto_setup = false end,
-            opts = {
-                animation = true,
-                insert_at_start = false,
-                sidebar_filetypes = {
-                    NvimTree = true,
-                    undotree = {
-                        text = 'undotree',
-                        align = 'center', -- *optionally* specify an alignment (either 'left', 'center', or 'right')
-                    },
-                    ['neo-tree'] = { event = 'BufWipeout' },
-                    Outline = { event = 'BufWinLeave', text = 'symbols-outline', align = 'right' },
-                },
-                name_formatter = function(buf)
-                    -- Only return the filename
-                    return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t')
-                end,
-            },
-            version = '^1.0.0',
-        },
-        {
-            "nvim-lualine/lualine.nvim",
-            config = function()
-                require('lualine').setup {
-                    options = {
-                        -- theme = bubbles_theme,
-                        component_separators = '',
-                        -- section_separators = { left = '', right = '' },
-
-                        section_separators = { left = ']', right = '[' },
-                    },
-                    sections = {
-                        -- lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-                        lualine_a = { { 'mode', separator = { left = '[' }, right_padding = 2 } },
-                        lualine_b = { 'filename', 'branch' },
-                        lualine_c = {
-                            '%=',
-                        },
-                        lualine_x = {},
-                        lualine_y = { 'filetype', 'progress' },
-                        lualine_z = {
-                            -- { 'location', separator = { right = '' }, left_padding = 2 },
-                            { 'location', separator = { right = ']' }, left_padding = 2 },
-                        },
-                    },
-                    inactive_sections = {
-                        lualine_a = { 'filename' },
-                        lualine_b = {},
-                        lualine_c = {},
-                        lualine_x = {},
-                        lualine_y = {},
-                        lualine_z = { 'location' },
-                    },
-                    tabline = {},
-                    extensions = {},
-                    disabled_filetypes = {
-                    },
-                    ignore_focus = {
-                    },
-                    globalstatus = true,
-                }
-            end,
-        },
-        {
-            "goolord/alpha-nvim",
-            dependencies = {
-                "nvim-tree/nvim-web-devicons",
-                "nvim-lua/plenary.nvim",
-            },
-            config = function()
-                local dashboard = require("alpha.themes.startify")
-
-                -- Helper function to generate a random color in hex format
-                local function randomColor()
-                    local function randHex()
-                        return string.format("%02x", math.random(0, 255))
-                    end
-                    return "#" .. randHex() .. randHex() .. randHex()
-                end
-
-                local function applyRandomColor(logo)
-                    dashboard.section.header.val = logo
-
-                    -- Generate a random color and create a highlight group for it
-                    local random_fg_color = randomColor()
-                    local hl_group = "AlphaRandomColor"
-                    vim.api.nvim_set_hl(0, hl_group, { fg = random_fg_color })
-
-                    -- Apply the highlight group to the entire header
-                    dashboard.section.header.opts.hl = hl_group
-                    return dashboard.opts
-                end
-
-                require("alpha").setup(applyRandomColor({
-                    [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
-                    [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
-                    [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
-                    [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
-                    [[██   ████ ███████  ██████    ████   ██ ██      ██]]
-                }))
-            end,
-        },
-        {
-            "akinsho/bufferline.nvim",
-            version = "*",
-        },
-        {
-            'numToStr/Comment.nvim',
-            opts = {},
-            config = function()
-                require('Comment').setup({
-                    padding = true,
-                    sticky = true,
-                    ignore = nil,
-
-                    toggler = {
-                        line = 'gcc',
-                        block = 'gbc',
-                    },
-
-                    opleader = {
-                        line = 'gc',
-                        block = 'gb',
-                    },
-
-                    -- extra mapping
-                    extra = {
-                        above = 'gcO',
-                        below = 'gco',
-                        eol = 'gcA',
-                    },
-
-                    -- enable keybinds
-                    mappings = {
-                        basic = true,
-                        extra = true,
-                    },
-
-                    pre_hook = nil,
-                    post_hook = nil,
-                })
-            end,
-        },
-        {
-            "nvim-treesitter/nvim-treesitter",
-            config = function()
-                require('nvim-treesitter').setup({
-                    ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "javascript", "css", "typescript", "svelte" },
-                    sync_install = true,
-
-                    auto_install = true,
-
-                    highlight = {
-                        enable = true,
-
-                        disable = function(lang, buf)
-                            local max_filesize = 100 * 1024 -- 100 KB
-                            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                            if ok and stats and stats.size > max_filesize then
-                                return true
-                            end
-                        end,
-
-                        additional_vim_regex_highlighting = false,
-                    },
-                    indent = { enable = true },
-                    rainbow = {
-                        enable = true,
-                        extended_mode = true,
-                        max_file_lines = nil,
-                    }
-                })
-            end,
-        },
-        {
-            "L3MON4D3/LuaSnip",
-            version = "v2.*",
-            build = "make install_jsregexp"
-        },
-        {
-            "hrsh7th/nvim-cmp",
-            requires = {
-                { 'hrsh7th/cmp-nvim-lsp' }, -- LSP source
-                { 'hrsh7th/cmp-buffer' },   -- Buffer source
-                { 'hrsh7th/cmp-path' },     -- Path source
-                { 'L3MON4D3/LuaSnip' },     -- luasnip
-            },
-            config = function()
-                require('cmp').setup({
-                    sources = {
-                        { name = 'nvim_lsp' },
-                        { name = 'buffer' },
-                        { name = 'path' },
-                        { name = 'cmp_snippet' },
-                        { name = 'cmp_treesitter' },
-                        { name = 'luasnip' },
-                    },
-                    snippet = {
-                        expand = function(args)
-                            require('luasnip').lsp_expand(args.body)
-                        end,
-                    },
-                    mapping = require('cmp').mapping.preset.insert({
-                        ['<C-b>'] = require('cmp').mapping.scroll_docs(-4),
-                        ['<C-f>'] = require('cmp').mapping.scroll_docs(4),
-                        ['<C-Space>'] = require('cmp').mapping.complete(),
-                        ['<C-e>'] = require('cmp').mapping.abort(),
-                        ['<CR>'] = require('cmp').mapping.confirm({ select = true }),
-                    })
-                })
-            end,
-        },
-        {
-            'neovim/nvim-lspconfig',
-            requires = {
-                { 'hrsh7th/nvim-cmp' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-            },
-        },
-        {
-            'hrsh7th/cmp-nvim-lsp',
-            requires = {
-                { 'hrsh7th/nvim-cmp' },
-            },
-        },
-        {
-            "nvim-telescope/telescope.nvim",
-            dependencies = { 'nvim-lua/plenary.nvim' },
-            config = function()
-                require('telescope').setup()
-            end,
-        },
-        {
-            'boganworld/crackboard.nvim',
-            dependencies = { 'nvim-lua/plenary.nvim' },
-            config = function()
-                local function read_session_key()
-                    local path = vim.fn.expand("$HOME/.crackboard.cfg")
-                    local file = io.open(path, "r")
-
-                    if not file then
-                        print("Error: Unable to open $HOME/.crackboard.cfg")
-                        return nil
-                    end
-
-                    for line in file:lines() do
-                        local key, value = line:match("^(%S+)%s*=%s*(%S+)")
-                        if key == "session_key" then
-                            file:close()
-                            return value
-                        end
-                    end
-
-                    file:close()
-                    return nil
-                end
-
-                local session_key = read_session_key()
-                if session_key then
-                    require('crackboard').setup({
-                        session_key = session_key,
-                    })
-                else
-                    print("Error: session_key not found in ~/.crackboard.cfg")
-                end
-            end,
-        },
-        {
-            'wakatime/vim-wakatime', lazy = false
-        }
+  spec = {
+    {
+      "aliqyan-21/darkvoid.nvim",
+      priority = 1000,
     },
-    -- darkvoid
-    install = { colorscheme = { "kanagawa" } }, --
-    checker = { enabled = true },
+    {
+      -- darkvoid: "aliqyan-21/darkvoid.nvim",
+      -- kanagawa: "rebelot/kanagawa.nvim"
+      "rebelot/kanagawa.nvim",
+      priority = 1000,
+    },
+    {
+
+      "nvim-tree/nvim-web-devicons",
+      config = function()
+        require("nvim-web-devicons").setup({})
+      end,
+    },
+    {
+      'IogaMaster/neocord',
+      event = "VeryLazy"
+    },
+    {
+      "phaazon/hop.nvim",
+      lazy = true,
+      config = function()
+        require('hop').setup({
+          keys = 'etovxqpdygfblzhckisuran',
+          case_insensitive = true,
+          multi_windows = true,
+        })
+      end,
+    },
+    {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && bun install",
+      init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
+    },
+    {
+      "hedyhli/outline.nvim",
+      lazy = true,
+      cmd = { "Outline", "OutlineOpen" },
+      keys = {
+        { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+      },
+      opts = {},
+      config = function()
+        require("outline").setup({
+          outline_window = {
+            position = 'right',
+            split_command = nil,
+            width = 25,
+            relative_width = true,
+            auto_close = false,
+            auto_jump = false,
+            jump_highlight_duration = 300,
+            center_on_jump = true,
+            show_numbers = false,
+            show_relative_numbers = false,
+            wrap = false,
+            show_cursorline = true,
+            hide_cursor = false,
+            focus_on_open = true,
+            winhl = '',
+          },
+
+        })
+      end,
+    },
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      main = "ibl",
+      config = function()
+        require("ibl").setup({})
+      end,
+    },
+    {
+      "pmizio/typescript-tools.nvim",
+      dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+      opts = {},
+      config = function()
+        require("typescript-tools").setup {
+          on_attach =
+              function(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+              end,
+          settings = {
+            jsx_close_tag = {
+              enable = true,
+              filetypes = { "javascriptreact", "typescriptreact" },
+            }
+          }
+        }
+      end
+    },
+    {
+      'romgrk/barbar.nvim',
+      dependencies = {
+        'lewis6991/gitsigns.nvim',     -- for git status
+        'nvim-tree/nvim-web-devicons', -- for file icons
+      },
+      init = function() vim.g.barbar_auto_setup = false end,
+      opts = {
+        animation = true,
+        insert_at_start = false,
+        sidebar_filetypes = {
+          NvimTree = true,
+          undotree = {
+            text = 'undotree',
+            align = 'center', -- *optionally* specify an alignment (either 'left', 'center', or 'right')
+          },
+          ['neo-tree'] = { event = 'BufWipeout' },
+          Outline = { event = 'BufWinLeave', text = 'symbols-outline', align = 'right' },
+        },
+        name_formatter = function(buf)
+          -- Only return the filename
+          return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t')
+        end,
+      },
+      version = '^1.0.0',
+    },
+    {
+      "nvim-lualine/lualine.nvim",
+      config = function()
+        require('lualine').setup {
+          options = {
+            -- theme = bubbles_theme,
+            component_separators = '',
+            -- section_separators = { left = '', right = '' },
+
+            section_separators = { left = ']', right = '[' },
+          },
+          sections = {
+            -- lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+            lualine_a = { { 'mode', separator = { left = '[' }, right_padding = 2 } },
+            lualine_b = { 'filename', 'branch' },
+            lualine_c = {
+              '%=',
+            },
+            lualine_x = {},
+            lualine_y = { 'filetype', 'progress' },
+            lualine_z = {
+              -- { 'location', separator = { right = '' }, left_padding = 2 },
+              { 'location', separator = { right = ']' }, left_padding = 2 },
+            },
+          },
+          inactive_sections = {
+            lualine_a = { 'filename' },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = { 'location' },
+          },
+          tabline = {},
+          extensions = {},
+          disabled_filetypes = {
+          },
+          ignore_focus = {
+          },
+          globalstatus = true,
+        }
+      end,
+    },
+    {
+      "goolord/alpha-nvim",
+      dependencies = {
+        "nvim-tree/nvim-web-devicons",
+        "nvim-lua/plenary.nvim",
+      },
+      config = function()
+        local dashboard = require("alpha.themes.startify")
+
+        -- Helper function to generate a random color in hex format
+        local function randomColor()
+          local function randHex()
+            return string.format("%02x", math.random(0, 255))
+          end
+          return "#" .. randHex() .. randHex() .. randHex()
+        end
+
+        local function applyRandomColor(logo)
+          dashboard.section.header.val = logo
+
+          -- Generate a random color and create a highlight group for it
+          local random_fg_color = randomColor()
+          local hl_group = "AlphaRandomColor"
+          vim.api.nvim_set_hl(0, hl_group, { fg = random_fg_color })
+
+          -- Apply the highlight group to the entire header
+          dashboard.section.header.opts.hl = hl_group
+          return dashboard.opts
+        end
+
+        require("alpha").setup(applyRandomColor({
+          [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+          [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+          [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+          [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+          [[██   ████ ███████  ██████    ████   ██ ██      ██]]
+        }))
+      end,
+    },
+    {
+      "akinsho/bufferline.nvim",
+      version = "*",
+    },
+    {
+      'numToStr/Comment.nvim',
+      opts = {},
+      config = function()
+        require('Comment').setup({
+          padding = true,
+          sticky = true,
+          ignore = nil,
+
+          toggler = {
+            line = 'gcc',
+            block = 'gbc',
+          },
+
+          opleader = {
+            line = 'gc',
+            block = 'gb',
+          },
+
+          -- extra mapping
+          extra = {
+            above = 'gcO',
+            below = 'gco',
+            eol = 'gcA',
+          },
+
+          -- enable keybinds
+          mappings = {
+            basic = true,
+            extra = true,
+          },
+
+          pre_hook = nil,
+          post_hook = nil,
+        })
+      end,
+    },
+    {
+      "nvim-treesitter/nvim-treesitter",
+      config = function()
+        require('nvim-treesitter').setup({
+          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "javascript", "css", "typescript", "svelte" },
+          sync_install = true,
+
+          auto_install = true,
+
+          highlight = {
+            enable = true,
+
+            disable = function(lang, buf)
+              local max_filesize = 100 * 1024 -- 100 KB
+              local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+              if ok and stats and stats.size > max_filesize then
+                return true
+              end
+            end,
+
+            additional_vim_regex_highlighting = false,
+          },
+          indent = { enable = true },
+          rainbow = {
+            enable = true,
+            extended_mode = true,
+            max_file_lines = nil,
+          }
+        })
+      end,
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      build = "make install_jsregexp"
+    },
+    {
+      "hrsh7th/nvim-cmp",
+      requires = {
+        { 'hrsh7th/cmp-nvim-lsp' }, -- LSP source
+        { 'hrsh7th/cmp-buffer' },   -- Buffer source
+        { 'hrsh7th/cmp-path' },     -- Path source
+        { 'L3MON4D3/LuaSnip' },     -- luasnip
+      },
+      config = function()
+        require('cmp').setup({
+          sources = {
+            { name = 'nvim_lsp' },
+            { name = 'buffer' },
+            { name = 'path' },
+            { name = 'cmp_snippet' },
+            { name = 'cmp_treesitter' },
+            { name = 'luasnip' },
+          },
+          snippet = {
+            expand = function(args)
+              require('luasnip').lsp_expand(args.body)
+            end,
+          },
+          mapping = require('cmp').mapping.preset.insert({
+            ['<C-b>'] = require('cmp').mapping.scroll_docs(-4),
+            ['<C-f>'] = require('cmp').mapping.scroll_docs(4),
+            ['<C-Space>'] = require('cmp').mapping.complete(),
+            ['<C-e>'] = require('cmp').mapping.abort(),
+            ['<CR>'] = require('cmp').mapping.confirm({ select = true }),
+          })
+        })
+      end,
+    },
+    {
+      'neovim/nvim-lspconfig',
+      requires = {
+        { 'hrsh7th/nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+      },
+    },
+    {
+      'hrsh7th/cmp-nvim-lsp',
+      requires = {
+        { 'hrsh7th/nvim-cmp' },
+      },
+    },
+    {
+      "nvim-telescope/telescope.nvim",
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        require('telescope').setup()
+      end,
+    },
+    {
+      'boganworld/crackboard.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        local function read_session_key()
+          local path = vim.fn.expand("$HOME/.crackboard.cfg")
+          local file = io.open(path, "r")
+
+          if not file then
+            print("Error: Unable to open $HOME/.crackboard.cfg")
+            return nil
+          end
+
+          for line in file:lines() do
+            local key, value = line:match("^(%S+)%s*=%s*(%S+)")
+            if key == "session_key" then
+              file:close()
+              return value
+            end
+          end
+
+          file:close()
+          return nil
+        end
+
+        local session_key = read_session_key()
+        if session_key then
+          require('crackboard').setup({
+            session_key = session_key,
+          })
+        else
+          print("Error: session_key not found in ~/.crackboard.cfg")
+        end
+      end,
+    },
+    {
+      'wakatime/vim-wakatime', lazy = false
+    }
+  },
+  -- darkvoid
+  install = { colorscheme = { "kanagawa" } }, --
+  checker = { enabled = true },
 })
 
 -- Colorscheme
@@ -432,20 +432,20 @@ require('lspconfig').lua_ls.setup {}
 
 -- Go
 require('lspconfig').gopls.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }
 
 -- JavaScript, ReactJS, TypeScript
 require('lspconfig').ts_ls.setup {
-    capabilities = capabilities,
-    init_options = {
-        preferences = {
-            disableSuggestions = false,
-        },
+  capabilities = capabilities,
+  init_options = {
+    preferences = {
+      disableSuggestions = false,
     },
-    exclude = {
-        "node_modules"
-    },
+  },
+  exclude = {
+    "node_modules"
+  },
 }
 
 -- Tailwind CSS
@@ -456,7 +456,7 @@ require 'lspconfig'.astro.setup { capabilities = capabilities }
 
 -- CSS LS
 require('lspconfig').cssls.setup {
-    capabilities = vsclangserver_capabilities,
+  capabilities = vsclangserver_capabilities,
 }
 require('lspconfig').css_variables.setup {}
 
@@ -465,14 +465,14 @@ require('lspconfig').clangd.setup { capabilities = capabilities, }
 
 -- Rust
 require('lspconfig').rust_analyzer.setup {
-    capabilities = capabilities,
-    settings = {
-        ['rust-analyzer'] = {
-            diagnostics = {
-                enable = true,
-            }
-        }
+  capabilities = capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true,
+      }
     }
+  }
 }
 
 -- Markdown
@@ -506,15 +506,15 @@ local directions = require('hop.hint').HintDirection
 
 -- modern autoformat on save
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-    callback = function(args)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = args.buf,
-            callback = function()
-                vim.lsp.buf.format { async = false, id = args.data.client_id }
-            end,
-        })
-    end
+  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+  callback = function(args)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format { async = false, id = args.data.client_id }
+      end,
+    })
+  end
 })
 
 -- Keybindings
@@ -602,36 +602,36 @@ vim.o.linebreak = true -- breaks by word rather than character
 
 -- Create directory + file with :E
 vim.api.nvim_create_user_command('E', function(opts)
-    local filepath = vim.fn.expand(opts.args)
-    local dir = vim.fn.fnamemodify(filepath, ":p:h")
-    if not vim.loop.fs_stat(dir) then
-        vim.fn.mkdir(dir, "p")
-    end
-    vim.cmd("edit " .. filepath)
+  local filepath = vim.fn.expand(opts.args)
+  local dir = vim.fn.fnamemodify(filepath, ":p:h")
+  if not vim.loop.fs_stat(dir) then
+    vim.fn.mkdir(dir, "p")
+  end
+  vim.cmd("edit " .. filepath)
 end, { nargs = 1, complete = "file" })
 
 -- Discord RPC
 require("neocord").setup({
-    -- General options
-    logo                = "auto",                  -- "auto" or url
-    logo_tooltip        = ":3",                    -- nil or string
-    main_image          = "language",              -- "language" or "logo"
-    client_id           = "1157438221865717891",   -- Use your own Discord application client id (not recommended)
-    log_level           = nil,                     -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
-    debounce_timeout    = 10,                      -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
-    blacklist           = {},                      -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
-    file_assets         = {},                      -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
-    show_time           = false,                   -- Show the timer
-    global_timer        = false,                   -- if set true, timer won't update when any event are triggered
-
-    editing_text        = "Editing %s",            -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
-    file_explorer_text  = "Browsing...",           -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
-    git_commit_text     = "Committing changes",    -- Format string rendered when committing changes in git (either string or function(filename: string): string)
-    plugin_manager_text = "Managing plugins",      -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
-    reading_text        = "Reading %s",            -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
-    workspace_text      = "Working on [REDACTED]", -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
-    line_number_text    = "Line %s out of %s",     -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
-    terminal_text       = "Using Terminal",        -- Format string rendered when in terminal mode.
+  -- General options
+  logo                = "auto",                -- "auto" or url
+  logo_tooltip        = ":3",                  -- nil or string
+  main_image          = "language",            -- "language" or "logo"
+  client_id           = "1157438221865717891", -- Use your own Discord application client id (not recommended)
+  log_level           = nil,                   -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
+  debounce_timeout    = 10,                    -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
+  blacklist           = {},                    -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
+  file_assets         = {},                    -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
+  show_time           = false,                 -- Show the timer
+  global_timer        = false,                 -- if set true, timer won't update when any event are triggered
+  enable_line_number  = 1,
+  editing_text        = "Editing %s",          -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
+  file_explorer_text  = "Browsing...",         -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
+  git_commit_text     = "Committing changes",  -- Format string rendered when committing changes in git (either string or function(filename: string): string)
+  plugin_manager_text = "Managing plugins",    -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
+  reading_text        = "Reading %s",          -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
+  workspace_text      = "[REDACTED]",          -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
+  line_number_text    = "Line %s out of %s",   -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
+  terminal_text       = "Using Terminal",      -- Format string rendered when in terminal mode.
 })
 
 -- make sutff transparent
