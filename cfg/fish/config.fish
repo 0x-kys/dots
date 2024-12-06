@@ -25,6 +25,3 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # cargo
 set -gx PATH $HOME/.cargo/bin $PATH
-
-# rustup
-set -gx PATH /usr/lib/rustup/bin/ $PATH
