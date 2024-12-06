@@ -2,7 +2,7 @@ keybind = ctrl+z=close_surface
 keybind = ctrl+d=new_split:auto
 
 gtk-titlebar = false 
-window-decoration = true
+window-decoration = true 
 
 window-padding-x = 4
 window-padding-y = 4
