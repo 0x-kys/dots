@@ -9,6 +9,7 @@ if status is-interactive
   alias todo="nvim ~/.stuff.md"
   alias qwenc 'function _qwenc; ollama run qwen2.5-coder p "$argv"; ollama stop qwen2.5-coder; end; _qwenc'
   alias ff="fastfetch --logo arch2"
+  alias glog="git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'"
 end
 
 # pnpm
