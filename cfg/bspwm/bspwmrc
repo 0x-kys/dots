@@ -18,7 +18,7 @@ fi
 polybar bar &
 
 if pgrep -x "dunst" > /dev/null; then
-    pkill -x dunst
+  pkill -x dunst
 fi
 dunst &
 
@@ -39,8 +39,8 @@ unfocused_window_color="#343434" # Dark background for unfocused windows
 
 bspc config focused_border_color $focused_border_color
 bspc config unfocused_border_color $unfocused_border_color
-bspc config focused_window_border_width 2  # Border width for focused windows
-bspc config unfocused_window_border_width 2  # Border width for unfocused windows
+bspc config focused_window_border_width 0  # Border width for focused windows
+bspc config unfocused_window_border_width 0  # Border width for unfocused windows
 
 bspc config window_gap 5   # Space between windows
 bspc config border_width 2  # Border width for windows
