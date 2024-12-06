@@ -1,8 +1,10 @@
 #!/bin/sh
 
-DIRS_TO_COPY="alacritty betterlockscreen bspwm btop dunst fish ghostty nvim picom polybar sxhkd zed"
+DIRS_TO_COPY="wezterm spectrwm btop fish ghostty nvim picom"
 SOURCE_DIR="$HOME/.config"
 DEST_DIR="$(pwd)/cfg"
+
+mkdir -p "$(pwd)/nix"
 
 for dir in $DIRS_TO_COPY; do
   src_dir="$SOURCE_DIR/$dir"
@@ -15,15 +17,9 @@ for dir in $DIRS_TO_COPY; do
   fi
 done
 
-echo "Copying scripts"
-cp -r ~/scripts .
-
-ZED_CONFIG="$DEST_DIR/zed/settings.json"
-
-if [ -f "$ZED_CONFIG" ]; then
-  sed '/\/\//d' "$ZED_CONFIG" | jq 'del(.lsp.wakatime.settings."api-key")' > "$ZED_CONFIG.tmp" && mv "$ZED_CONFIG.tmp" "$ZED_CONFIG"
-  echo "Removed API key from Zed config"
+if [ -d "/etc/nixos" ]; then
+  cp -r /etc/nixos/* "$(pwd)/nix/"
+  echo "Copied NixOS configuration files to $(pwd)/nix"
 else
-  echo "Zed config file not found in $ZED_CONFIG"
+  echo "/etc/nixos directory does not exist"
 fi
-
