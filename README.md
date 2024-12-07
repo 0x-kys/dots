@@ -2,7 +2,7 @@
   
   ***dotfiles***
 
-![image](https://github.com/user-attachments/assets/c750e7fa-8d4c-43a7-8f83-a287c502950a)
+![image](https://github.com/user-attachments/assets/ae0d6c48-14fa-4cfe-8c51-24be1f9e14f2)
 
 </div>
 
