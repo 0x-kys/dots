@@ -85,6 +85,7 @@
     description = "syk";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
+      cheese
       sakura
       wezterm
       picom
@@ -155,6 +156,8 @@
     dnsutils
     cmake
     tmux
+    ffmpeg
+    v4l-utils
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xfce.ristretto
