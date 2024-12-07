@@ -76,6 +76,7 @@
 
   security.rtkit.enable = true;
 
+  programs.nix-ld.enable = true;
   programs.fish.enable = true;
 
   users.defaultUserShell = pkgs.fish;
@@ -89,6 +90,7 @@
       sakura
       wezterm
       picom
+      btop
       pfetch
       fastfetch
       flameshot
