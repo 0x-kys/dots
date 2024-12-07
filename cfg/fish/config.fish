@@ -10,6 +10,7 @@ if status is-interactive
   alias qwenc 'function _qwenc; ollama run qwen2.5-coder p "$argv"; ollama stop qwen2.5-coder; end; _qwenc'
   alias ff="fastfetch --logo arch2"
   alias glog="git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'"
+  alias dnd="~/.scripts/toggle_dnd.sh"
 end
 
 # pnpm
@@ -25,3 +26,6 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # cargo
 set -gx PATH $HOME/.cargo/bin $PATH
+
+# direnv integration
+direnv hook fish | source
