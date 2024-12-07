@@ -10,7 +10,8 @@ if status is-interactive
   alias qwenc 'function _qwenc; ollama run qwen2.5-coder p "$argv"; ollama stop qwen2.5-coder; end; _qwenc'
   alias ff="fastfetch --logo arch2"
   alias glog="git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'"
-  alias dnd="~/.scripts/toggle_dnd.sh"
+  alias dnd="xfconf-query -c xfce4-notifyd -p /do-not-disturb --toggle"
+  alias isdnd="xfconf-query -c xfce4-notifyd -p /do-not-disturb -v 2>/dev/null"
 end
 
 # pnpm
