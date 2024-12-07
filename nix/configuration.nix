@@ -5,6 +5,8 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   boot = {
     loader = {
       systemd-boot = {
@@ -280,7 +282,7 @@
       lxappearance           
       papirus-icon-theme     
       whitesur-cursors       
-      mojave-gtk-theme       
+      mojave-gtk-theme
     ];
   };
 

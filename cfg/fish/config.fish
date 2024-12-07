@@ -5,6 +5,8 @@ set -gx PATH $HOME/go/bin $PATH
 set -gx PATH $HOME/.local/bin $PATH
 set -g LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
 
+set -gx DIRENV_ALLOW 1
+
 if status is-interactive
   alias todo="nvim ~/.stuff.md"
   alias qwenc 'function _qwenc; ollama run qwen2.5-coder p "$argv"; ollama stop qwen2.5-coder; end; _qwenc'
