@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 DIRS_TO_COPY="wezterm spectrwm btop fish ghostty nvim picom"
 SOURCE_DIR="$HOME/.config"

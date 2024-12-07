@@ -14,6 +14,7 @@ if status is-interactive
   alias glog="git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'"
   alias dnd="xfconf-query -c xfce4-notifyd -p /do-not-disturb --toggle"
   alias isdnd="xfconf-query -c xfce4-notifyd -p /do-not-disturb -v 2>/dev/null"
+  alias nix-gc="sudo nix-collect-garbage -d"
 end
 
 # pnpm
