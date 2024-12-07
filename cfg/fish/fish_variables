@@ -2,7 +2,8 @@
 # VERSION: 3.0
 SETUVAR SXHKD_SHELL:/usr/bin/bash
 SETUVAR __fish_initialized:3400
-SETUVAR _hydro_git_1413:nix\u2022\x20
+SETUVAR _hydro_git_1413:\x1d
+SETUVAR _hydro_git_228217:nix\u2022\x20
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue
