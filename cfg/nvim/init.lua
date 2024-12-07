@@ -427,6 +427,21 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local vsclangserver_capabilities = vim.lsp.protocol.make_client_capabilities()
 vsclangserver_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- Nix
+require('lspconfig').nixd.setup({
+  cmd = { "nixd" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "alejandra" },
+      },
+    },
+  },
+})
+
 -- Lua
 require('lspconfig').lua_ls.setup {}
 
