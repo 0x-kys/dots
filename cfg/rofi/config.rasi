@@ -1,0 +1,96 @@
+* {
+ red:                            rgba ( 196, 116, 110, 100 % ); 
+    blue:                        rgba ( 139, 164, 176, 100 % );
+    lightfg:                     rgba ( 220, 215, 186, 100 % );
+    lightbg:                     rgba ( 59, 66, 82, 100 % );
+    foreground:                  rgba ( 220, 215, 186, 100 % );
+    background:                  rgba ( 13, 12, 13, 100 % );
+    background-color:            rgba ( 13, 12, 13, 100 % );
+    separatorcolor:              @foreground;
+    border-color:                @foreground;
+    selected-normal-foreground:  @lightbg;
+    selected-normal-background:  @lightfg;
+    selected-active-foreground:  @background;
+    selected-active-background:  @blue;
+    selected-urgent-foreground:  @background;
+    selected-urgent-background:  @red;
+    normal-foreground:           @foreground;
+    normal-background:           @background;
+    active-foreground:           @blue;
+    active-background:           @background;
+    urgent-foreground:           @red;
+    urgent-background:           @background;
+    alternate-normal-foreground: @foreground;
+    alternate-normal-background: @lightbg;
+    alternate-active-foreground: @blue;
+    alternate-active-background: @lightbg;
+    alternate-urgent-foreground: @red;
+    alternate-urgent-background: @lightbg;
+    spacing:                     2;
+}
+
+configuration {
+    modi: "drun";
+    font: "mono 10";
+    width: 30;
+    lines: 6;
+    columns: 1;
+    show-icons: false;
+    disable-history: true;
+    sidebar-mode: false;
+    drun-display-format: "{name}";
+    display-drun: ">>>";
+}
+
+window {
+    background-color: @background;
+    border: 1;
+    border-color: @border-color;
+    padding: 5;
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+}
+
+message {
+    border: 1px dash 0px 0px;
+    border-color: @separatorcolor;
+    padding: 1px;
+}
+
+textbox {
+    text-color: @foreground;
+    background-color: @background;
+}
+
+listview {
+    fixed-height: false;
+    dynamic: true;
+}
+
+element {
+    padding: 5px;
+    spacing: 5px;
+}
+
+element normal normal {
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+}
+
+element selected normal {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+element selected active {
+    background-color: @selected-active-background;
+    text-color: @selected-active-foreground;
+}
+
+element selected urgent {
+    background-color: @selected-urgent-background;
+    text-color: @selected-urgent-foreground;
+}

@@ -3,7 +3,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 set -gx PATH /opt/cuda/bin $PATH
 set -gx PATH $HOME/go/bin $PATH
 set -gx PATH $HOME/.local/bin $PATH
-set -g LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
+# set -g LD_LIBRARY_PATH /nix/store/gvb5mha0ly23nkfygl64v71r60sqczbc-system-path/lib/ $LD_LIBRARY_PATH
 
 set -gx DIRENV_ALLOW 1
 
@@ -15,6 +15,7 @@ if status is-interactive
   alias dnd="xfconf-query -c xfce4-notifyd -p /do-not-disturb --toggle"
   alias isdnd="xfconf-query -c xfce4-notifyd -p /do-not-disturb -v 2>/dev/null"
   alias nix-gc="sudo nix-collect-garbage -d"
+  alias nix-conf="cd /etc/nixos/ && sudo -E nvim configuration.nix"
 end
 
 # pnpm

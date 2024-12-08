@@ -28,7 +28,8 @@
 
         # Development tools
         vim         
-        neovim     
+        neovim
+        zed-editor
         rofi        
         i3lock      
         xlockmore   
