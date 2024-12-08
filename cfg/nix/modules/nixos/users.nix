@@ -5,7 +5,7 @@
     users = { 
       syk = {
       isNormalUser = true;
-      description = "syk";
+      description = "okay sure";
       extraGroups = [ "networkmanager" "wheel" "video" ];
       packages = with pkgs; [
         # Desktop Environment Tools
