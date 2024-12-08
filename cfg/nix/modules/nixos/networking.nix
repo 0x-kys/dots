@@ -1,7 +1,7 @@
 { ... }:
 {
   networking = {
-    hostName = "nixos";
+    hostName = "zero";
     networkmanager = {
       enable = true;
     };
