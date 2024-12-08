@@ -1,8 +1,9 @@
 local wezterm = require 'wezterm'
+local theme = require 'colors/kanagawa-dragon'
 
-local config = {} 
+local config = {}
 
-config.color_scheme = '3024 (base16)'
+config.colors = theme
 
 config.font = wezterm.font_with_fallback {
   'JetBrains Mono Nerd Font',
