@@ -23,8 +23,8 @@
       ripgrep  
       alsa-utils  
       xscreensaver  
-      xorg.xinit    
-      xorg.libxcb   
+      xorg.xinit  
+      xorg.libxcb 
       xorg.libX11 
       vulkan-tools
       libgcc        

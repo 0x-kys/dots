@@ -7,7 +7,6 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  # Nix settings for system-wide features
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];

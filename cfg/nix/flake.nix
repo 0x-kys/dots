@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "okay sure";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -15,7 +15,7 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/default/configuration.nix
-        # home-manager.nixosModules.home-manager
+        inputs.home-manager.nixosModules.default
       ];
     };
   };
