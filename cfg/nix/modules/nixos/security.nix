@@ -1,6 +1,5 @@
-{ ... }:
-{
-  security = { 
+{...}: {
+  security = {
     rtkit = {
       enable = true;
     };

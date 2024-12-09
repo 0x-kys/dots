@@ -1,12 +1,11 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users = {
     defaultUserShell = pkgs.fish;
-    users = { 
+    users = {
       syk = {
         isNormalUser = true;
         description = "okay sure";
-        extraGroups = [ "networkmanager" "wheel" "video" ];
+        extraGroups = ["networkmanager" "wheel" "video"];
       };
     };
   };
