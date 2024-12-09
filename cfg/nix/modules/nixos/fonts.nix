@@ -1,10 +1,10 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts = {
     fontconfig = {
       enable = true;
     };
     packages = with pkgs; [
+      ubuntu_font_family
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif

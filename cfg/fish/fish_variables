@@ -4,6 +4,8 @@ SETUVAR SXHKD_SHELL:/usr/bin/bash
 SETUVAR __fish_initialized:3400
 SETUVAR _hydro_git_1441:\x1d
 SETUVAR _hydro_git_1612:nix\x20
+SETUVAR _hydro_git_39119:nix\x20
+SETUVAR _hydro_git_416438:master\u2022\x20
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue

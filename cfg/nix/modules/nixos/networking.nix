@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   networking = {
     hostName = "zero";
     networkmanager = {

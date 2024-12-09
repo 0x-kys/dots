@@ -1,6 +1,4 @@
-{ inputs, ... }:
-
-{
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/default.nix
@@ -9,7 +7,7 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
     };
     gc = {
       automatic = true;
@@ -19,7 +17,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users = {
       "syk" = import ./home.nix;
     };
@@ -27,4 +25,3 @@
 
   system.stateVersion = "24.11";
 }
-

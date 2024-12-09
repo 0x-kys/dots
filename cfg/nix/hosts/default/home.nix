@@ -1,87 +1,99 @@
-{ config, pkgs, ... }:
+{pkgs, ...}: {
+  home = {
+    username = "syk";
+    homeDirectory = "/home/syk";
+    stateVersion = "24.11";
+  };
 
-{
-  home.username = "syk";
-  home.homeDirectory = "/home/syk";
+  home.packages =
+    (import ../../modules/home-manager/alias.nix {inherit pkgs;})
+    ++ (
+      with pkgs; [
+        # Desktop Environment Tools
+        cheese
+        sakura
+        wezterm
+        picom
+        btop
+        pfetch
+        fastfetch
+        flameshot
+        nitrogen
 
-  home.stateVersion = "24.11";
+        # Applications
+        brave
+        spotify
+        vesktop
+        libreoffice
+        vlc
 
-  home.packages = with pkgs; [
-    # Desktop Environment Tools
-    cheese     
-    sakura      
-    wezterm     
-    picom       
-    btop       
-    pfetch      
-    fastfetch   
-    flameshot   
-    nitrogen    
+        # Development tools
+        vim
+        neovim
+        zed-editor
+        rofi
+        i3lock
+        xlockmore
+        spectrwm
+        zls
+        lua-language-server
+        vscode-langservers-extracted
+        astro-language-server
+        typescript-language-server
+        svelte-language-server
+        eslint
+        pyright
+        bash-language-server
+        nixd
+        nixpkgs-fmt
+        alejandra
+        marksman
+        tmux
+        zig
+        rustup
+        python313
+        go
+        gcc
+        bun
+        corepack
+        nodejs_22
 
-    # Applications
-    brave       
-    spotify     
-    vesktop     
-    libreoffice 
-    vlc         
+        # Fish shell plugins and tools
+        fishPlugins.done
+        fishPlugins.fzf-fish
+        fishPlugins.forgit
+        fishPlugins.hydro
+        fzf
+        fishPlugins.grc
+        grc
 
-    # Development tools
-    vim         
-    neovim
-    zed-editor
-    rofi        
-    i3lock      
-    xlockmore   
-    spectrwm    
-    zls
-    lua-language-server
-    vscode-langservers-extracted 
-    astro-language-server
-    typescript-language-server
-    svelte-language-server
-    eslint
-    pyright
-    bash-language-server
-    nixd
-    marksman
-    tmux      
-    zig        
-    rustup     
-    python313  
-    go
-    gcc
-    bun
-    corepack
-    nodejs_22
+        # XFCE components
+        xfce.ristretto
+        xfce.thunar
+        xfce.thunar-volman
+        xfce.thunar-archive-plugin
+        xfce.thunar-media-tags-plugin
 
-    # Fish shell plugins and tools
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
-    fzf
-    fishPlugins.grc
-    grc
+        # Games
+        prismlauncher
+        mangohud
+        protonup
 
-    # XFCE components
-    xfce.ristretto
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
+        # Other utilities
+        # tiramisu
+      ]
+    );
 
-    # Games
-    prismlauncher
-    mangohud
-    protonup
-
-    # Other utilities
-    # tiramisu  
-
-    (writeShellScriptBin "say-gm" ''
-      echo "GM, ${config.home.username}!"
-    '')
-  ];
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = ["Liberation Serif"];
+        sansSerif = ["Ubuntu"];
+        monospace = ["JetBrains Mono Nerd Font"];
+      };
+    };
+  };
 
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
