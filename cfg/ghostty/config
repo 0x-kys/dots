@@ -23,10 +23,13 @@ shell-integration = fish
 adjust-underline-position = 4
 
 mouse-hide-while-typing = true
-mouse-scroll-multiplier = 2
+mouse-scroll-multiplier = 1
 cursor-invert-fg-bg = true
+cursor-style = underline
 
-theme = Monokai Soda 
+theme = kanagawabones 
+background = 0d0c0c
+foreground = c5c9c5
 background-opacity = 1
 window-theme = ghostty
 

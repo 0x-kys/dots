@@ -449,6 +449,7 @@ require('lspconfig').lua_ls.setup {}
 require('lspconfig').gopls.setup {
   capabilities = capabilities,
 }
+require('lspconfig').golangci_lint_ls.setup {}
 
 -- JavaScript, ReactJS, TypeScript
 require('lspconfig').ts_ls.setup {
@@ -474,6 +475,7 @@ require('lspconfig').cssls.setup {
   capabilities = vsclangserver_capabilities,
 }
 require('lspconfig').css_variables.setup {}
+require('lspconfig').cssmodules_ls.setup {}
 
 -- C, C++
 require('lspconfig').clangd.setup { capabilities = capabilities, }
