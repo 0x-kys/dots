@@ -1,12 +1,9 @@
 #!/usr/bin/env sh
 
-DIRS_TO_COPY="rofi nix wezterm spectrwm btop fish ghostty nvim picom"
+DIRS_TO_COPY="rofi wezterm spectrwm btop fish ghostty nvim picom"
 SOURCE_DIR="$HOME/.config"
 DEST_DIR="$(pwd)/cfg"
 TMUX_CONF="$HOME/.tmux.conf"
-
-mkdir -p "$(pwd)/nix"
-mkdir -p "$(pwd)/scripts"
 
 for dir in $DIRS_TO_COPY; do
   src_dir="$SOURCE_DIR/$dir"
@@ -24,10 +21,4 @@ if [ -f $TMUX_CONF ]; then
   echo "copied tmux config to $(pwd)"
 else
   echo "couldn't find tmux config"
-fi
-
-if [ -d "$HOME/.scripts" ]; then
-  cp -r $HOME/.scripts/* "$(pwd)/scripts/"
-else
-  echo "couldn't find scripts"
 fi
