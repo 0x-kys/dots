@@ -284,9 +284,10 @@ require("lazy").setup({
     },
     {
       "nvim-treesitter/nvim-treesitter",
+      main = "nvim-treesitter.configs", -- Added main field for correct setup
       config = function()
         require('nvim-treesitter').setup({
-          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "javascript", "css", "typescript", "svelte" },
+          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline", "html", "javascript", "css", "typescript", "svelte" },
           sync_install = true,
 
           auto_install = true,
@@ -302,7 +303,7 @@ require("lazy").setup({
               end
             end,
 
-            additional_vim_regex_highlighting = false,
+            additional_vim_regex_highlighting = true,
           },
           indent = { enable = true },
           rainbow = {
@@ -310,6 +311,13 @@ require("lazy").setup({
             extended_mode = true,
             max_file_lines = nil,
           }
+        })
+
+        -- Force-enable Tree-sitter highlighting for all buffers
+        vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "BufNewFile" }, {
+          callback = function()
+            vim.cmd("TSBufEnable highlight")
+          end,
         })
       end,
     },
