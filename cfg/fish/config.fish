@@ -1,8 +1,16 @@
-export _JAVA_AWT_WM_NONREPARENTING=1
+# dsbl greeter
+set -g fish_greeting
+# dsbl greeter end
 
+# jb fix
+set -x _JAVA_AWT_WM_NONREPARENTING 1
+# jb fix end
+
+# them paths
 set -gx PATH /opt/cuda/bin $PATH
 set -gx PATH $HOME/go/bin $PATH
 set -gx PATH $HOME/.local/bin $PATH
+# them paths end
 
 # pnpm
 set -gx PNPM_HOME "/home/syk/.local/share/pnpm"
@@ -36,7 +44,15 @@ else if type -q nano
 end
 # base editor end #
 
+# prompt (fisher install jorgebucaran/hydro)
+set --universal hydro_fetch true
+set --universal hydro_multiline true
+# prompt end
+
 if status is-interactive
+  pokemon-colorscripts -r
+  fortune
+
   function glog
     git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'
   end
@@ -54,9 +70,10 @@ if status is-interactive
   end
 
   function caff
-    caffeine start &
-    disown (pidof caffeine-ng)
-    echo "safe to leave this shell"
+    command caffeine start > /dev/null 2>&1 &
+    disown
+    xset -dpms
+    xset s off
   end
 
   function iscaff
@@ -67,31 +84,9 @@ if status is-interactive
     end
   end
 
-  function get-real
-    if test (isdnd) = "false"
-      dnd
-      echo "DND on"
-    end
-
-    if test (iscaff) = "false"
-      caff
-      echo "CAFF on"
-    end
-  end
-
-  function get-fake
-    if test (isdnd) = "true"
-      dnd
-      echo "DND off"
-    end
-
-    if test (iscaff) = "true"
-      uncaff
-      echo "CAFF off"
-    end
-  end
-
   function uncaff
     caffeine kill
+    xset +dpms
+    xset s on
   end
 end
