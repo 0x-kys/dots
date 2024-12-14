@@ -52,7 +52,7 @@ check_caffeine() {
   fi
 }
 
-# ICONS FROM (https://www.nerdfonts.com/cheat-sheet)
+# Icon from (https://www.nerdfonts.com/cheat-sheet)
 while :; do
   left="+|L  ${BOLD}${USER}@$(hostname)${REGULAR}  Space ${BOLD}+L${REGULAR}  Hidden ${BOLD}+M${REGULAR}  Stack ${BOLD}+S${REGULAR}"
   center="+|C$(date +"%a %b %d %I:%M %p")"
