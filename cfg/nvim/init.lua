@@ -520,10 +520,18 @@ require('lspconfig').pyright.setup { capabilities = capabilities }
 
 -- Telescope Keybinds
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
+
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+-- Keybindings for switching between splits
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to below split' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to above split' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
 
 -- hop keybinds
 local hop = require('hop')
