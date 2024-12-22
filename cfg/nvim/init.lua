@@ -164,24 +164,36 @@ require("lazy").setup({
       config = function()
         require('lualine').setup {
           options = {
-            -- theme = bubbles_theme,
             component_separators = '',
-            -- section_separators = { left = '', right = '' },
-
-            section_separators = { left = ']', right = '[' },
+            section_separators = { left = '', right = '' },
+            globalstatus = true,
+            always_divide_middle = true,
           },
           sections = {
-            -- lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-            lualine_a = { { 'mode', separator = { left = '[' }, right_padding = 2 } },
-            lualine_b = { 'filename', 'branch' },
-            lualine_c = {
-              '%=',
+            lualine_a = {
+              'mode'
             },
-            lualine_x = {},
-            lualine_y = { 'filetype', 'progress' },
+            lualine_b = {
+              'filename',
+              'branch',
+              'diff',
+              'readonly',
+              'modified'
+            },
+            lualine_c = {},
+            lualine_x = {
+              'diagnostics',
+              'fileformat',
+              'encoding',
+            },
+            lualine_y = {
+              'progress',
+              'selectioncount',
+              'searchcount'
+            },
             lualine_z = {
-              -- { 'location', separator = { right = '' }, left_padding = 2 },
-              { 'location', separator = { right = ']' }, left_padding = 2 },
+              'location',
+              'scrollbar'
             },
           },
           inactive_sections = {
@@ -194,11 +206,6 @@ require("lazy").setup({
           },
           tabline = {},
           extensions = {},
-          disabled_filetypes = {
-          },
-          ignore_focus = {
-          },
-          globalstatus = true,
         }
       end,
     },
