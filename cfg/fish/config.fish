@@ -53,6 +53,37 @@ if status is-interactive
   pokemon-colorscripts -r
   fortune
 
+  function keyb-tog
+    set INTERNAL_KEYBOARD "AT Translated Set 2 keyboard"
+
+    # Get the current state of the internal keyboard
+    set -l current_state (xinput --list-props "$INTERNAL_KEYBOARD" | grep "Device Enabled" | awk '{print $4}')
+
+    if [ "$current_state" = "1" ]  # If the keyboard is enabled
+      xinput --set-prop "$INTERNAL_KEYBOARD" "Device Enabled" 0
+      echo "Internal keyboard disabled."
+    else  # If the keyboard is disabled
+      xinput --set-prop "$INTERNAL_KEYBOARD" "Device Enabled" 1
+      echo "Internal keyboard enabled."
+    end
+  end
+
+  function keyb-status
+    set INTERNAL_KEYBOARD "AT Translated Set 2 keyboard"
+
+    set -l current_state (xinput --list-props "$INTERNAL_KEYBOARD" | grep "Device Enabled" | awk '{print $4}')
+
+    if [ "$current_state" = "1" ]  
+      echo "Keyboard: enabled"
+    else  
+      echo "keyboard: disabled"
+    end
+  end
+
+  function pgsql
+    psql -U postgres
+  end
+
   function glog
     git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'
   end
