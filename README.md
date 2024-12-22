@@ -2,7 +2,7 @@
   
   ***dotfiles***
 
-![image](https://github.com/user-attachments/assets/ce7a202b-b78d-45a6-883f-2486ceb2d57b)
+![rice](https://github.com/user-attachments/assets/a69e94a8-7d56-470f-a18e-1329adfea8dc)
 
 </div>
 
@@ -10,7 +10,7 @@
 
 | - | - | - | - | - | - | - |
 | - | - | - | - | - | - | - |
-| EndeavourOS | SpectrWM | SpectrWM (Bar) | Picom | WezTerm+Ghostty | Brave | NeoVim |
+| EndeavourOS | i3wm | i3bar+i3blocks | Picom | WezTerm+Ghostty | Brave | NeoVim |
  
 </div>
 
