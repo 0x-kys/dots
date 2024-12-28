@@ -479,6 +479,15 @@ require('lspconfig').ts_ls.setup {
   },
 }
 
+
+-- Solidity
+-- (solc)
+require('lspconfig').solc.setup {}
+-- (vscode-solidity-server)
+require('lspconfig').solidity_ls.setup {}
+-- (nomicfoundation) (hardhat)
+require('lspconfig').solidity_ls_nomicfoundation.setup {}
+
 -- Tailwind CSS
 require('lspconfig').tailwindcss.setup { capabilities = capabilities }
 
@@ -649,6 +658,10 @@ vim.api.nvim_create_user_command('E', function(opts)
   end
   vim.cmd("edit " .. filepath)
 end, { nargs = 1, complete = "file" })
+
+-- Show error with space+e
+
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
 -- Discord RPC
 require("neocord").setup({

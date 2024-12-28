@@ -3,36 +3,27 @@ keybind = ctrl+d=new_split:auto
 
 gtk-titlebar = false 
 window-decoration = true 
-
 window-padding-x = 4
 window-padding-y = 4
-
 window-inherit-working-directory = true
-
 copy-on-select = true
-
 font-family = JetBrainsMono Nerd Font
 font-family-bold = JetBrainsMono Nerd Font
 font-family-italic = JetBrainsMono Nerd Font
 font-family-bold-italic = JetBrainsMono Nerd Font
 font-size = 10
 font-feature = dlig ss05 liga
-
 shell-integration = fish
-
 adjust-underline-position = 4
-
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 cursor-invert-fg-bg = true
 cursor-style = underline
-
 theme = kanagawabones 
 background = 0d0c0c
 foreground = c5c9c5
 background-opacity = 1
 window-theme = ghostty
-
 focus-follows-mouse = true
 
 #vim set ft=conf

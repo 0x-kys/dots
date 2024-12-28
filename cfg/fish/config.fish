@@ -68,6 +68,19 @@ if status is-interactive
     end
   end
 
+  function brightness
+    if test (count $argv) -gt 0
+      set -l percentage $argv[1]
+      if test $percentage -ge 0 -a $percentage -le 100
+        brightnessctl set $percentage%
+      else
+        echo "Please enter a percentage value between 0 and 100."
+      end
+    else
+      echo "Usage: brightness <percentage>"
+    end
+  end
+
   function keyb-status
     set INTERNAL_KEYBOARD "AT Translated Set 2 keyboard"
 
