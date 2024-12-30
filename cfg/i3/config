@@ -494,25 +494,24 @@ for_window [class="urxvt"] border pixel 1
 ######################################
 
 # Define colors variables:
-set $darkbluetrans  #1F1F28
-set $darkblue       #1F1F28
-set $lightblue      #957FB8
-set $urgentred      #E82424
-set $white          #DCD7BA
-set $black          #1F1F28
-set $dragon         #0d0c0d
-set $purple         #957FB8
-set $darkgrey       #54546D
-set $grey           #727169
-set $mediumgrey     #54546D
-set $yellowbrown    #DCA561
+set $nordpolar  #2E3440
+set $nordice    #3B4252
+set $nordcyan   #8FBCBB
+set $nordred    #BF616A
+set $nordwhite  #ECEFF4
+set $nordblack  #2E3440
+set $nordnight  #1E222A
+set $nordpurple #B48EAD
+set $norddmgrey #4C566A
+set $nordmgrey  #616E88
+set $nordyellow #EBCB8B
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+client.focused		    	$nordcyan	$nordpolar	$nordwhite	$nordmgrey	$nordmgrey
+client.unfocused	    	$nordpolar	$nordpolar	$nordmgrey	$norddmgrey	$norddmgrey
+client.focused_inactive		$nordpolar	$nordpolar	$nordmgrey	$nordblack	$nordblack
+client.urgent		    	$nordred	$nordred	$nordwhite	$nordyellow	$nordyellow
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -537,15 +536,15 @@ strip_workspace_numbers yes
 strip_workspace_name yes
 
 	colors {
-		separator   $purple
-		background  $dragon
-		statusline  $white
-    
-    #                         border 		        bg		        txt		    indicator
-		focused_workspace	        $mediumgrey	   	  $black        $white	  $purple
-		active_workspace	        $lightblue      	$dragon       $white	  $purple
-		inactive_workspace	      $darkgrey   		  $darkgrey	    $white		$purple
-		urgent_workspace	        $urgentred	    	$urgentred  	$white		$purple
+		separator   $nordpurple
+		background  $nordnight
+		statusline  $nordwhite
+
+		#                         border             bg                txt            indicator
+		focused_workspace         $nordmgrey         $nordblack        $nordwhite    $nordpurple
+		active_workspace          $nordcyan          $nordnight        $nordwhite    $nordpurple
+		inactive_workspace        $norddmgrey        $norddmgrey       $nordwhite    $nordpurple
+		urgent_workspace          $nordred           $nordred          $nordwhite    $nordpurple
 	}
 }
 
@@ -572,15 +571,15 @@ strip_workspace_numbers no
 strip_workspace_name no
 
 	colors {
-		separator   $purple
-		background  $dragon
-		statusline  $white
-    
-    #                         border 		        bg		        txt		    indicator
-		focused_workspace	        $mediumgrey	   	  $black        $white	  $purple
-		active_workspace	        $lightblue      	$dragon       $white	  $purple
-		inactive_workspace	      $darkgrey   		  $darkgrey	    $white		$purple
-		urgent_workspace	        $urgentred	    	$urgentred  	$white		$purple
+		separator   $nordpurple
+		background  $nordnight
+		statusline  $nordwhite
+
+		#                         border             bg                txt            indicator
+		focused_workspace         $nordmgrey         $nordblack        $nordwhite    $nordpurple
+		active_workspace          $nordcyan          $nordnight        $nordwhite    $nordpurple
+		inactive_workspace        $norddmgrey        $norddmgrey       $nordwhite    $nordpurple
+		urgent_workspace          $nordred           $nordred          $nordwhite    $nordpurple
 	}
 }
 
