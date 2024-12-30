@@ -25,10 +25,10 @@ configuration {
   padding: 0;
   spacing: 0;
 
-  bg: #0d0c0c;
-  bg-alt: #1D1C19;
-  fg: #c4b28a;
-  fg-alt: #c5c9c5;
+  bg: #1e222a;     // Darker Nordic background
+  bg-alt: #2e3440; // Slightly lighter for alternate backgrounds, maintaining the Nordic palette's darker tones
+  fg: #d8dee9;     // Light foreground, matching the Nordic light grey for text
+  fg-alt: #e5e9f0; // A bit lighter for alternate text or highlights, using a lighter Nordic grey
 
   background-color: @bg;
   text-color: @fg;
