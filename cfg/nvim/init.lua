@@ -167,6 +167,11 @@ require('lazy').setup({
     },
   },
 
+  {
+    'wakatime/vim-wakatime',
+    lazy = false,
+  },
+
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -863,7 +868,15 @@ require('lazy').setup({
       --  and try some other statusline plugin
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      statusline.setup {
+        use_icons = vim.g.have_nerd_font,
+      }
+
+      -- Override the section filename to show only the filename
+      statusline.section_filename = function()
+        -- Use expand with '%:t' to get the tail of the path (just filename)
+        return vim.fn.expand '%:t'
+      end
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for

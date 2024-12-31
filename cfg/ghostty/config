@@ -1,16 +1,14 @@
 keybind = ctrl+z=close_surface
 keybind = ctrl+d=new_split:auto
 
-gtk-titlebar = false 
-window-decoration = true 
+title = Ghostty
+gtk-titlebar = false
+window-decoration = false
 window-padding-x = 4
 window-padding-y = 4
 window-inherit-working-directory = true
 copy-on-select = true
-font-family = JetBrainsMono Nerd Font
-font-family-bold = JetBrainsMono Nerd Font
-font-family-italic = JetBrainsMono Nerd Font
-font-family-bold-italic = JetBrainsMono Nerd Font
+font-family = JetBrainsMono Nerd Font Mono
 font-size = 10
 font-feature = dlig ss05 liga
 shell-integration = fish

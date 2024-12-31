@@ -15,9 +15,10 @@ SETUVAR _hydro_git_279226:v1\x20
 SETUVAR _hydro_git_280828:main\x20
 SETUVAR _hydro_git_282838:main\x20
 SETUVAR _hydro_git_290197:master\x20
-SETUVAR _hydro_git_2908346:eos\x2dlappy\u2022\x20
 SETUVAR _hydro_git_291296:master\x20
 SETUVAR _hydro_git_292348:main\x20
+SETUVAR _hydro_git_562405:eos\x2dlappy\u2022\x20
+SETUVAR _hydro_git_563529:master\x20
 SETUVAR _hydro_git_900052:v1\u2022\x20
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr

@@ -28,6 +28,18 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set -gx PATH /usr/lib/rustup/bin/ $PATH
 # rustup end
 
+# cargo
+set -gx PATH $HOME/.cargo/bin $PATH
+# cargo end
+
+# solana
+set -gx PATH $HOME/.local/share/solana/install/active_release/bin $PATH
+# solana end
+
+# avm
+set -gx PATH $HOME/.avm/bin $PATH
+# avm end
+
 # base editor #
 if type -q nvim
     set -gx EDITOR nvim
