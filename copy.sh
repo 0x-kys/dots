@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DIRS_TO_COPY="rofi wezterm i3 glow btop doom fish ghostty nvim picom"
+DIRS_TO_COPY="wezterm glow btop fish ghostty nvim"
 SOURCE_DIR="$HOME/.config"
 DEST_DIR="$(pwd)/cfg"
 TMUX_CONF="$HOME/.tmux.conf"
