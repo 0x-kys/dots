@@ -6,7 +6,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- Enable forced transparency for all things
-vim.g.enable_transparency_opts = false
+vim.g.enable_transparency_opts = true
 
 -- Disable usage of arrow keys in normal mode
 vim.g.disable_arrow_keys = false
@@ -794,21 +794,22 @@ require('lazy').setup({
   {
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     -- 'folke/tokyonight.nvim',
-    -- 'rebelot/kanagawa.nvim',
-    'AlexvZyl/nordic.nvim',
+    'rebelot/kanagawa.nvim',
+    -- 'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
-      require('nordic').setup {
-        transparent = {
-          bg = true,
-          float = true,
-        },
-      }
+      -- require('nordic').setup {
+      --   transparent = {
+      --     bg = true,
+      --     float = true,
+      --   },
+      -- }
       -- Load the colorscheme here.
       -- 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'
       -- 'kanagawa-dragon'
-      vim.cmd.colorscheme 'nordic'
+      -- 'nordic'
+      vim.cmd.colorscheme 'kanagawa-dragon'
 
       -- Switch between dark or light
       vim.opt.background = 'dark'

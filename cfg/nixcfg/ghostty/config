@@ -1,7 +1,9 @@
 keybind = ctrl+z=close_surface
 keybind = ctrl+d=new_split:auto
 
-title = Ghostty # workaround for vuln from v1.0.0
+# workaround for vuln from v1.0.0
+title = Ghostty
+
 gtk-titlebar = false
 window-decoration = false
 window-padding-x = 4
@@ -17,9 +19,9 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 cursor-invert-fg-bg = true
 cursor-style = underline
-theme = nord
-background = 1e222a
-# foreground = c5c9c5
+theme = kanagawabones
+background = 0d0c0d
+foreground = c5c9c5
 background-opacity = 1
 window-theme = ghostty
 focus-follows-mouse = true
