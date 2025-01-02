@@ -15,37 +15,48 @@
   # };
 
   home.file = {
-    ".icons/WhiteSur-cursors" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.icons/WhiteSur-cursors") {
+    ".icons/WhiteSur-cursors" = {
       source = "${pkgs.whitesur-cursors}/share/icons/WhiteSur-cursors";
       recursive = true;
     };
 
-    ".config/nvim" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/nvim") {
+    ".config/nvim" = {
       source = ./nvim;
       recursive = true;
     };
 
-    ".config/ghostty" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/ghostty") {
+    ".config/ghostty" = {
       source = ./ghostty;
       recursive = true;
     };
 
-    ".config/fish" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/fish") {
+    ".config/fish" = {
       source = ./fish;
       recursive = true;
     };
 
-    ".config/glow" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/glow") {
+    ".config/glow" = {
       source = ./glow;
       recursive = true;
     };
 
-    ".config/hypr" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/hypr") {
+    ".config/hypr" = {
       source = ./hypr;
       recursive = true;
     };
 
-    ".config/btop" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/btop") {
+    ".config/waybar" = {
+      source = ./waybar;
+      recursive = true;
+    };
+
+    ".config/scripts" = {
+      source = ./scripts;
+      recursive = true;
+      executable = true;
+    };
+
+    ".config/btop" = {
       source = ./btop;
       recursive = true;
     };
@@ -146,7 +157,10 @@
     tailwindcss-language-server
     svelte-language-server
     nixfmt-classic
-  
+ 
+    grim
+    slurp
+
     whitesur-cursors
     nwg-look
   ];

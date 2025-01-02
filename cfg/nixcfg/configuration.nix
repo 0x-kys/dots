@@ -133,18 +133,17 @@
     wget
     fish
     wofi
-    slurp
     dunst
     pywal
     waybar
     hyprpaper
-    hyprshot
     wl-clipboard
     wl-clip-persist
     swaylock-effects
     brightnessctl
     fishPlugins.hydro
     helvum
+    pavucontrol
     playerctl
     wf-recorder
   ];
