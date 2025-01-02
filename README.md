@@ -16,4 +16,4 @@
 
 #### Note to self
 
-copy your cfg to `~/.config/nixcfg` for peace of mind
+copy your cfg to `~/.config` for peace of mind
