@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.username = "syk";
@@ -14,42 +14,46 @@
   #   executable = true;  # make all files executable
   # };
 
-  # Neovim Config
-  home.file.".config/nvim" = {
-    source = ./nvim;
-    recursive = true;
-  };
+  home.file = {
+    ".icons/WhiteSur-cursors" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.icons/WhiteSur-cursors") {
+      source = "${pkgs.whitesur-cursors}/share/icons/WhiteSur-cursors";
+      recursive = true;
+    };
 
-  # Ghostty config
-  home.file.".config/ghostty" = {
-    source = ./ghostty;
-    recursive = true;
-  };
+    ".config/nvim" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/nvim") {
+      source = ./nvim;
+      recursive = true;
+    };
 
-  # Fish Config
-  home.file.".config/fish" = {
-    source = ./fish;
-    recursive = true;
-  };
+    ".config/ghostty" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/ghostty") {
+      source = ./ghostty;
+      recursive = true;
+    };
 
-  home.file.".config/glow" = {
-    source = ./glow;
-    recursive = true;
-  };
+    ".config/fish" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/fish") {
+      source = ./fish;
+      recursive = true;
+    };
 
-  home.file.".config/hypr" = {
-    source = ./hypr;
-    recursive = true;
-  };
+    ".config/glow" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/glow") {
+      source = ./glow;
+      recursive = true;
+    };
 
-  home.file.".config/btop" = {
-    source = ./btop;
-    recursive = true;
+    ".config/hypr" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/hypr") {
+      source = ./hypr;
+      recursive = true;
+    };
+
+    ".config/btop" = lib.mkIf (!builtins.pathExists "${config.home.homeDirectory}/.config/btop") {
+      source = ./btop;
+      recursive = true;
+    };
   };
 
   xresources.properties = {
-    "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
+    "Xcursor.size" = 24;
+    "Xft.dpi" = 96;
   };
 
   home.packages = with pkgs; [
@@ -84,6 +88,7 @@
     ipcalc  
 
     cowsay
+    fortune
     file
     which
     tree
@@ -141,6 +146,9 @@
     tailwindcss-language-server
     svelte-language-server
     nixfmt-classic
+  
+    whitesur-cursors
+    nwg-look
   ];
 
   programs = {

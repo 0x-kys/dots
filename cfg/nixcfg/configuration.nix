@@ -142,14 +142,11 @@
     wl-clipboard
     wl-clip-persist
     swaylock-effects
-    whitesur-cursors
     brightnessctl
     fishPlugins.hydro
     helvum
     playerctl
     wf-recorder
-    kanagawa-gtk-theme
-    kanagawa-icon-theme
   ];
 
   fonts.packages = [
