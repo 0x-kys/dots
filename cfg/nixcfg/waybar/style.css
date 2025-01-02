@@ -40,6 +40,7 @@ window#waybar {
 #custom-swaylock,
 #custom-suspend,
 #custom-hibernate,
+#custom-reboot,
 #custom-exit_hyprland {
 	background: #0d0c0d;
 	padding: 8px;
@@ -52,29 +53,29 @@ window#waybar {
 #custom-swaylock,
 #custom-suspend,
 #custom-hibernate,
+#custom-reboot,
 #custom-exit_hyprland {
 	color: #ffffff;
-	/* Default color for these elements */
 }
 
 #custom-swaylock {
 	color: #8be9fd;
-	/* Using clock's color for swaylock as an example */
 }
 
 #custom-suspend {
 	color: #bd93f9;
-	/* Using network's color for suspend as an example */
 }
 
 #custom-hibernate {
 	color: #50fa7b;
-	/* Using one of the colors for hibernate as an example */
 }
 
 #custom-exit_hyprland {
 	color: #ff5555;
-	/* Using custom-power's color for exit as an example */
+}
+
+#custom-reboot {
+	color: #8be9fd;
 }
 
 #pulseaudio {
@@ -116,7 +117,6 @@ window#waybar {
 	color: #8be9fd;
 }
 
-/* For the expand and endpoint custom elements in the group */
 #custom-expand,
 #custom-endpoint {
 	background: #0d0c0d;
