@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "syk";
@@ -76,27 +76,27 @@
 
     fastfetch
     tmux
-    nnn 
+    nnn
 
     zip
     xz
     unzip
     p7zip
 
-    ripgrep 
-    jq 
-    yq-go 
-    eza 
-    fzf 
+    ripgrep
+    jq
+    yq-go
+    eza
+    fzf
 
-    mtr 
+    mtr
     iperf3
-    dnsutils  
-    ldns 
-    aria2     
-    socat 
-    nmap 
-    ipcalc  
+    dnsutils
+    ldns
+    aria2
+    socat
+    nmap
+    ipcalc
 
     cowsay
     fortune
@@ -111,25 +111,25 @@
 
     nix-output-monitor
 
-    glow 
+    glow
     bat
     tmux
     tmuxPlugins.sensible
     tmuxPlugins.vim-tmux-navigator
 
-    btop  
+    btop
     iotop
-    iftop 
+    iftop
 
     strace
     ltrace
     lsof
 
     sysstat
-    lm_sensors 
+    lm_sensors
     ethtool
-    pciutils 
-    usbutils 
+    pciutils
+    usbutils
 
     go
     zig
@@ -145,7 +145,7 @@
     obs-studio
     obs-studio-plugins.wlrobs
     obs-studio-plugins.obs-pipewire-audio-capture
-  
+
     zls
     gopls
     pyright
@@ -156,8 +156,10 @@
     typescript-language-server
     tailwindcss-language-server
     svelte-language-server
+    markdownlint-cli
     nixfmt-classic
- 
+    nixd
+
     grim
     slurp
 
@@ -166,13 +168,9 @@
   ];
 
   programs = {
-    git = {
-      enable = true;
-    };
+    git = { enable = true; };
 
-    home-manager = {
-      enable = true;
-    };
+    home-manager = { enable = true; };
   };
 
   home.stateVersion = "24.11";
