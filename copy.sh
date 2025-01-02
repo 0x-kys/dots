@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DIRS_TO_COPY="wezterm glow btop fish ghostty nvim"
+DIRS_TO_COPY="nixcfg"
 SOURCE_DIR="$HOME/.config"
 DEST_DIR="$(pwd)/cfg"
 TMUX_CONF="$HOME/.tmux.conf"
