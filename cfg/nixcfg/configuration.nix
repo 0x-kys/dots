@@ -1,29 +1,30 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.resumeDevice = "/dev/disk/by-uuid/86d44430-3a9b-407e-8f33-08909906253c"; # Replace with your swap partition; use 'lsblk' to find it & use `sudo blkid /dev/swap/parition` to find UUID
+  boot.resumeDevice =
+    "/dev/disk/by-uuid/86d44430-3a9b-407e-8f33-08909906253c"; # Replace with your swap partition; use 'lsblk' to find it & use `sudo blkid /dev/swap/parition` to find UUID
 
   fileSystems."/mnt/hdd" = {
     device = "/dev/disk/by-uuid/06C899D072155E29";
-    fsType = "ntfs-3g";  # Use ntfs-3g for NTFS support
+    fsType = "ntfs-3g"; # Use ntfs-3g for NTFS support
     options = [ "rw" "uid=1000" "gid=100" "umask=007" "dmask=007" "fmask=117" ];
   };
 
- # Optional For better performance
-  boot.kernelParams = [ "amdgpu.dc=1" "mem_sleep_default=deep" ];  # Enable DC (Display Core) for better performance
+  # Optional For better performance
+  boot.kernelParams = [
+    "amdgpu.dc=1"
+    "mem_sleep_default=deep"
+  ]; # Enable DC (Display Core) for better performance
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs-3g" ];
 
-  networking.hostName = "nix"; 
+  networking.hostName = "nix";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -52,16 +53,12 @@
 
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  hardware.graphics.extraPackages = with pkgs; [
-    vaapiVdpau
-    libvdpau-va-gl
-  ];
+  hardware.graphics.extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
 
   hardware.graphics.extraPackages32 = with pkgs; [
     vaapiIntel
@@ -116,9 +113,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   environment.variables.EDITOR = "nvim";
 
@@ -148,10 +143,7 @@
     wf-recorder
   ];
 
-  fonts.packages = [
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.nerd-fonts.iosevka
-  ]; 
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono pkgs.nerd-fonts.iosevka ];
 
   fonts = {
     enableDefaultPackages = true;
@@ -173,13 +165,13 @@
   security.polkit.enable = true;
 
   systemd.services.lock-before-sleep = {
-  description = "Lock screen before suspend or hibernate";
-  before = [ "sleep.target" "hibernate.target" ];
-  wantedBy = [ "sleep.target" "hibernate.target" ];
-  serviceConfig.Type = "oneshot";
-  script = ''
-    ${pkgs.swaylock}/bin/swaylock --screenshots --clock --indicator --effect-blur 7x5 --fade-in 0.1
-  '';
+    description = "Lock screen before suspend or hibernate";
+    before = [ "sleep.target" "hibernate.target" ];
+    wantedBy = [ "sleep.target" "hibernate.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      ${pkgs.swaylock}/bin/swaylock --screenshots --clock --indicator --effect-blur 7x5 --fade-in 0.1
+    '';
   };
 
   # Before changing this value read the documentation for this option

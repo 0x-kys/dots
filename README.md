@@ -8,7 +8,7 @@
 
 | - | - | - | - | - | - | - |
 | - | - | - | - | - | - | - |
-| nixOS | ghostty | neovim | hyprland | waybar(or)ags (soon) | brave |
+| nixOS | ghostty | neovim | hyprland | waybar (AGS soon) | brave |
 
 </div>
 
