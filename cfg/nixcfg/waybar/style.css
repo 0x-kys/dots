@@ -1,0 +1,129 @@
+* {
+	border: none;
+	border-radius: 0;
+	font-family: "JetBrainsMono Nerd Font Propo";
+	font-size: 13px;
+	min-height: 0;
+}
+
+window#waybar {
+	background: transparent;
+}
+
+#workspaces {
+	margin-top: 4px;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+#workspaces button {
+	color: #ffffff;
+	padding: 8px;
+	margin: 0 2px;
+	font-size: 14px;
+	background: #0d0c0d;
+	border-radius: 4px;
+}
+
+#workspaces button.active {
+	color: #ff79c6;
+}
+
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#custom-power,
+#custom-swaylock,
+#custom-suspend,
+#custom-hibernate,
+#custom-exit_hyprland {
+	background: #0d0c0d;
+	padding: 8px;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 4px;
+	border-radius: 4px;
+}
+
+#custom-swaylock,
+#custom-suspend,
+#custom-hibernate,
+#custom-exit_hyprland {
+	color: #ffffff;
+	/* Default color for these elements */
+}
+
+#custom-swaylock {
+	color: #8be9fd;
+	/* Using clock's color for swaylock as an example */
+}
+
+#custom-suspend {
+	color: #bd93f9;
+	/* Using network's color for suspend as an example */
+}
+
+#custom-hibernate {
+	color: #50fa7b;
+	/* Using one of the colors for hibernate as an example */
+}
+
+#custom-exit_hyprland {
+	color: #ff5555;
+	/* Using custom-power's color for exit as an example */
+}
+
+#pulseaudio {
+	margin-left: 10px;
+}
+
+#custom-power {
+	margin-right: 10px;
+	color: #ff5555;
+}
+
+#cpu,
+#memory,
+#temperature {
+	color: #50fa7b;
+}
+
+#network {
+	color: #bd93f9;
+}
+
+#battery {
+	color: #f1fa8c;
+}
+
+#battery.charging {
+	color: #50fa7b;
+}
+
+#battery.warning:not(.charging) {
+	color: #ffb86c;
+}
+
+#battery.critical:not(.charging) {
+	color: #ff5555;
+}
+
+#clock {
+	color: #8be9fd;
+}
+
+/* For the expand and endpoint custom elements in the group */
+#custom-expand,
+#custom-endpoint {
+	background: #0d0c0d;
+	padding: 8px;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 4px;
+	border-radius: 4px;
+	color: #ffffff;
+}
