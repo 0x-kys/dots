@@ -2,6 +2,8 @@
   
   ***dotfiles***
 
+![image](https://github.com/user-attachments/assets/663eb854-d201-42de-8037-50b5a215f500)
+
 </div>
 
 <div align="center">
