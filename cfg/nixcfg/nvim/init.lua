@@ -12,7 +12,6 @@ vim.g.enable_transparency_opts = true
 vim.g.disable_arrow_keys = false
 
 -- [[ Setting options ]]
--- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
