@@ -1,63 +1,33 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
-{
+let
+  nvimPath = "${config.home.homeDirectory}/.config/nixcfg/nvim";
+  ghosttyPath = "${config.home.homeDirectory}/.config/nixcfg/ghostty";
+  fishPath = "${config.home.homeDirectory}/.config/nixcfg/fish";
+  glowPath = "${config.home.homeDirectory}/.config/nixcfg/glow";
+  hyprPath = "${config.home.homeDirectory}/.config/nixcfg/hypr";
+  waybarPath = "${config.home.homeDirectory}/.config/nixcfg/waybar";
+  scriptsPath = "${config.home.homeDirectory}/.config/nixcfg/scripts";
+  btopPath = "${config.home.homeDirectory}/.config/nixcfg/btop";
+in {
   home.username = "syk";
   home.homeDirectory = "/home/syk";
 
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+  xdg.configFile."ghostty".source =
+    config.lib.file.mkOutOfStoreSymlink ghosttyPath;
+  xdg.configFile."fish".source = config.lib.file.mkOutOfStoreSymlink fishPath;
+  xdg.configFile."glow".source = config.lib.file.mkOutOfStoreSymlink glowPath;
+  xdg.configFile."hypr".source = config.lib.file.mkOutOfStoreSymlink hyprPath;
+  xdg.configFile."waybar".source =
+    config.lib.file.mkOutOfStoreSymlink waybarPath;
+  xdg.configFile."scripts".source =
+    config.lib.file.mkOutOfStoreSymlink scriptsPath;
+  xdg.configFile."btop".source = config.lib.file.mkOutOfStoreSymlink btopPath;
 
   home.file = {
     ".icons/WhiteSur-cursors" = {
       source = "${pkgs.whitesur-cursors}/share/icons/WhiteSur-cursors";
-      recursive = true;
-    };
-
-    ".config/nvim" = {
-      source = ./nvim;
-      recursive = true;
-    };
-
-    ".config/ghostty" = {
-      source = ./ghostty;
-      recursive = true;
-    };
-
-    ".config/fish" = {
-      source = ./fish;
-      recursive = true;
-    };
-
-    ".config/glow" = {
-      source = ./glow;
-      recursive = true;
-    };
-
-    ".config/hypr" = {
-      source = ./hypr;
-      recursive = true;
-    };
-
-    ".config/waybar" = {
-      source = ./waybar;
-      recursive = true;
-    };
-
-    ".config/scripts" = {
-      source = ./scripts;
-      recursive = true;
-      executable = true;
-    };
-
-    ".config/btop" = {
-      source = ./btop;
       recursive = true;
     };
   };
@@ -132,7 +102,6 @@
     usbutils
 
     go
-    zig
     zig
     bun
     cmake
