@@ -45,6 +45,11 @@ in {
         source = "${pkgs.whitesur-cursors}/share/icons/WhiteSur-cursors";
         recursive = true;
       };
+
+      ".tmux.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink
+          "${config.home.homeDirectory}/.config/nixcfg/tmux/.tmux.conf";
+      };
     };
 
     packages = with pkgs; [
