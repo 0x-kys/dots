@@ -57,6 +57,11 @@ function monitor-toggle
     fi'
 end
 
+function fix-mon
+    hyprctl keyword monitor eDP-1,1920x1080@60,0x0,1
+    hyprctl keyword monitor HDMI-A-1,2560x1440@144,1920x0,1
+end
+
 if status is-interactive
     fortune 
 end
