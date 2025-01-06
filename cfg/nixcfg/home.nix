@@ -135,6 +135,7 @@ in {
       pyright
       marksman
       lua-language-server
+      golangci-lint
       golangci-lint-langserver
       vscode-langservers-extracted
       typescript-language-server

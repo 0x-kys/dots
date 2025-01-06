@@ -167,6 +167,9 @@
       curl
       wget
       fish
+      fishPlugins.wakatime-fish
+      fishPlugins.async-prompt
+      fishPlugins.pure
       wofi
       dunst
       pywal
@@ -176,7 +179,6 @@
       wl-clip-persist
       swaylock-effects
       brightnessctl
-      fishPlugins.hydro
       helvum
       pavucontrol
       playerctl
@@ -196,7 +198,13 @@
     enableDefaultPackages = true;
     fontDir.enable = true;
 
-    packages = [ pkgs.nerd-fonts.jetbrains-mono pkgs.nerd-fonts.iosevka ];
+    packages = with pkgs; [
+      corefonts
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.iosevka
+      nerd-fonts.fira-code
+      nerd-fonts.hack
+    ];
   };
 
   # Before changing this value read the documentation for this option

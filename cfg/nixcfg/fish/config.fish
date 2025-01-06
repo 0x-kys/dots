@@ -1,14 +1,50 @@
 set -g fish_greeting
 
 # prompt
-set --universal hydro_fetch true
-set --universal hydro_multiline true
+set --universal pure_show_system_time false
+set --universal pure_color_system_time pure_color_mute
+set --universal pure_show_prefix_root_prompt true
+set --universal pure_begin_prompt_with_current_directory true
+set --universal pure_shorten_prompt_current_directory_length 1
+set --universal pure_enable_nixdevshell true
+set --universal pure_symbol_nixdevshell_prefix '<flake> '
+set --universal pure_enable_git true
 # prompt end
 
-if status is-interactive
-    fortune
+function glog
+    git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'
+end
 
-    function glog
-        git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'
+function kb-toggle
+    set -l STATUS_FILE "$XDG_RUNTIME_DIR/keyboard.status"
+
+    if not test -f $STATUS_FILE
+        echo "true" > $STATUS_FILE
+        hyprctl notify -1 2500 "rgb(ff0000)" "fontsize:16 Enabled Keyboard"
+        hyprctl keyword '$LAPTOP_KB_ENABLED' "true" -r
+    else
+        set current_status (cat $STATUS_FILE)
+        if test $current_status = "true"
+            echo "false" > $STATUS_FILE
+            hyprctl notify -1 2500 "rgb(ff0000)" "fontsize:16 Disabled Keyboard"
+            hyprctl keyword '$LAPTOP_KB_ENABLED' "false" -r
+        else
+            echo "true" > $STATUS_FILE
+            hyprctl notify -1 2500 "rgb(ff0000)" "fontsize:16 Enabled Keyboard"
+            hyprctl keyword '$LAPTOP_KB_ENABLED' "true" -r
+        end
     end
+end
+
+function kb-status
+    set -l STATUS_FILE "$XDG_RUNTIME_DIR/keyboard.status"
+    if test -f $STATUS_FILE
+        cat $STATUS_FILE
+    else
+        echo "unknown"
+    end
+end
+
+if status is-interactive
+    fortune 
 end
