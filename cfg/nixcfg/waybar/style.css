@@ -2,7 +2,7 @@
 	border: none;
 	border-radius: 0;
 	font-family: "JetBrainsMono Nerd Font Propo";
-	font-size: 13px;
+	font-size: 12px;
 	min-height: 0;
 }
 
@@ -18,7 +18,7 @@ window#waybar {
 
 #workspaces button {
 	color: #ffffff;
-	padding: 8px;
+	padding: 2px 8px;
 	margin: 0 2px;
 	font-size: 14px;
 	background: #0d0c0d;
@@ -43,7 +43,7 @@ window#waybar {
 #custom-reboot,
 #custom-exit_hyprland {
 	background: #0d0c0d;
-	padding: 8px;
+	padding: 2px 8px;
 	margin-left: 2px;
 	margin-right: 2px;
 	margin-top: 4px;
@@ -55,6 +55,7 @@ window#waybar {
 #custom-hibernate,
 #custom-reboot,
 #custom-exit_hyprland {
+	font-size: 14px;
 	color: #ffffff;
 }
 
@@ -120,7 +121,7 @@ window#waybar {
 #custom-expand,
 #custom-endpoint {
 	background: #0d0c0d;
-	padding: 8px;
+	padding: 2px 8px;
 	margin-left: 2px;
 	margin-right: 2px;
 	margin-top: 4px;

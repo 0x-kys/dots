@@ -20,7 +20,7 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  fileSystems."/mnt/hdd" = {
+  fileSystems."/home/syk/drives/hdd" = {
     device = "/dev/disk/by-uuid/06C899D072155E29";
     fsType = "ntfs-3g"; # Use ntfs-3g for NTFS support
     options = [ "rw" "uid=1000" "gid=100" "umask=007" "dmask=007" "fmask=117" ];
