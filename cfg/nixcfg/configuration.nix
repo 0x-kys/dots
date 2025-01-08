@@ -184,7 +184,6 @@
       playerctl
       wf-recorder
     ];
-
   };
 
   xdg = {
@@ -204,6 +203,10 @@
       nerd-fonts.iosevka
       nerd-fonts.fira-code
       nerd-fonts.hack
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-emoji
+      font-awesome
     ];
   };
 

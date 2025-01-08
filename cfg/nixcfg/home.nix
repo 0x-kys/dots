@@ -27,12 +27,20 @@ let
       path = "${config.home.homeDirectory}/.config/nixcfg/waybar";
     }
     {
+      name = "wofi";
+      path = "${config.home.homeDirectory}/.config/nixcfg/wofi";
+    }
+    {
       name = "scripts";
       path = "${config.home.homeDirectory}/.config/nixcfg/scripts";
     }
     {
       name = "btop";
       path = "${config.home.homeDirectory}/.config/nixcfg/btop";
+    }
+    {
+      name = "kanshi";
+      path = "${config.home.homeDirectory}/.config/nixcfg/kanshi";
     }
   ];
 in {
@@ -53,6 +61,10 @@ in {
     };
 
     packages = with pkgs; [
+      remmina
+      kanshi
+      waypaper
+
       brave
       neovim
       spotify
