@@ -11,8 +11,9 @@ window-padding-y = 8
 window-inherit-working-directory = true
 copy-on-select = true
 font-family = JetBrainsMono Nerd Font Mono
+
 font-size = 10
-font-feature = dlig ss05 liga
+font-feature = liga
 shell-integration = fish
 adjust-underline-position = 4
 mouse-hide-while-typing = true
