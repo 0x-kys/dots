@@ -13,9 +13,17 @@
     };
   };
 
+  fileSystems = {
+    "/run/media/syk/hdd" = {
+      device = "/dev/sda1";
+      fsType = "exfat";
+      options = [ "defaults" ];
+    };
+  };
+
   boot = {
     resumeDevice =
-      "/dev/disk/by-uuid/86d44430-3a9b-407e-8f33-08909906253c"; # Replace with your swap partition; use 'lsblk' to find it & use `sudo blkid /dev/swap/parition` to find UUID
+      "/dev/disk/by-uuid/7e9f1c2e-2b3f-4540-842f-5d09d2b17e20"; # Replace with your swap partition; use 'lsblk' to find it & use `sudo blkid /dev/swap/parition` to find UUID
 
     kernelParams = [
       "amdgpu.dc=1"
@@ -30,8 +38,6 @@
 
       efi = { canTouchEfiVariables = true; };
     };
-
-    supportedFilesystems = [ "ntfs-3g" ];
   };
 
   networking = {
@@ -69,7 +75,6 @@
 
   security = {
     rtkit = { enable = true; };
-
     polkit = { enable = true; };
   };
 
@@ -82,8 +87,6 @@
       extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
       extraPackages32 = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
     };
-
-    pulseaudio = { enable = false; };
   };
 
   services = {
@@ -122,6 +125,7 @@
       wireplumber = { enable = true; };
     };
 
+    pulseaudio = { enable = false; };
     openssh = { enable = true; };
 
     # touchpad support
@@ -143,6 +147,7 @@
 
     fish = { enable = true; };
     mtr = { enable = true; };
+    nix-ld = { enable = true; };
   };
 
   users = {
