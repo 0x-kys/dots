@@ -80,6 +80,7 @@ window#waybar {
 }
 
 #pulseaudio {
+	color: #abb2bf;
 	margin-left: 10px;
 }
 
