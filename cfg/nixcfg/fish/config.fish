@@ -45,23 +45,10 @@ function kb-status
     end
 end
 
-function monitor-toggle
-    bash -c 'if xrandr | grep "HDMI-A-1 connected"; then
-        hyprctl keyword monitor eDP-1,disable
-        hyprctl keyword monitor HDMI-A-1,2560x1440@144,0x0,1
-        hyprctl dispatch moveworkspacetomonitor "1 HDMI-A-1"
-    else
-        hyprctl keyword monitor eDP-1,1920x1080@60,0x0,1
-        hyprctl keyword monitor HDMI-A-1,disable
-        hyprctl dispatch moveworkspacetomonitor "1 eDP-1"
-    fi'
-end
-
-function fix-mon
-    hyprctl keyword monitor eDP-1,1920x1080@60,0x0,1
-    hyprctl keyword monitor HDMI-A-1,2560x1440@144,1920x0,1
-end
-
 if status is-interactive
     fortune 
 end
+
+# bun
+set -g fish_user_paths $HOME/.bun/bin $fish_user_paths
+# bun end

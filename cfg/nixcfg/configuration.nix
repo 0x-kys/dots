@@ -4,7 +4,10 @@
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
-    settings = { experimental-features = [ "nix-command" "flakes" ]; };
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
 
     gc = {
       automatic = true;
@@ -219,5 +222,5 @@
   #
   #   man configuration.nix
   #   https://nixos.org/nixos/options.html
-  system.stateVersion = "24.11";
+  system = { stateVersion = "24.11"; };
 }
