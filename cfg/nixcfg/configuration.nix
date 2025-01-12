@@ -20,7 +20,14 @@
     "/run/media/syk/hdd" = {
       device = "/dev/sda1";
       fsType = "exfat";
-      options = [ "defaults" ];
+      options = [
+        "defaults"
+        "x-gvfs-show"
+        "uid=1000"
+        "gid=100"
+        "dmask=007"
+        "fmask=117"
+      ];
     };
   };
 
@@ -158,7 +165,8 @@
       syk = {
         isNormalUser = true;
         description = "syk";
-        extraGroups = [ "networkmanager" "wheel" "storage" "plugdev" ];
+        extraGroups =
+          [ "networkmanager" "wheel" "storage" "plugdev" "video" "audio" ];
         shell = pkgs.fish;
       };
     };
@@ -211,6 +219,7 @@
       nerd-fonts.iosevka
       nerd-fonts.fira-code
       nerd-fonts.hack
+      nerd-fonts._0xproto
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-emoji
