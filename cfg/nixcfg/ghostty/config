@@ -10,7 +10,7 @@ window-padding-x = 8
 window-padding-y = 8
 window-inherit-working-directory = true
 copy-on-select = true
-font-family = 0xProto Nerd Font Mono
+font-family = 0xProto Nerd Font
 
 font-size = 10
 font-feature = liga

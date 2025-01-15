@@ -156,6 +156,7 @@
     };
 
     fish = { enable = true; };
+    starship = { enable = true; };
     mtr = { enable = true; };
     nix-ld = { enable = true; };
   };
@@ -182,9 +183,13 @@
       vim
       curl
       wget
-      fish
-      fishPlugins.async-prompt
-      fishPlugins.pure
+      starship
+      fishPlugins.done
+      fishPlugins.fzf-fish
+      fishPlugins.forgit
+      fzf
+      fishPlugins.grc
+      grc
       wofi
       dunst
       pywal

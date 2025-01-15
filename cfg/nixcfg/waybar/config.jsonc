@@ -3,7 +3,7 @@
     "position": "top",
     "height": 38,
     "modules-left": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "group/expand"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "group/expand", "custom/dnd"],
     
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -90,7 +90,6 @@
             }
         }
     },
-    
     "group/expand": {
         "orientation": "horizontal",
         "drawer": {
