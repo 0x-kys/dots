@@ -17,7 +17,7 @@ window#waybar {
 }
 
 #workspaces button {
-	color: #ffffff;
+	color: #cdcdcd;
 	padding: 2px 8px;
 	margin: 0 2px;
 	font-size: 14px;
@@ -26,7 +26,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-	color: #ff79c6;
+	background: #252425;
 }
 
 #pulseaudio,
@@ -82,7 +82,7 @@ window#waybar {
 
 #pulseaudio,
 #tray {
-	color: #abb2bf;
+	color: #cdcdcd;
 }
 
 #custom-power {
@@ -93,7 +93,7 @@ window#waybar {
 #cpu,
 #memory,
 #temperature {
-	color: #abb2bf;
+	color: #cdcdcd;
 }
 
 #network {
