@@ -1,14 +1,15 @@
 set -g fish_greeting
 
 # prompt
-set --universal pure_show_system_time false
-set --universal pure_color_system_time pure_color_mute
-set --universal pure_show_prefix_root_prompt true
-set --universal pure_begin_prompt_with_current_directory true
-set --universal pure_shorten_prompt_current_directory_length 1
-set --universal pure_enable_nixdevshell true
-set --universal pure_symbol_nixdevshell_prefix '<flake> '
-set --universal pure_enable_git true
+set --global hydro_symbol_prompt ❱
+set --global hydro_symbol_git_dirty •
+set --global hydro_symbol_git_ahead ↑
+set --global hydro_symbol_git_behind ↓
+
+set --global hydro_fetch false
+set --global hydro_multiline true
+
+set --global fish_prompt_pwd_dir_length 1
 # prompt end
 
 function glog
@@ -46,7 +47,7 @@ function kb-status
 end
 
 if status is-interactive
-    fortune 
+    fortune
 end
 
 # bun
