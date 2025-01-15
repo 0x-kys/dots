@@ -1,17 +1,5 @@
 set -g fish_greeting
 
-# prompt
-set --global hydro_symbol_prompt ❱
-set --global hydro_symbol_git_dirty •
-set --global hydro_symbol_git_ahead ↑
-set --global hydro_symbol_git_behind ↓
-
-set --global hydro_fetch false
-set --global hydro_multiline true
-
-set --global fish_prompt_pwd_dir_length 1
-# prompt end
-
 function glog
     git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'
 end
