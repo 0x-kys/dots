@@ -7,6 +7,10 @@ let
       path = "${config.home.homeDirectory}/.config/nixcfg/nvim";
     }
     {
+      name = "dunst";
+      path = "${config.home.homeDirectory}/.config/nixcfg/dunst";
+    }
+    {
       name = "ghostty";
       path = "${config.home.homeDirectory}/.config/nixcfg/ghostty";
     }
@@ -61,6 +65,9 @@ in {
     };
 
     packages = with pkgs; [
+      newsflash
+      (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
+
       remmina
       kanshi
       waypaper

@@ -183,7 +183,6 @@
       curl
       wget
       fish
-      fishPlugins.wakatime-fish
       fishPlugins.async-prompt
       fishPlugins.pure
       wofi

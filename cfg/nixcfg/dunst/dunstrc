@@ -1,0 +1,58 @@
+[global]
+# Display configuration
+monitor = 0
+follow = mouse
+geometry = "200x20-10+10"
+indicate_hidden = yes
+
+# Colors
+background = "#0c0d0c"
+foreground = "#d0d0d0"
+
+# Font
+font = 0xProto Nerd Font Mono Proto 8
+
+# Icons
+enable_recursive_icon_lookup = true
+icon_position = left
+max_icon_size = 48
+min_icon_size = 24
+
+# Notification format
+format = "<b>%a</b>\n%s\n%b\n"
+
+# Notification behavior
+notification_limit = 5
+timeout = 10
+sort = yes
+stack_duplicates = true
+
+# Mouse actions
+mouse_left_click = do_action, close_current
+mouse_middle_click = close_current
+mouse_right_click = close_all
+
+# Wayland specific settings
+layer = overlay
+force_xwayland = false
+
+# Border settings
+frame_width = 1
+frame_color = "#5E5E5E"  # Matching Hyprland's active_border color
+corner_radius = 8  # Rounded borders
+
+[urgency_low]
+    background = "#0c0d0c"
+    foreground = "#888888"
+    timeout = 5
+
+[urgency_normal]
+    background = "#0c0d0c"
+    foreground = "#d0d0d0"
+    timeout = 10
+
+[urgency_critical]
+    background = "#0c0d0c"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
