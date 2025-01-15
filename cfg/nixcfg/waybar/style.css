@@ -36,6 +36,7 @@ window#waybar {
 #temperature,
 #battery,
 #clock,
+#tray,
 #custom-power,
 #custom-swaylock,
 #custom-suspend,
@@ -79,7 +80,8 @@ window#waybar {
 	color: #8be9fd;
 }
 
-#pulseaudio {
+#pulseaudio,
+#tray {
 	color: #abb2bf;
 }
 
@@ -91,7 +93,7 @@ window#waybar {
 #cpu,
 #memory,
 #temperature {
-	color: #50fa7b;
+	color: #abb2bf;
 }
 
 #network {

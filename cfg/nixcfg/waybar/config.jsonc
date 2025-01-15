@@ -2,8 +2,8 @@
     "layer": "top",
     "position": "top",
     "height": 38,
-    "modules-left": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "group/expand", "custom/dnd"],
+    "modules-left": ["cpu", "memory", "temperature", "hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "battery", "clock", "group/expand", "tray"],
     
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -22,6 +22,11 @@
             "9": "九",
             "10": "十"
         }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
     },
     
     "pulseaudio": {
@@ -64,7 +69,7 @@
     
     "battery": {
         "states": {
-            "good": 95,
+            "good": 80,
             "warning": 30,
             "critical": 15
         },
