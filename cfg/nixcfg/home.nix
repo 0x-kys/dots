@@ -173,6 +173,7 @@ in {
       markdownlint-cli
       nixfmt-classic
       alejandra
+      nixd
 
       grim
       slurp

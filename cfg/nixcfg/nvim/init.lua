@@ -421,14 +421,30 @@ require('lazy').setup({
       -- Define servers based on the `ensure_installed` list from mason-lspconfig
       local servers = {
         'lua_ls', 'marksman', 'zls', 'svelte', 'pyright', 'rust_analyzer', 'clangd', 'cssls',
-        'css_variables', 'cssmodules_ls', 'astro', 'tailwindcss', 'ts_ls', 'gopls', 'golangci_lint_ls'
+        'css_variables', 'cssmodules_ls', 'astro', 'tailwindcss', 'ts_ls', 'nixd', 'gopls', 'golangci_lint_ls'
       }
 
       -- Setup each LSP server manually
       for _, server in ipairs(servers) do
-        require('lspconfig')[server].setup {
+        local config = {
           capabilities = capabilities,
         }
+
+        if server == "nixd" then
+          config.cmd = { "nixd" }
+          config.settings = {
+            nixd = {
+              nixpkgs = {
+                expr = "import <nixpkgs> {}",
+              },
+            },
+            formatting = {
+              command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+            },
+          }
+        end
+
+        require('lspconfig')[server].setup(config)
       end
     end,
   },
