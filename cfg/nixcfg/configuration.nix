@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-
-{
-  imports = [ ./hardware-configuration.nix ];
+{pkgs, ...}: {
+  imports = [./hardware-configuration.nix];
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
     };
 
@@ -32,8 +30,7 @@
   };
 
   boot = {
-    resumeDevice =
-      "/dev/disk/by-uuid/7e9f1c2e-2b3f-4540-842f-5d09d2b17e20"; # Replace with your swap partition; use 'lsblk' to find it & use `sudo blkid /dev/swap/parition` to find UUID
+    resumeDevice = "/dev/disk/by-uuid/7e9f1c2e-2b3f-4540-842f-5d09d2b17e20"; # Replace with your swap partition; use 'lsblk' to find it & use `sudo blkid /dev/swap/parition` to find UUID
 
     kernelParams = [
       "amdgpu.dc=1"
@@ -46,29 +43,29 @@
         configurationLimit = 7;
       };
 
-      efi = { canTouchEfiVariables = true; };
+      efi = {canTouchEfiVariables = true;};
     };
   };
 
   networking = {
     hostName = "nix";
 
-    wireless = { enable = false; };
+    wireless = {enable = false;};
 
-    networkmanager = { enable = true; };
+    networkmanager = {enable = true;};
 
     firewall = {
       enable = true;
-      # allowedUDPPorts = [ ... ]; 
+      # allowedUDPPorts = [ ... ];
       # allowedTCPPorts = [ ... ];
     };
   };
 
-  time = { timeZone = "Asia/Kolkata"; };
+  time = {timeZone = "Asia/Kolkata";};
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" ];
+    supportedLocales = ["en_US.UTF-8/UTF-8"];
 
     extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";
@@ -84,32 +81,32 @@
   };
 
   security = {
-    rtkit = { enable = true; };
-    polkit = { enable = true; };
+    rtkit = {enable = true;};
+    polkit = {enable = true;};
   };
 
   hardware = {
-    cpu = { amd = { updateMicrocode = true; }; };
+    cpu = {amd = {updateMicrocode = true;};};
 
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
-      extraPackages32 = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
+      extraPackages = with pkgs; [vaapiVdpau libvdpau-va-gl];
+      extraPackages32 = with pkgs; [vaapiIntel vaapiVdpau libvdpau-va-gl];
     };
   };
 
   services = {
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
+      videoDrivers = ["amdgpu"];
       displayManager = {
         gdm = {
           enable = true;
           wayland = true;
         };
       };
-      desktopManager = { gnome = { enable = true; }; };
+      desktopManager = {gnome = {enable = true;};};
 
       xkb = {
         layout = "us";
@@ -117,8 +114,8 @@
       };
     };
 
-    udisks2 = { enable = true; };
-    printing = { enable = true; };
+    udisks2 = {enable = true;};
+    printing = {enable = true;};
 
     pipewire = {
       enable = true;
@@ -128,24 +125,24 @@
         support32Bit = true;
       };
 
-      pulse = { enable = true; };
-      jack = { enable = false; };
+      pulse = {enable = true;};
+      jack = {enable = false;};
 
       # media-session.enable = true;
-      wireplumber = { enable = true; };
+      wireplumber = {enable = true;};
     };
 
-    pulseaudio = { enable = false; };
-    openssh = { enable = true; };
+    pulseaudio = {enable = false;};
+    openssh = {enable = true;};
 
     # touchpad support
-    libinput = { enable = true; };
+    libinput = {enable = true;};
   };
 
   programs = {
     hyprland = {
       enable = true;
-      xwayland = { enable = true; };
+      xwayland = {enable = true;};
     };
 
     gnupg = {
@@ -155,10 +152,10 @@
       };
     };
 
-    fish = { enable = true; };
-    starship = { enable = true; };
-    mtr = { enable = true; };
-    nix-ld = { enable = true; };
+    fish = {enable = true;};
+    starship = {enable = true;};
+    mtr = {enable = true;};
+    nix-ld = {enable = true;};
   };
 
   users = {
@@ -166,18 +163,17 @@
       syk = {
         isNormalUser = true;
         description = "syk";
-        extraGroups =
-          [ "networkmanager" "wheel" "storage" "plugdev" "video" "audio" ];
+        extraGroups = ["networkmanager" "wheel" "storage" "plugdev" "video" "audio"];
         shell = pkgs.fish;
       };
     };
   };
 
-  nixpkgs = { config = { allowUnfree = true; }; };
+  nixpkgs = {config = {allowUnfree = true;};};
 
   environment = {
-    sessionVariables = { NIXOS_OZONE_WL = "1"; };
-    variables = { EDITOR = "nvim"; };
+    sessionVariables = {NIXOS_OZONE_WL = "1";};
+    variables = {EDITOR = "nvim";};
 
     systemPackages = with pkgs; [
       vim
@@ -209,7 +205,7 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+      extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
     };
   };
 
@@ -235,5 +231,5 @@
   #
   #   man configuration.nix
   #   https://nixos.org/nixos/options.html
-  system = { stateVersion = "24.11"; };
+  system = {stateVersion = "24.11";};
 }

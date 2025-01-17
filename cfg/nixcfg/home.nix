@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   configPaths = [
     {
       name = "nvim";
@@ -59,22 +61,25 @@ in {
       };
 
       ".tmux.conf" = {
-        source = config.lib.file.mkOutOfStoreSymlink
+        source =
+          config.lib.file.mkOutOfStoreSymlink
           "${config.home.homeDirectory}/.config/nixcfg/tmux/.tmux.conf";
       };
 
       "${config.home.homeDirectory}/.config/starship.toml" = {
-        source = config.lib.file.mkOutOfStoreSymlink
+        source =
+          config.lib.file.mkOutOfStoreSymlink
           "${config.home.homeDirectory}/.config/nixcfg/starship/starship.toml";
       };
     };
 
     packages = with pkgs; [
       newsflash
-      (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
+      (prismlauncher.override {jdks = [jdk8 jdk17 jdk21];})
 
       remmina
       kanshi
+      nwg-displays
       waypaper
 
       brave
@@ -167,7 +172,7 @@ in {
       svelte-language-server
       markdownlint-cli
       nixfmt-classic
-      nixd
+      alejandra
 
       grim
       slurp
@@ -178,9 +183,10 @@ in {
   };
 
   xdg.configFile = builtins.listToAttrs (map (c: {
-    name = c.name;
-    value = { source = config.lib.file.mkOutOfStoreSymlink c.path; };
-  }) configPaths);
+      name = c.name;
+      value = {source = config.lib.file.mkOutOfStoreSymlink c.path;};
+    })
+    configPaths);
 
   xresources.properties = {
     "Xcursor.size" = 24;
@@ -188,8 +194,8 @@ in {
   };
 
   programs = {
-    git = { enable = true; };
-    home-manager = { enable = true; };
+    git = {enable = true;};
+    home-manager = {enable = true;};
   };
 
   home.stateVersion = "24.11";

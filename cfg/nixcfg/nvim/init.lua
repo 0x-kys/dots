@@ -421,7 +421,7 @@ require('lazy').setup({
       -- Define servers based on the `ensure_installed` list from mason-lspconfig
       local servers = {
         'lua_ls', 'marksman', 'zls', 'svelte', 'pyright', 'rust_analyzer', 'clangd', 'cssls',
-        'css_variables', 'cssmodules_ls', 'astro', 'tailwindcss', 'ts_ls', 'nixd', 'gopls', 'golangci_lint_ls'
+        'css_variables', 'cssmodules_ls', 'astro', 'tailwindcss', 'ts_ls', 'gopls', 'golangci_lint_ls'
       }
 
       -- Setup each LSP server manually
@@ -567,6 +567,7 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         local lsp_format_opt
+
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
         else
@@ -579,6 +580,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        nix = { 'alejandra' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
