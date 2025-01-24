@@ -520,3 +520,29 @@ git kys
 clear
 git who
 ls 
+sh copy.sh
+git status
+git diff
+git who
+git add -A
+git commit -m "nushell?"
+git push
+ls
+cd
+cd .config/nixcfg/
+clear
+vim home.nix
+mkdir modules
+cd modules/
+touch packages.nix files.nix programs.nix config.nix
+nvim home.nix 
+tree .
+sudo nixos-rebuild switch --flake .#nix --impure
+nvim packages.nix 
+ls
+cd ..
+ls
+nvim home.nix
+cd ~/Building/dots/
+sh copy.sh
+git who
