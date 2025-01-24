@@ -131,108 +131,167 @@
           # Nix
           {
             name = "nix";
-            scope = "source.nix";
-            file-types = ["nix"];
             auto-format = true;
-            formatter.command = "${pkgs.alejandra}/bin/alejandra";
+            formatter = {
+              command = "${pkgs.alejandra}/bin/alejandra";
+            };
+            language-servers = ["nil"];
           }
+
           # Rust
           {
             name = "rust";
-            scope = "source.rust";
-            file-types = ["rs"];
             auto-format = true;
-            formatter.command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+            formatter = {
+              command = "${pkgs.rustfmt}/bin/rustfmt";
+            };
+            language-servers = ["rust-analyzer"];
           }
-          # Lua
-          {
-            name = "lua";
-            scope = "source.lua";
-            file-types = ["lua"];
-            auto-format = true;
-            formatter.command = "${pkgs.lua-language-server}/bin/lua-format";
-          }
+
           # HTML
           {
             name = "html";
-            scope = "text.html.basic";
-            file-types = ["html" "htm"];
             auto-format = true;
-            formatter.command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server";
+            formatter = {
+              command = "${pkgs.prettierd}/bin/prettierd";
+              args = ["html"];
+            };
+            language-servers = ["html-languageserver"];
           }
+
           # CSS
           {
             name = "css";
-            scope = "source.css";
-            file-types = ["css"];
             auto-format = true;
-            formatter.command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
+            formatter = {
+              command = "${pkgs.prettierd}/bin/prettierd";
+              args = ["css"];
+            };
+            language-servers = ["css-languageserver"];
           }
+
           # JavaScript
           {
             name = "javascript";
-            scope = "source.js";
-            file-types = ["js"];
             auto-format = true;
-            formatter.command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+            formatter = {
+              command = "${pkgs.prettierd}/bin/prettierd";
+              args = ["javascript"];
+            };
+            language-servers = ["typescript-language-server"];
           }
-          # JSX
+
+          # TypeScript
           {
-            name = "javascriptreact";
-            scope = "source.js.jsx";
-            file-types = ["jsx"];
+            name = "typescript";
             auto-format = true;
-            formatter.command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+            formatter = {
+              command = "${pkgs.prettierd}/bin/prettierd";
+              args = ["typescript"];
+            };
+            language-servers = ["typescript-language-server"];
           }
-          # TSX
-          {
-            name = "typescriptreact";
-            scope = "source.tsx";
-            file-types = ["tsx"];
-            auto-format = true;
-            formatter.command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
-          }
+
           # Svelte
           {
             name = "svelte";
-            scope = "source.svelte";
-            file-types = ["svelte"];
             auto-format = true;
-            formatter.command = "${pkgs.svelte-language-server}/bin/svelteserver";
+            formatter = {
+              command = "${pkgs.nodePackages.prettier}/bin/prettier";
+              args = ["--parser" "svelte"];
+            };
+            language-servers = ["svelte-language-server"];
           }
+
           # Astro
           {
             name = "astro";
-            scope = "text.html.astro";
-            file-types = ["astro"];
             auto-format = true;
-            formatter.command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server"; # Use HTML formatter for Astro
+            formatter = {
+              command = "${pkgs.nodePackages.prettier}/bin/prettier";
+              args = ["--parser" "astro"];
+            };
+            language-servers = ["astro-ls"];
           }
+
+          # JSX
+          {
+            name = "jsx";
+            auto-format = true;
+            formatter = {
+              command = "${pkgs.prettierd}/bin/prettierd";
+              args = ["jsx"];
+            };
+            language-servers = ["typescript-language-server"];
+          }
+
+          # TSX
+          {
+            name = "tsx";
+            auto-format = true;
+            formatter = {
+              command = "${pkgs.prettierd}/bin/prettierd";
+              args = ["tsx"];
+            };
+            language-servers = ["typescript-language-server"];
+          }
+
           # Zig
           {
             name = "zig";
-            scope = "source.zig";
-            file-types = ["zig"];
             auto-format = true;
-            formatter.command = "${pkgs.zls}/bin/zls";
+            formatter = {
+              command = "${pkgs.zls}/bin/zls";
+              args = ["--format"];
+            };
+            language-servers = ["zls"];
           }
-          # C
+
+          # Go
           {
-            name = "c";
-            scope = "source.c";
-            file-types = ["c"];
+            name = "go";
             auto-format = true;
-            formatter.command = "clang-format"; # Assuming clang is used for formatting
-          }
-          # C++
-          {
-            name = "cpp";
-            scope = "source.cpp";
-            file-types = ["cpp" "cc" "cxx"];
-            auto-format = true;
-            formatter.command = "clang-format"; # Assuming clang is used for formatting
+            formatter = {
+              command = "${pkgs.gofumpt}/bin/gofumpt";
+            };
+            language-servers = ["gopls"];
           }
         ];
+        language-server = {
+          nil = {
+            command = "${pkgs.nil}/bin/nil";
+          };
+          rust-analyzer = {
+            command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+          };
+          "html-languageserver" = {
+            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server";
+            args = ["--stdio"];
+          };
+          "css-languageserver" = {
+            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
+            args = ["--stdio"];
+          };
+          "typescript-language-server" = {
+            command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+            args = ["--stdio"];
+          };
+          "svelte-language-server" = {
+            command = "${pkgs.nodePackages.svelte-language-server}/bin/svelteserver";
+            args = ["--stdio"];
+          };
+          "astro-ls" = {
+            command = "${pkgs.astro-language-server}/bin/astro-ls";
+            args = ["--stdio"];
+          };
+          zls = {
+            command = "${pkgs.zls}/bin/zls";
+          };
+          gopls = {
+            command = "${pkgs.gopls}/bin/gopls";
+            args = ["serve"];
+          };
+        };
       };
       themes = {
         autumn_night_transparent = {
