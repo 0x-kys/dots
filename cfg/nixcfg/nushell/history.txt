@@ -546,3 +546,61 @@ nvim home.nix
 cd ~/Building/dots/
 sh copy.sh
 git who
+sh copy.sh
+clear
+git add -A
+git commit -m "modules"
+git push
+clear
+nvim
+ls
+cd modules/
+ls
+cd ..
+ls
+cd modules/
+ls
+sudo nixos-rebuild switch --flake .#nix --impure
+cd ~/.config/
+ll
+ls -la
+cd helix/
+ls
+ls -la
+cd themes/
+ls
+cat autumn_night_transparent.toml 
+hx autumn_night_transparent.toml 
+cd ../../
+cd nixcfg/
+hx
+cd ..
+hx home.nix 
+cd ~/Building/dots/
+hx .gitignore
+exit
+exit
+hx home.nix
+sudo nixos-rebuild switch --flake .#nix --impure
+hx home.nix
+hx home.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+hx home.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+hx modules/programs.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+hx home.nix
+sudo nixos-rebuild switch --flake .#nix --impure
+hx home.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+hx home.nix 
+hx modules/programs.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+cd ~/.config/nixcfg/
+sudo nixos-rebuild switch --flake .#nix --impure
+hx modules/programs.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+hx modules/programs.nix 
+sudo nixos-rebuild switch --flake .#nix --impure
+hx modules/programs.nix 
+cd ~/Building/dots/

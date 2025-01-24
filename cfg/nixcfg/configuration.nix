@@ -179,13 +179,14 @@
       vim
       curl
       wget
-      nushell
       fzf
       grc
       wofi
+      helix
       dunst
       pywal
       waybar
+      nushell
       hyprpaper
       wl-clipboard
       wl-clip-persist
