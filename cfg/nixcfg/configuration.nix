@@ -152,8 +152,8 @@
       };
     };
 
-    fish = {enable = true;};
-    starship = {enable = true;};
+    # fish = {enable = true;};
+    # starship = {enable = true;};
     mtr = {enable = true;};
     nix-ld = {enable = true;};
   };
@@ -164,7 +164,7 @@
         isNormalUser = true;
         description = "syk";
         extraGroups = ["networkmanager" "wheel" "storage" "plugdev" "video" "audio"];
-        shell = pkgs.fish;
+        shell = pkgs.nushell;
       };
     };
   };
@@ -179,12 +179,8 @@
       vim
       curl
       wget
-      starship
-      fishPlugins.done
-      fishPlugins.fzf-fish
-      fishPlugins.forgit
+      nushell
       fzf
-      fishPlugins.grc
       grc
       wofi
       dunst
@@ -199,6 +195,7 @@
       pavucontrol
       playerctl
       wf-recorder
+      gnome-tweaks
     ];
   };
 

@@ -14,7 +14,7 @@ font-family = 0xProto Nerd Font
 
 font-size = 10
 font-feature = liga
-shell-integration = fish
+# shell-integration = fish
 adjust-underline-position = 4
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1

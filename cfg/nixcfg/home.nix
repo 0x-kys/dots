@@ -16,10 +16,14 @@
       name = "ghostty";
       path = "${config.home.homeDirectory}/.config/nixcfg/ghostty";
     }
-    {
-      name = "fish";
-      path = "${config.home.homeDirectory}/.config/nixcfg/fish";
-    }
+    # {
+    # name = "fish";
+    # path = "${config.home.homeDirectory}/.config/nixcfg/fish";
+    # }
+    # {
+    #   name = "nushell";
+    #   path = "${config.home.homeDirectory}/.config/nixcfg/nushell";
+    # }
     {
       name = "glow";
       path = "${config.home.homeDirectory}/.config/nixcfg/glow";
@@ -87,6 +91,8 @@ in {
       spotify
       ghostty
       libreoffice
+      zed-editor
+      obsidian
 
       fastfetch
       tmux
@@ -174,18 +180,26 @@ in {
       nixfmt-classic
       alejandra
       nixd
+      nil
 
       grim
       slurp
 
       whitesur-cursors
+      colloid-gtk-theme
+      kanagawa-gtk-theme
+      zuki-themes
+      graphite-gtk-theme
+      papirus-icon-theme
       nwg-look
     ];
   };
 
   xdg.configFile = builtins.listToAttrs (map (c: {
       name = c.name;
-      value = {source = config.lib.file.mkOutOfStoreSymlink c.path;};
+      value = {
+        source = config.lib.file.mkOutOfStoreSymlink c.path;
+      };
     })
     configPaths);
 
@@ -195,8 +209,66 @@ in {
   };
 
   programs = {
-    git = {enable = true;};
-    home-manager = {enable = true;};
+    nushell = {
+      enable = true;
+      # configFile.source = ./nushell/config.nu;
+      extraConfig = ''
+        # Disable banner
+        $env.config = {
+          show_banner: false
+        }
+
+        # Toggle in-built keyboard
+        def kb-toggle [] {
+            let status_file = $"($env.XDG_RUNTIME_DIR)/keyboard.status"
+
+            if not ($status_file | path exists) {
+                "true" | save $status_file
+                ^hyprctl notify -1 2500 "rgb(ff0000)" "fontsize:16 Enabled Keyboard"
+                ^hyprctl keyword '$LAPTOP_KB_ENABLED' "true" -r
+            } else {
+                let current_status = open $status_file
+                if $current_status == "true" {
+                    "false" | save $status_file
+                    ^hyprctl notify -1 2500 "rgb(ff0000)" "fontsize:16 Disabled Keyboard"
+                    ^hyprctl keyword '$LAPTOP_KB_ENABLED' "false" -r
+                } else {
+                    "true" | save $status_file
+                    ^hyprctl notify -1 2500 "rgb(ff0000)" "fontsize:16 Enabled Keyboard"
+                    ^hyprctl keyword '$LAPTOP_KB_ENABLED' "true" -r
+                }
+            }
+        }
+
+        # Check status of in-built keyboard
+        def kb-status [] {
+            let status_file = $"($env.XDG_RUNTIME_DIR)/keyboard.status"
+            if ($status_file | path exists) {
+                open $status_file
+            } else {
+                echo "unknown"
+            }
+        }
+
+        $env.PATH = ($env.PATH | prepend $"($env.HOME)/.bun/bin")
+      '';
+      shellAliases = {
+        glog = "git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'";
+      };
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    starship = {
+      enable = true;
+    };
+    git = {
+      enable = true;
+    };
+    home-manager = {
+      enable = true;
+    };
   };
 
   home.stateVersion = "24.11";
