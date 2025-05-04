@@ -1,0 +1,42 @@
+# Window configuration
+window:
+  padding:
+    x: 4
+    y: 4
+  decorations: full
+
+# Font configuration
+font:
+  normal:
+    family: 0xProto Nerd Font
+    style: Regular
+  size: 8.0
+  ligatures: true
+
+# Colors (iTerm2-like dark theme)
+colors:
+  primary:
+    background: '#000000'  # Black background
+    foreground: '#d8d8d8'  # Faded white text
+
+  # Basic colors (you can adjust these if needed)
+  normal:
+    black:   '#000000'
+    red:     '#ff5555'
+    green:   '#55ff55'
+    yellow:  '#ffff55'
+    blue:    '#5555ff'
+    magenta: '#ff55ff'
+    cyan:    '#55ffff'
+    white:   '#d8d8d8'
+
+  # Bright colors
+  bright:
+    black:   '#555555'
+    red:     '#ff5555'
+    green:   '#55ff55'
+    yellow:  '#ffff55'
+    blue:    '#5555ff'
+    magenta: '#ff55ff'
+    cyan:    '#55ffff'
+    white:   '#ffffff'

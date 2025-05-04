@@ -1,0 +1,181 @@
+* {
+  border: none;
+  border-radius: 10px;
+  font-family: "0xProto Nerd Font Proto", monospace;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+  transition: all 0.2s ease;
+}
+
+window#waybar {
+  background: rgba(22, 20, 31, 0.9);
+  color: #e0def4; /* Rosé Pine text */
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#custom-nixos,
+#workspaces,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray,
+#custom-expand,
+#custom-swaylock,
+#custom-suspend,
+#custom-hibernate,
+#custom-reboot,
+#custom-exit_hyprland,
+#custom-endpoint {
+  padding: 4px 8px;
+  margin: 0 2px;
+  background: transparent;
+  color: #e0def4;
+}
+
+#custom-nixos {
+  font-size: 22px;
+  color: #3e8fb0; /* Rosé Pine foam */
+}
+
+#custom-nixos:hover {
+  color: #9ccfd8; /* Rosé Pine iris */
+  background: rgba(62, 143, 176, 0.1);
+}
+
+#workspaces button {
+  color: #e0def4;
+  background: transparent;
+  margin: 0 3px;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+#workspaces button:hover {
+  color: #eb6f92; /* Rosé Pine love */
+  background: rgba(235, 111, 146, 0.1);
+}
+
+#workspaces button.active {
+  color: #eb6f92;
+  background: rgba(235, 111, 146, 0.2);
+  box-shadow: inset 0 -2px #eb6f92;
+}
+
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray {
+  color: #e0def4;
+  border-radius: 6px;
+}
+
+#pulseaudio:hover,
+#network:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#clock:hover {
+  background: rgba(224, 222, 244, 0.1); /* Rosé Pine subtle */
+}
+
+#battery.charging {
+  color: #ea9d34; /* Rosé Pine gold */
+}
+
+#battery.warning:not(.charging) {
+  color: #f6c177; /* Rosé Pine pine */
+}
+
+#battery.critical:not(.charging) {
+  color: #eb6f92; /* Rosé Pine love */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+#custom-expand {
+  color: #c4a7e7; /* Rosé Pine iris */
+  border-radius: 6px;
+}
+
+#custom-expand:hover {
+  background: rgba(196, 167, 231, 0.1);
+}
+
+#custom-swaylock {
+  color: #f6c177; /* Rosé Pine pine */
+  border-radius: 6px;
+}
+
+#custom-swaylock:hover {
+  background: rgba(246, 193, 119, 0.1);
+}
+
+#custom-suspend {
+  color: #ea9d34; /* Rosé Pine gold */
+  border-radius: 6px;
+}
+
+#custom-suspend:hover {
+  background: rgba(234, 157, 52, 0.1);
+}
+
+#custom-hibernate {
+  color: #9ccfd8; /* Rosé Pine foam */
+  border-radius: 6px;
+}
+
+#custom-hibernate:hover {
+  background: rgba(156, 207, 216, 0.1);
+}
+
+#custom-reboot {
+  color: #3e8fb0; /* Rosé Pine muted */
+  border-radius: 6px;
+}
+
+#custom-reboot:hover {
+  background: rgba(62, 143, 176, 0.1);
+}
+
+#custom-exit_hyprland {
+  color: #eb6f92; /* Rosé Pine love */
+  border-radius: 6px;
+}
+
+#custom-exit_hyprland:hover {
+  background: rgba(235, 111, 146, 0.1);
+}
+
+#custom-endpoint {
+  color: #e0def4;
+  border-radius: 6px;
+}
+
+#custom-endpoint:hover {
+  background: rgba(224, 222, 244, 0.1);
+}
+
+#tray > .passive {
+  opacity: 0.6;
+}
+
+#tray > .active {
+  opacity: 1;
+}

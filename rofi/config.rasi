@@ -1,0 +1,5 @@
+// @theme "~/.local/share/rofi/themes/arc_dark_transparent_colors.rasi"
+
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+
+@theme "/home/syk/.local/share/rofi/themes/arc_dark_transparent_colors.rasi"

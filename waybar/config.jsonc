@@ -1,0 +1,212 @@
+{
+  // Main Waybar configuration
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 4,
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+  "modules-left": [
+    "custom/nixos",
+    "cpu",
+    "memory",
+    "hyprland/workspaces",
+    "cava",
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery",
+    "clock",
+    "tray",
+    "group/expand",
+  ],
+
+  // Custom NixOS logo module
+  "custom/nixos": {
+    "format": "󰄛",
+    "tooltip": false,
+  },
+
+  // Hyprland workspaces module
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "show-special": false,
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十",
+    },
+  },
+
+  // Pulseaudio module
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": "󰝟  Muted",
+    "format-icons": {
+      "default": [" ", " ", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+
+  // Network module
+  "network": {
+    "format-wifi": "󰖩  {essid}",
+    "format-ethernet": "󰈀  {ifname}",
+    "format-disconnected": "󰖪  Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 15,
+  },
+
+  // CPU module
+  "cpu": {
+    "format": "󰍛  {usage}%",
+    "tooltip": true,
+    "interval": 1,
+  },
+
+  // Memory module
+  "memory": {
+    "format": "󰘚  {}%",
+    "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB",
+  },
+
+  // Battery module
+  "battery": {
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "󰁹  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰂄  {capacity}%",
+    "format-icons": ["󰂎 ", "󰁺 ", "󰁽 ", "󰁽 ", "󰁹 "],
+  },
+
+  // Clock module
+  "clock": {
+    "format": "󰥔  {:%I:%M %p}",
+    "format-alt": "󰸘  {:%Y-%m-%d}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#e0def4'><b>{}</b></span>",
+        "weeks": "<span color='#9ccfd8'><b>{}</b></span>",
+        "weekdays": "<span color='#f6c177'><b>{}</b></span>",
+        "today": "<span color='#eb6f92'><b>{}</b></span>",
+      },
+    },
+  },
+
+  "cava": {
+    "framerate": 60, // Increased for smoother animation
+    "autosens": 0.8, // Slightly reduced to prevent over-amplification
+    "sensitivity": 2, // Lowered to avoid clipping
+    "bars": 16, // Increased for finer granularity within Waybar height
+    "lower_cutoff_freq": 20, // Standard low-end for music (20 Hz)
+    "higher_cutoff_freq": 20000, // Full audible range (20 kHz)
+    "method": "pulse", // Unchanged, uses PulseAudio
+    "source": "auto", // Unchanged, auto-detects audio source
+    "stereo": true, // Unchanged, enables stereo input
+    "reverse": false, // Unchanged, keeps normal direction
+    "bar_delimiter": 0, // Unchanged, no delimiter between bars
+    "monstercat": true, // Enabled for smoother, wave-like visuals
+    "waves": true, // Unchanged, keeps wave effect
+    "noise_reduction": 0.5, // Reduced for more dynamic input
+    "input_delay": 2, // Unchanged, keeps input sync
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"], // Unchanged, 8 levels for height
+    "actions": {
+      "on-click-right": "mode", // Unchanged, toggles CAVA mode
+    },
+  },
+
+  // System tray module
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6,
+  },
+
+  // Group expand module
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-to-left": true,
+      "click-to-reveal": true,
+    },
+    "modules": [
+      "custom/expand",
+      "custom/swaylock",
+      "custom/suspend",
+      "custom/hibernate",
+      "custom/reboot",
+      "custom/exit_hyprland",
+      "custom/endpoint",
+    ],
+  },
+
+  // Custom expand module
+  "custom/expand": {
+    "format": "󰅂",
+    "tooltip": false,
+  },
+
+  // Custom endpoint module
+  "custom/endpoint": {
+    "format": "󰿅",
+    "tooltip": false,
+  },
+
+  // Custom swaylock module
+  "custom/swaylock": {
+    "format": "󰍁",
+    "on-click": "swaylock --screenshots --clock --datestr \"%a %e.%m.%Y\" --timestr \"%H:%M\" --effect-blur 10x2 --indicator",
+    "tooltip": false,
+  },
+
+  // Custom suspend module
+  "custom/suspend": {
+    "format": "󰤄",
+    "on-click": "systemctl suspend",
+    "tooltip": false,
+  },
+
+  // Custom hibernate module
+  // "custom/hibernate": {
+  //   "format": "󰤂",
+  //   "on-click": "systemctl hibernate",
+  //   "tooltip": false,
+  // },
+
+  // Custom reboot module
+  "custom/reboot": {
+    "format": "󰜉",
+    "on-click": "systemctl reboot",
+    "tooltip": false,
+  },
+
+  // Custom exit Hyprland module
+  "custom/exit_hyprland": {
+    "format": "󰍃",
+    "on-click": "hyprctl dispatch exit",
+    "tooltip": false,
+  },
+}

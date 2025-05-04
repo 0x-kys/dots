@@ -1,0 +1,13 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.telescope",
+    "lazyvim.plugins.extras.lang.nix",
+    "lazyvim.plugins.extras.lang.zig"
+  ],
+  "install_version": 7,
+  "news": {
+    "NEWS.md": "10960"
+  },
+  "version": 8
+}
