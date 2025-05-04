@@ -2,7 +2,8 @@
   
   ***dotfiles***
 
-![image](https://github.com/user-attachments/assets/663eb854-d201-42de-8037-50b5a215f500)
+![image](https://github.com/user-attachments/assets/08789d68-10b5-4450-ba6e-e034d7a0668b)
+
 
 </div>
 
@@ -10,7 +11,7 @@
 
 | - | - | - | - | - | - | - |
 | - | - | - | - | - | - | - |
-| nixOS | ghostty | neovim | hyprland | waybar (AGS soon) | brave |
+| EndeavourOS | foot | NeoVim | hyprland | waybar (AGS soon) | brave |
 
 </div>
 
