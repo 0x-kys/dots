@@ -10,7 +10,7 @@
 
 window#waybar {
   background: rgba(22, 20, 31, 0.9);
-  color: #e0def4; /* Rosé Pine text */
+  color: #e0def4;
   border-radius: 12px;
   padding: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -32,7 +32,8 @@ window#waybar {
 #custom-hibernate,
 #custom-reboot,
 #custom-exit_hyprland,
-#custom-endpoint {
+#custom-endpoint,
+#custom-dnd {
   padding: 4px 8px;
   margin: 0 2px;
   background: transparent;
@@ -41,11 +42,11 @@ window#waybar {
 
 #custom-nixos {
   font-size: 22px;
-  color: #3e8fb0; /* Rosé Pine foam */
+  color: #3e8fb0;
 }
 
 #custom-nixos:hover {
-  color: #9ccfd8; /* Rosé Pine iris */
+  color: #9ccfd8;
   background: rgba(62, 143, 176, 0.1);
 }
 
@@ -58,7 +59,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  color: #eb6f92; /* Rosé Pine love */
+  color: #eb6f92;
   background: rgba(235, 111, 146, 0.1);
 }
 
@@ -75,7 +76,8 @@ window#waybar {
 #temperature,
 #battery,
 #clock,
-#tray {
+#tray,
+#custom-dnd {
   color: #e0def4;
   border-radius: 6px;
 }
@@ -86,20 +88,21 @@ window#waybar {
 #memory:hover,
 #temperature:hover,
 #battery:hover,
-#clock:hover {
-  background: rgba(224, 222, 244, 0.1); /* Rosé Pine subtle */
+#clock:hover,
+#custom-dnd:hover {
+  background: rgba(224, 222, 244, 0.1);
 }
 
 #battery.charging {
-  color: #ea9d34; /* Rosé Pine gold */
+  color: #ea9d34;
 }
 
 #battery.warning:not(.charging) {
-  color: #f6c177; /* Rosé Pine pine */
+  color: #f6c177;
 }
 
 #battery.critical:not(.charging) {
-  color: #eb6f92; /* Rosé Pine love */
+  color: #eb6f92;
   animation: blink 1s infinite;
 }
 
@@ -109,8 +112,20 @@ window#waybar {
   }
 }
 
+#custom-dnd {
+  color: #31748f;
+}
+
+#custom-dnd.do-not-disturb {
+  color: #eb6f92;
+}
+
+#custom-dnd:hover {
+  background: rgba(49, 116, 143, 0.1);
+}
+
 #custom-expand {
-  color: #c4a7e7; /* Rosé Pine iris */
+  color: #c4a7e7;
   border-radius: 6px;
 }
 
@@ -119,7 +134,7 @@ window#waybar {
 }
 
 #custom-swaylock {
-  color: #f6c177; /* Rosé Pine pine */
+  color: #f6c177;
   border-radius: 6px;
 }
 
@@ -128,7 +143,7 @@ window#waybar {
 }
 
 #custom-suspend {
-  color: #ea9d34; /* Rosé Pine gold */
+  color: #ea9d34;
   border-radius: 6px;
 }
 
@@ -137,7 +152,7 @@ window#waybar {
 }
 
 #custom-hibernate {
-  color: #9ccfd8; /* Rosé Pine foam */
+  color: #9ccfd8;
   border-radius: 6px;
 }
 
@@ -146,7 +161,7 @@ window#waybar {
 }
 
 #custom-reboot {
-  color: #3e8fb0; /* Rosé Pine muted */
+  color: #3e8fb0;
   border-radius: 6px;
 }
 
@@ -155,7 +170,7 @@ window#waybar {
 }
 
 #custom-exit_hyprland {
-  color: #eb6f92; /* Rosé Pine love */
+  color: #eb6f92;
   border-radius: 6px;
 }
 
