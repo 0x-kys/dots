@@ -1,28 +1,22 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 32,
+  "height": 40,
   "spacing": 4,
   "margin-top": 4,
   "margin-left": 4,
   "margin-right": 4,
-  "modules-left": [
-    "custom/nixos",
-    "cpu",
-    "memory",
-    "hyprland/workspaces",
-    "cava",
-  ],
+  "modules-left": ["cava", "hyprland/workspaces", "cpu", "memory"],
   "modules-center": [],
   "modules-right": [
+    "tray",
     "pulseaudio",
     "network",
     "clock",
-    "tray",
     "custom/dnd",
     "group/expand",
   ],
-  "custom/nixos": {
+  "custom/os-logo": {
     "format": "󰄛",
     "tooltip": false,
   },
@@ -53,22 +47,34 @@
     "on-click": "pavucontrol",
   },
   "network": {
-    "format-wifi": "󰖩  {essid}",
-    "format-ethernet": "󰈀  {ifname}",
-    "format-disconnected": "󰖪  Disconnected",
+    "format-wifi": "󰖩 {essid} {bandwidthDownBits}",
+    "format-ethernet": "󰈀 {ifname} {bandwidthDownBits}",
+    "format-disconnected": "󰖪 Disconnected",
     "tooltip-format": "{ifname} via {gwaddr}",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname}",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 15,
-  },
-  "cpu": {
-    "format": "󰍛  {usage}%",
-    "tooltip": true,
+    "max-length": 30,
     "interval": 1,
   },
+  "cpu": {
+    "tooltip": true,
+    "interval": 1,
+    // reduce this to the number of cores you have
+    "format": " {icon0}{icon1}{icon2}{icon4}{icon5}{icon6}{icon7}",
+    "format-icons": [
+      "<span color='#a6e3a1'>▁</span>",
+      "<span color='#94e2d5'>▂</span>",
+      "<span color='#89dceb'>▃</span>",
+      "<span color='#74c7ec'>▄</span>",
+      "<span color='#89b4fa'>▅</span>",
+      "<span color='#b4befe'>▆</span>",
+      "<span color='#fab387'>▇</span>",
+      "<span color='#f38ba8'>█</span>",
+    ],
+  },
   "memory": {
-    "format": "󰘚  {}%",
+    "format": "󰘚 {used}GB",
     "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB",
   },
   "battery": {
@@ -83,7 +89,7 @@
     "format-icons": ["󰂎 ", "󰁺 ", "󰁽 ", "󰁽 ", "󰁹 "],
   },
   "clock": {
-    "format": "󰥔  {:%I:%M %p}",
+    "format": "󰥔 {:%I:%M %p - %a, %d %b %Y}",
     "format-alt": "󰸘  {:%Y-%m-%d}",
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
     "calendar": {
@@ -121,7 +127,9 @@
   },
   "tray": {
     "icon-size": 16,
-    "spacing": 6,
+    "show-passive-items": true,
+    "spacing": 10,
+    "tooltip": false,
   },
   "custom/dnd": {
     "format": "{icon}",
