@@ -135,13 +135,12 @@ riverctl border-color-unfocused 0x313244
 riverctl set-repeat 50 300
 
 # Rules for floating windows and client-side decorations
-riverctl float-filter-add "popup"
-riverctl float-filter-add "float"
+riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id "bar" csd
 
 # Set default layout to rivertile
-riverctl spawn "rivertile -a 0.5"
-rivertile -view-padding 2 -outer-padding 4 &
+riverctl default-layout rivertile
+rivertile -view-padding 2 -outer-padding 4 -main-ratio 0.5 &
 exec rivertile
 
 riverctl focus-follows-cursor normal
