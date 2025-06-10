@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# River configuration file for simpler, human-friendly keybindings
-
 # Set wallpaper
 riverctl spawn "waypaper --restore"
 
@@ -13,16 +11,16 @@ riverctl map normal Super+Shift R spawn $HOME/.config/river/init
 # Screenshot
 riverctl map normal None Print spawn 'IMG=~/Pictures/screenshots/$(date | sed "s/\s/-/g" | sed "s/--/-/g").png&&grim -g "$(slurp)" $IMG && cat $IMG | wl-copy && notify-send "Screenshot has been saved and copied to your clipboard" -a "grim" -u normal -t 2000'
 
-# Start terminal (unchanged)
-riverctl map normal Super Return spawn foot
+# Start terminal
+riverctl map normal Super Return spawn ghostty
 
-# Start launcher (unchanged)
+# Start launcher
 riverctl map normal Super R spawn anyrun
 
-# Close focused view (unchanged)
+# Close focused view
 riverctl map normal Super Q close
 
-# Exit river (unchanged)
+# Exit river
 riverctl map normal Super+Shift E exit
 
 # Focus next/previous view with Super + Down/Up
