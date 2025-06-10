@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DOTFILES="waybar wofi mako hypr i3 rofi foot starship.toml alacritty"
+DOTFILES="waybar river ghostty wofi mako hypr i3 rofi foot starship.toml alacritty"
 
 for item in $DOTFILES; do
   if [ -e "$HOME/.config/$item" ]; then
@@ -10,5 +10,7 @@ for item in $DOTFILES; do
     echo "Warning: $item not found in ~/.config"
   fi
 done
+
+cp -r $HOME/.config/tmux/tmux.conf ./tmux.conf
 
 echo "Dotfiles copied to $(pwd)"

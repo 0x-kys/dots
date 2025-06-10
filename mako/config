@@ -19,34 +19,29 @@ layer=overlay
 anchor=top-right
 sort=-time
 
-background-color=#191724
-text-color=#e0def4
-border-color=#26233a
-progress-color=over #f6c177
-
-on-button-left=dismiss
-on-button-middle=none
-on-button-right=dismiss-all
-on-touch=dismiss
+background-color=#11111b
+text-color=#cdd6f4
+border-color=#45475a
+progress-color=over #f9e2af
 
 [urgency=low]
-border-color=#26233a
+border-color=#45475a
 default-timeout=2000
-progress-color=over #f6c177
+progress-color=over #f9e2af
 
 [urgency=normal]
-border-color=#26233a
+border-color=#45475a
 default-timeout=5000
-progress-color=over #31748f
+progress-color=over #94e2d5
 
 [urgency=high]
-border-color=#eb6f92
-text-color=#eb6f92
+border-color=#f38ba8
+text-color=#f38ba8
 default-timeout=0
-progress-color=over #eb6f92
+progress-color=over #f38ba8
 
 [category=mpd]
-border-color=#ebbcba
+border-color=#cba6f7
 default-timeout=2000
 group-by=category
 

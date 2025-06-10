@@ -1,5 +1,5 @@
 <div align="center">
-  
+
   ***dotfiles***
 
 ![image](https://github.com/user-attachments/assets/08789d68-10b5-4450-ba6e-e034d7a0668b)
@@ -11,7 +11,7 @@
 
 | - | - | - | - | - | - | - |
 | - | - | - | - | - | - | - |
-| EndeavourOS | foot | NeoVim | hyprland | waybar (AGS soon) | brave |
+| EndeavourOS | ghostty | NeoVim | river | waybar | brave |
 
 </div>
 
