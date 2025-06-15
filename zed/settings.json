@@ -1,0 +1,202 @@
+{
+	"icon_theme": "Catppuccin Mocha",
+ "show_edit_predictions": false,
+	"features": {
+		"edit_prediction_provider": "zed"
+	},
+	"agent": {
+		"default_model": {
+			"provider": "anthropic",
+			"model": "claude-3-7-sonnet-latest"
+		},
+		"model_parameters": [],
+		"default_profile": "ask",
+		"version": "2"
+	},
+	"telemetry": {
+		"metrics": false
+	},
+	"vim_mode": true,
+	"relative_line_numbers": true,
+	"buffer_font_family": "0xProto Nerd Font Mono",
+	"ui_font_family": "0xProto Nerd Font",
+	"ui_font_size": 14,
+	"agent_font_size": 14,
+	"buffer_font_size": 12,
+	"theme": {
+		"mode": "system",
+		"light": "One Light",
+		"dark": "Catppuccin Mocha"
+	},
+	"soft_wrap": "editor_width",
+	"experimental.theme_overrides": {
+		"background.appearance": "blurred",
+		"background": "#11111b99",
+		"editor.background": "#11111b99",
+		"editor.gutter.background": "#11111b99",
+		"tab_bar.background": "#11111b99",
+		"terminal.background": "#11111b99",
+		"toolbar.background": "#11111b99",
+		"tab.active_background": "#1e1e2e99",
+		"tab.inactive_background": "#00000000",
+		"status_bar.background": "#11111b99",
+		"title_bar.background": "#11111b99",
+		"panel.background": "#11111b99",
+		"border.variant": "#00000000",
+		"scrollbar.track.border": "#00000000",
+		"editor.active_line.background": "#00000000"
+	},
+	"tab_size": 2,
+	"hard_tabs": true,
+	"show_whitespaces": "all",
+	"show_wrap_guides": true,
+	"show_completion_documentation": true,
+	"diagnostics": {
+		"button": true,
+		"include_warnings": true,
+		"inline": {
+			"enabled": true,
+			"update_debounce_ms": 150,
+			"padding": 2,
+			"min_column": 1,
+			"max_severity": null
+		},
+		"cargo": null
+	},
+	"git": {
+		"git_gutter": "tracked_files",
+		"gutter_debounce": null,
+		"inline_blame": {
+			"enabled": false
+		},
+		"hunk_style": "unstaged_hollow"
+	},
+	"indent_guides": {
+		"enabled": true,
+		"line_width": 1,
+		"active_line_width": 2,
+		"coloring": "fixed",
+		"background_coloring": "disabled"
+	},
+	"inlay_hints": {
+		"enabled": false,
+		"show_type_hints": true,
+		"show_parameter_hints": true,
+		"show_other_hints": true,
+		"show_background": false,
+		"edit_debounce_ms": 700,
+		"scroll_debounce_ms": 50
+	},
+	"lsp": {
+		"rust-analyzer": {
+			"binary": {
+				"path": "/home/syk/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"
+			},
+			"initialization_options": {
+				"inlayHints": {
+					"maxLength": null,
+					"lifetimeElisionHints": {
+						"enable": "skip_trivial",
+						"useParameterNames": true
+					},
+					"closureReturnTypeHints": {
+						"enable": "always"
+					}
+				}
+			}
+		},
+		"vtsls": {
+			// vtsls use more memory for large projects
+			"settings": {
+				"typescript": {
+					"tsserver": { "maxTsServerMemory": 16184 },
+					"inlayHints": {
+						"parameterNames": {
+							"enabled": "all",
+							"suppressWhenArgumentMatchesName": false
+						},
+						"parameterTypes": {
+							"enabled": true
+						},
+						"variableTypes": {
+							"enabled": true,
+							"suppressWhenTypeMatchesName": true
+						},
+						"propertyDeclarationTypes": {
+							"enabled": true
+						},
+						"functionLikeReturnTypes": {
+							"enabled": true
+						},
+						"enumMemberValues": {
+							"enabled": true
+						}
+					}
+				},
+				"javascript": {
+					"tsserver": { "maxTsServerMemory": 16184 },
+					"inlayHints": {
+						"parameterNames": {
+							"enabled": "all",
+							"suppressWhenArgumentMatchesName": false
+						},
+						"parameterTypes": {
+							"enabled": true
+						},
+						"variableTypes": {
+							"enabled": true,
+							"suppressWhenTypeMatchesName": true
+						},
+						"propertyDeclarationTypes": {
+							"enabled": true
+						},
+						"functionLikeReturnTypes": {
+							"enabled": true
+						},
+						"enumMemberValues": {
+							"enabled": true
+						}
+					}
+				}
+			}
+		},
+		"eslint": {
+			"settings": {
+				"problems": {
+					"shortenToSingleLine": true
+				},
+				"codeActionOnSave": {
+					"rules": ["simple-import-sort/imports"]
+				}
+			},
+			"initialization_options": {
+				"rulesCustomizations": [
+					{
+						"rule": "simple-import-sort/imports",
+						"severity": "error"
+					}
+				]
+			}
+		}
+	},
+	"languages": {
+		"JavaScript": {
+			"format_on_save": "on",
+			"code_actions_on_format": {
+				"source.fixAll.eslint": true
+			}
+		},
+		"TypeScript": {
+			"format_on_save": "on",
+			"code_actions_on_format": {
+				"source.fixAll.eslint": true
+			}
+		},
+		"TSX": {
+			"format_on_save": "on",
+			"code_actions_on_format": {
+				"source.fixAll.eslint": true
+			}
+		}
+	}
+}

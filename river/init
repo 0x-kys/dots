@@ -135,8 +135,13 @@ riverctl border-color-unfocused 0x313244
 riverctl set-repeat 50 300
 
 # Rules for floating windows and client-side decorations
-riverctl rule-add -app-id 'float*' -title 'foo' float
-riverctl rule-add -app-id "bar" csd
+riverctl rule-add -app-id "dev.zed.Zed" ssd
+riverctl rule-add -app-id "com.mitchellh.ghostty" ssd
+riverctl rule-add -app-id "org.pulseaudio.pavucontrol" -title "Volume Control" float
+riverctl rule-add -app-id "org.pulseaudio.pavucontrol" -title "Volume Control" ssd
+riverctl rule-add -app-id "Xdg-desktop-portal-gtk" -title "*wants to*" float
+riverctl rule-add -app-id "Xdg-desktop-portal-gtk" -title "*wants to*" ssd
+riverctl rule-add -app-id "Emulator" float
 
 # Set default layout to rivertile
 riverctl default-layout rivertile
@@ -144,3 +149,4 @@ rivertile -view-padding 2 -outer-padding 4 -main-ratio 0.5 &
 exec rivertile
 
 riverctl focus-follows-cursor normal
+export XDG_DESKTOP_PORTAL=wlr

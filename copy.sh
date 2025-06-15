@@ -12,5 +12,7 @@ for item in $DOTFILES; do
 done
 
 cp -r $HOME/.config/tmux/tmux.conf ./tmux.conf
+cp -r $HOME/.config/zed/keymap.json ./zed/keymap.json
+cp -r $HOME/.config/zed/settings.json ./zed/settings.json
 
 echo "Dotfiles copied to $(pwd)"
