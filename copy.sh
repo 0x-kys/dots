@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DOTFILES="waybar river ghostty wofi mako hypr i3 rofi foot starship.toml alacritty"
+DOTFILES="helix ghostty nvim starship.toml"
 
 for item in $DOTFILES; do
   if [ -e "$HOME/.config/$item" ]; then
@@ -11,7 +11,8 @@ for item in $DOTFILES; do
   fi
 done
 
-cp -r $HOME/.config/tmux/tmux.conf ./tmux.conf
+[ -d zed ] || mkdir -p zed
+
 cp -r $HOME/.config/zed/keymap.json ./zed/keymap.json
 cp -r $HOME/.config/zed/settings.json ./zed/settings.json
 

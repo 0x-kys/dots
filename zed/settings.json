@@ -1,6 +1,5 @@
 {
-	"icon_theme": "Catppuccin Mocha",
- "show_edit_predictions": false,
+	"show_edit_predictions": false,
 	"features": {
 		"edit_prediction_provider": "zed"
 	},
@@ -10,42 +9,25 @@
 			"model": "claude-3-7-sonnet-latest"
 		},
 		"model_parameters": [],
-		"default_profile": "ask",
-		"version": "2"
+		"default_profile": "ask"
 	},
 	"telemetry": {
 		"metrics": false
 	},
+	"show_completions_on_input": false,
 	"vim_mode": true,
 	"relative_line_numbers": true,
-	"buffer_font_family": "0xProto Nerd Font Mono",
-	"ui_font_family": "0xProto Nerd Font",
+	"buffer_font_family": "JetBrainsMono Nerd Font Mono",
+	"ui_font_family": "JetBrainsMono Nerd Font Mono",
 	"ui_font_size": 14,
 	"agent_font_size": 14,
 	"buffer_font_size": 12,
 	"theme": {
 		"mode": "system",
 		"light": "One Light",
-		"dark": "Catppuccin Mocha"
+		"dark": "One Dark"
 	},
 	"soft_wrap": "editor_width",
-	"experimental.theme_overrides": {
-		"background.appearance": "blurred",
-		"background": "#11111b99",
-		"editor.background": "#11111b99",
-		"editor.gutter.background": "#11111b99",
-		"tab_bar.background": "#11111b99",
-		"terminal.background": "#11111b99",
-		"toolbar.background": "#11111b99",
-		"tab.active_background": "#1e1e2e99",
-		"tab.inactive_background": "#00000000",
-		"status_bar.background": "#11111b99",
-		"title_bar.background": "#11111b99",
-		"panel.background": "#11111b99",
-		"border.variant": "#00000000",
-		"scrollbar.track.border": "#00000000",
-		"editor.active_line.background": "#00000000"
-	},
 	"tab_size": 2,
 	"hard_tabs": true,
 	"show_whitespaces": "all",

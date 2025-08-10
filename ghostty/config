@@ -1,48 +1,22 @@
-theme = "catppuccin-mocha"
-background-opacity = 0.9
-background-blur-radius = 20
+theme = "rose-pine"
 
-font-family = "0xProto Nerd Font"
-font-size = 9
+font-family = "JetBrainsMono Nerd Font"
+font-size = 10
 
 cursor-style = block
 cursor-style-blink = true
 
-window-decoration = none
+window-decoration = server
 
 cursor-invert-fg-bg = true
 selection-invert-fg-bg = true
 
-keybind = alt+left=unbind
-keybind = alt+right=unbind
-
 shell-integration = fish
 
-window-padding-x = 6
-window-padding-y = 6
+window-padding-x = 4
+window-padding-y = 4
 window-padding-balance = true
 
 working-directory = inherit
 
-# palette = 0=#1c2526
-# palette = 1=#ff8787
-# palette = 2=#9ff69e
-# palette = 3=#f3f89d
-# palette = 4=#80a0ff
-# palette = 5=#ff87ff
-# palette = 6=#7bf5ff
-# palette = 7=#b2b2b2
-# palette = 8=#444b6a
-# palette = 9=#ff5454
-# palette = 10=#73ff9c
-# palette = 11=#f0e78b
-# palette = 12=#609fff
-# palette = 13=#ff54ff
-# palette = 14=#54f6ff
-# palette = 15=#f1f1f1
-background = #11111b
-# foreground = #b2b2b2
-# cursor-color = #80a0ff
-# cursor-text = #080808
-# selection-background = #3a3a3a
-# selection-foreground = #b2b2b2
+background = #000000
