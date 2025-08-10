@@ -2,7 +2,8 @@
 
   ***dotfiles***
 
-![image](https://github.com/user-attachments/assets/530d3c9a-b795-454c-9478-9646bd31dbd0)
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/340dea5f-240b-4b97-9981-d54511449bd1" />
+
 
 </div>
 
@@ -10,7 +11,7 @@
 
 | - | - | - | - | - | - | - |
 | - | - | - | - | - | - | - |
-| EndeavourOS | ghostty | NeoVim | river | waybar | brave |
+| Fedora | Ghostty | helix/zed | opencode | brave |
 
 </div>
 
