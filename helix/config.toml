@@ -9,7 +9,7 @@ continue-comments = true
 gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
 auto-completion = false
 path-completion = true
-# auto-format = true
+auto-format = true
 completion-replace = true
 auto-info = true
 true-color = true
@@ -17,6 +17,9 @@ undercurl = true
 bufferline = "multiple"
 auto-pairs = true
 end-of-line-diagnostics = "hint"
+
+[editor.soft-wrap]
+enable = true
 
 [editor.statusline]
 left = ["mode", "spinner"]
@@ -38,7 +41,7 @@ mode.select = "SEL"
 enable = true
 display-messages = true
 display-progress-messages = true
-auto-signature-help = true
+auto-signature-help = false
 display-inlay-hints = false
 goto-reference-include-declaration = true
 
@@ -84,11 +87,21 @@ C-s = ":config-reload"
 
 C-space = "completion"
 
+A-h = ":bp"
+A-l = ":bn"
+A-w = ":bc"
+
+# hover over the part under cursor
+A-i = "hover"
+
 # Some nice Helix stuff
 C-h = "select_prev_sibling"
 C-j = "shrink_selection"
 C-k = "expand_selection"
 C-l = "select_next_sibling"
+
+C-left = ["move_prev_word_start", "collapse_selection"]
+C-right = ["move_next_word_end", "collapse_selection"]
 
 # Personal preference
 o = ["open_below", "normal_mode"]
@@ -325,6 +338,9 @@ C-left = ["move_prev_word_start", "collapse_selection"]
 C-right = ["move_next_word_end", "collapse_selection"]
 
 C-space = ["completion"]
+
+# hover over the part under cursor
+A-i = "hover"
 
 [keys.select]
 # Muscle memory

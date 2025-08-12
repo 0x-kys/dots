@@ -1,6 +1,14 @@
 [language-server.gopls.config]
 gofumpt = true
 
+[language-server.tsgo]
+command = "tsgo"
+args = ["lsp"]
+
+[language-server.vtsls]
+command = "vtsls"
+args = ["--stdio"]
+
 [[language]]
 name = "go"
 auto-format = true
@@ -60,6 +68,7 @@ auto-format = true
 
 [[language]]
 name = "typescript"
+language-servers = ["tsgo", "vtsls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
@@ -97,3 +106,7 @@ auto-format = true
 name = "yaml"
 formatter = { command = "prettier", args = ["--parser", "yaml"] }
 auto-format = true
+
+[[language]]
+name = "go"
+language-servers = ["gopls"]
