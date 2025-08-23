@@ -1,4 +1,4 @@
-theme = "oled_pine"
+theme = "oled_gruvbox_dark"
 
 [editor]
 line-number = "relative"
@@ -22,8 +22,8 @@ end-of-line-diagnostics = "hint"
 enable = true
 
 [editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
+left = ["mode", "spinner", "version-control", "file-name"]
+center = []
 right = [
   "diagnostics",
   "selections",
@@ -80,6 +80,10 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
+[keys.normal.space]
+f = "file_picker_in_current_directory"
+F = "file_picker_in_current_buffer_directory"
+
 [keys.normal]
 # Quick iteration on config changes
 C-o = ":config-open"
@@ -87,12 +91,11 @@ C-s = ":config-reload"
 
 C-space = "completion"
 
-A-h = ":bp"
-A-l = ":bn"
-A-w = ":bc"
-
-# hover over the part under cursor
-A-i = "hover"
+A-h = ":bp"              # go to previous buffer
+A-l = ":bn"              # go to next buffer
+A-w = ":bc"              # close current buffer
+A-i = "hover"            # hover over the line under cursor
+A-y = ":yank-diagnostic" # yank diagnostics under cursor
 
 # Some nice Helix stuff
 C-h = "select_prev_sibling"
@@ -103,9 +106,8 @@ C-l = "select_next_sibling"
 C-left = ["move_prev_word_start", "collapse_selection"]
 C-right = ["move_next_word_end", "collapse_selection"]
 
-# Personal preference
-o = ["open_below", "normal_mode"]
-O = ["open_above", "normal_mode"]
+o = ["open_below", "normal_mode"] # add a new line below and go to normal mode
+O = ["open_above", "normal_mode"] # add a new line above and go to normal mode
 
 # redo
 C-r = "redo"

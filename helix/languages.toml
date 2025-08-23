@@ -11,6 +11,7 @@ args = ["--stdio"]
 
 [[language]]
 name = "go"
+language-servers = ["gopls"]
 auto-format = true
 
 [[language]]
@@ -108,5 +109,4 @@ formatter = { command = "prettier", args = ["--parser", "yaml"] }
 auto-format = true
 
 [[language]]
-name = "go"
-language-servers = ["gopls"]
+name = "rust"
