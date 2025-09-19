@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DOTFILES="helix ghostty nvim starship.toml"
+DOTFILES="helix ghostty nvim starship.toml hypr waybar"
 
 for item in $DOTFILES; do
   if [ -e "$HOME/.config/$item" ]; then

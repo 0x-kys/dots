@@ -1,7 +1,7 @@
 # only set this during testing, defaults to "true" which animates only active windows
 # custom-shader-animation = always
 
-theme = "GruvboxDark"
+theme = "Gruvbox Dark"
 # title = "ghostty"
 maximize = true
 
@@ -18,7 +18,7 @@ window-titlebar-background = 000000
 window-titlebar-foreground = ffffff
 
 unfocused-split-opacity = 0.9
-split-divider-color = E0DEF4
+# split-divider-color = E0DEF4
 
 cursor-style = block
 cursor-style-blink = true
@@ -29,3 +29,5 @@ shell-integration = fish
 working-directory = inherit
 
 background = 000000
+background-opacity = 0.85
+background-blur = true
