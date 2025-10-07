@@ -5,77 +5,42 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 local util = require("lazyvim.util")
-local set_keymap = vim.api.nvim_set_keymap
 local snacks = require("snacks")
 
--- Borderless terminal
 vim.keymap.set("n", "<C-/>", function()
   snacks.terminal(nil, { border = "none" })
 end, { desc = "Term with border" })
 
--- Borderless lazygit
 vim.keymap.set("n", "<leader>gg", function()
   snacks.terminal({ "lazygit" }, { cwd = util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { desc = "Lazygit (root dir)" })
 
--- Split windows
 keymap.set("n", "ss", ":vsplit<Return>", opts)
 keymap.set("n", "sv", ":split<Return>", opts)
 
--- Tabs
-keymap.set("n", "te", ":tabedit<Return>", opts)
-keymap.set("n", "L", ":tabnext<Return>", opts)
-keymap.set("n", "H", ":tabprev<Return>", opts)
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+local function warn_arrow()
+  vim.notify("stop using arrow keys dawg...", vim.log.levels.WARN)
+end
 
-keymap.del({ "n", "i", "v" }, "<A-j>")
-keymap.del({ "n", "i", "v" }, "<A-k>")
-keymap.del("n", "<C-Left>")
-keymap.del("n", "<C-Down>")
-keymap.del("n", "<C-Up>")
-keymap.del("n", "<C-Right>")
+keymap.set({ "n", "i", "v" }, "<Up>", warn_arrow, { noremap = true, silent = true })
+keymap.set({ "n", "i", "v" }, "<Down>", warn_arrow, { noremap = true, silent = true })
+keymap.set({ "n", "i", "v" }, "<Left>", warn_arrow, { noremap = true, silent = true })
+keymap.set({ "n", "i", "v" }, "<Right>", warn_arrow, { noremap = true, silent = true })
 
-keymap.set("n", "<C-h>", '<Cmd>lua require("tmux").move_left()<CR>', { silent = true })
-keymap.set("n", "<C-j>", '<Cmd>lua require("tmux").move_bottom()<CR>', { silent = true })
-keymap.set("n", "<C-k>", '<Cmd>lua require("tmux").move_top()<CR>', { silent = true })
-keymap.set("n", "<C-l>", '<Cmd>lua require("tmux").move_right()<CR>', { silent = true })
+-- Hover info
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover", silent = true })
 
-keymap.set("n", "<M-h>", '<Cmd>lua require("tmux").resize_left()<CR>', { silent = true })
-keymap.set("n", "<M-j>", '<Cmd>lua require("tmux").resize_bottom()<CR>', { silent = true })
-keymap.set("n", "<M-k>", '<Cmd>lua require("tmux").resize_top()<CR>', { silent = true })
-keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { silent = true })
+-- Show diagnostics in float (under cursor)
+vim.keymap.set("n", "<leader>D", function()
+  vim.diagnostic.open_float(nil, { border = "rounded", wrap = true })
+end, { desc = "Line Diagnostics" })
 
-keymap.set("v", "<leader>y", '"+y', opts)
+-- Open full Trouble list
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Toggle Trouble" })
 
--- package-info keymaps
-set_keymap(
-  "n",
-  "<leader>cpt",
-  "<cmd>lua require('package-info').toggle()<cr>",
-  { silent = true, noremap = true, desc = "Toggle" }
-)
-set_keymap(
-  "n",
-  "<leader>cpd",
-  "<cmd>lua require('package-info').delete()<cr>",
-  { silent = true, noremap = true, desc = "Delete package" }
-)
-set_keymap(
-  "n",
-  "<leader>cpu",
-  "<cmd>lua require('package-info').update()<cr>",
-  { silent = true, noremap = true, desc = "Update package" }
-)
-set_keymap(
-  "n",
-  "<leader>cpi",
-  "<cmd>lua require('package-info').install()<cr>",
-  { silent = true, noremap = true, desc = "Install package" }
-)
-set_keymap(
-  "n",
-  "<leader>cpc",
-  "<cmd>lua require('package-info').change_version()<cr>",
-  { silent = true, noremap = true, desc = "Change package version" }
-)
+-- Undo/Redo mappings
+vim.keymap.set("n", "u", "u", { desc = "Undo" })
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+
+-- Prevent accidental suspension
+-- vim.keymap.del("n", "<C-z>", { silent = true })

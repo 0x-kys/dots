@@ -1,65 +1,27 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "astro",
-        "bash",
-        "c",
-        "cmake",
-        "cpp",
-        "css",
-        "diff",
-        "dockerfile",
-        "gitignore",
-        "go",
-        "gomod",
-        "gosum",
-        "gowork",
-        "html",
-        "http",
-        "javascript",
-        "jsdoc",
-        "json",
-        "json5",
-        "jsonc",
-        "lua",
-        "luadoc",
-        "luap",
-        "markdown",
-        "markdown_inline",
-        "prisma",
-        "python",
-        "query",
-        "regex",
-        "rust",
-        "sql",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "yaml",
-        "zig",
-      },
-      config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
-        vim.filetype.add({
-          extension = {
-            mdx = "mdx",
-          },
-        })
-        vim.treesitter.language.register("markdown", "mdx")
-      end,
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    ensure_installed = {
+      "bash",
+      "c",
+      "css",
+      "html",
+      "go",
+      "javascript",
+      "json",
+      "lua",
+      "markdown",
+      "python",
+      "typescript",
+      "yaml",
+      "vim",
     },
-  },
-
-  {
-    "nvim-treesitter/playground",
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    enabled = false,
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    },
+    indent = { enable = true },
   },
 }
