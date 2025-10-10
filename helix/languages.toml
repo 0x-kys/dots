@@ -9,6 +9,28 @@ args = ["lsp"]
 command = "vtsls"
 args = ["--stdio"]
 
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+
+[language-server.eslint.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.eslint.config.codeAction.showDocumentation]
+enable = true
+
+[language-server.eslint.config.workingDirectory]
+mode = "location"
+
 [[language]]
 name = "go"
 language-servers = ["gopls"]
@@ -62,19 +84,22 @@ name = "scss"
 formatter = { command = 'prettier', args = ["--parser", "scss"] }
 auto-format = true
 
+
 [[language]]
-name = "javascript"
+name = "typescript"
+language-servers = ["vtsls", "eslint"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
-name = "typescript"
-language-servers = ["tsgo", "vtsls"]
+name = "javascript"
+language-servers = ["eslint"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
+language-servers = ["eslint"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 

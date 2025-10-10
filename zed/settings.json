@@ -15,7 +15,7 @@
 		"metrics": false
 	},
 	"show_completions_on_input": false,
-	"vim_mode": true,
+	"helix_mode": true,
 	"relative_line_numbers": true,
 	"buffer_font_family": "JetBrainsMono Nerd Font Mono",
 	"ui_font_family": "JetBrainsMono Nerd Font Mono",

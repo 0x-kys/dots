@@ -1,43 +1,29 @@
 [
-	{
-		"context": "Editor && vim_mode == normal",
-		"bindings": {
-			"space e": "workspace::ToggleLeftDock",
-			"ctrl-/": "workspace::ToggleBottomDock",
-			"space p": "editor::Format",
-			"space space": "file_finder::Toggle",
-			"shift-l": "pane::ActivateNextItem",
-			"shift-h": "pane::ActivatePreviousItem",
-			"space v": "pane::SplitRight",
-			"space w": "pane::CloseActiveItem",
-			"space h": "workspace::ActivateNextPane",
-			"space l": "workspace::ActivatePreviousPane",
-			"g e": "editor::GoToDiagnostic",
-			"g E": "editor::GoToPreviousDiagnostic",
-			"g d": "editor::GoToDefinition",
-			"g D": "editor::GoToTypeDefinitionSplit",
-			"g r": "editor::FindAllReferences"
-		}
-	},
-	{
-		"context": "ProjectPanel && not_editing",
-		"bindings": {
-			"h": "project_panel::CollapseSelectedEntry",
-			"l": "project_panel::ExpandSelectedEntry",
-			"j": "menu::SelectNext",
-			"k": "menu::SelectPrevious",
-			"o": "menu::Confirm",
-			"r": "project_panel::Rename",
-			"z c": "project_panel::CollapseSelectedEntry",
-			"z o": "project_panel::ExpandSelectedEntry",
-			"x": "project_panel::Cut",
-			"c": "project_panel::Copy",
-			"p": "project_panel::Paste",
-			"d": "project_panel::Delete",
-			"a": "project_panel::NewFile",
-			"shift-a": "project_panel::NewDirectory",
-			"shift-y": "workspace::CopyRelativePath",
-			"g y": "workspace::CopyPath"
-		}
-	}
+  {
+    "context": "Editor && helix_mode == normal",
+    "bindings": {
+      "alt e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "o": "menu::Confirm",
+      "r": "project_panel::Rename",
+      "z c": "project_panel::CollapseSelectedEntry",
+      "z o": "project_panel::ExpandSelectedEntry",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "d": "project_panel::Delete",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "shift-y": "workspace::CopyRelativePath",
+      "g y": "workspace::CopyPath"
+    }
+  }
 ]

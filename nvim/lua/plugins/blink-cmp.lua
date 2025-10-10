@@ -1,5 +1,7 @@
 return {
   "saghen/blink.cmp",
+  version = "v1.*",
+  build = "cargo build --release",
   opts = {
     completion = {
       trigger = {

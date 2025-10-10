@@ -1,33 +1,43 @@
-# only set this during testing, defaults to "true" which animates only active windows
-# custom-shader-animation = always
+# Ghostty config - minimal, keyboard-friendly, Gruvbox-like
+# Adjust path/name if your Ghostty config is elsewhere.
 
+# Visuals & theme
 theme = "Gruvbox Dark"
-# title = "ghostty"
+window-theme = "system"         
 maximize = true
 
-font-size = 10
+# Font
 font-family = "JetBrainsMono Nerd Font"
+font-size = 10
 
+# Window padding: small but visible
 window-padding-x = 4
 window-padding-y = 4
-
-window-decoration = server
 window-padding-balance = true
 
-window-titlebar-background = 000000
-window-titlebar-foreground = ffffff
+# Window chrome & decorations
+window-decoration = "server"  
+window-titlebar-background = "000000"
+window-titlebar-foreground = "ffffff"
 
-unfocused-split-opacity = 0.9
-# split-divider-color = E0DEF4
+# Background
+background = "000000"
+background-opacity = 0.74      
+background-blur = false
 
-cursor-style = block
+# Splits / opacity
+unfocused-split-opacity = 1   
+
+# Cursor + selection
+cursor-style = "block"
 cursor-style-blink = true
 cursor-invert-fg-bg = true
 selection-invert-fg-bg = true
 
-shell-integration = fish
-working-directory = inherit
+# Shell integration
+shell-integration = "fish"
+working-directory = "inherit"
 
-background = 000000
-background-opacity = 0.85
-background-blur = true
+# Animations (dev tip)
+# custom-shader-animation = "always"  
+

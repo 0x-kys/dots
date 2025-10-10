@@ -6,126 +6,150 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        lua_ls = {
-          mason = false,
-          command = "lua-language-server",
-        },
-        gopls = {
-          mason = false,
-          command = "gopls",
-        },
-        nil_ls = {
-          mason = false,
-          command = "nil",
-        },
-        vtsls = {
-          mason = false,
-          command = "vtsls",
-          settings = {
-            typescript = {
-              -- Performance optimizations
-              maxTsServerMemory = 16384, -- Increase memory limit to 16GB (MB)
-              tsserver = {
-                maxTsServerMemory = 16384,
-                -- Use separate syntax server for better performance
-                useSeparateSyntaxServer = true,
-                -- Disable file watching for better performance
-                watchOptions = {
-                  watchFile = "useFsEvents",
-                  watchDirectory = "useFsEvents",
-                  fallbackPolling = "dynamicPriority",
-                  synchronousWatchDirectory = true,
-                },
-              },
-              -- Disable expensive features
-              suggest = {
-                -- Reduce suggestion overhead
-                includeCompletionsForModuleExports = false,
-                includeCompletionsForImportStatements = false,
-              },
-              -- Disable inlay hints (you already have these disabled)
-              inlayHints = {
-                enumMemberValues = { enabled = false },
-                functionLikeReturnTypes = { enabled = false },
-                parameterNames = { enabled = false },
-                parameterTypes = { enabled = false },
-                propertyDeclarationTypes = { enabled = false },
-                variableTypes = { enabled = false },
-              },
-              -- Reduce diagnostic overhead
-              diagnostics = {
-                -- Only show errors, not warnings/info
-                ignoredCodes = {},
-              },
-              -- Disable some heavy features
-              implementationsCodeLens = { enabled = false },
-              referencesCodeLens = { enabled = false },
-              -- Optimize imports
-              includePackageJsonAutoImports = "off",
-              preferences = {
-                -- Faster import resolution
-                importModuleSpecifier = "relative",
-                includeCompletionsForModuleExports = false,
-                includeCompletionsForImportStatements = false,
-              },
-            },
-            javascript = {
-              -- Same optimizations for JavaScript
-              suggest = {
-                includeCompletionsForModuleExports = false,
-                includeCompletionsForImportStatements = false,
-              },
-              preferences = {
-                importModuleSpecifier = "relative",
-                includeCompletionsForModuleExports = false,
-                includeCompletionsForImportStatements = false,
-              },
-            },
-            -- Global vtsls settings
-            vtsls = {
-              -- Enable experimental features for better performance
-              experimental = {
-                completion = {
-                  enableServerSideFuzzyMatch = true,
-                },
-              },
-            },
-          },
-          -- Additional LSP client optimizations
-          flags = {
-            debounce_text_changes = 150, -- Debounce changes
-          },
-          -- Reduce server startup overhead
-          init_options = {
-            preferences = {
-              -- Disable automatic type acquisition
-              disableAutomaticTypingAcquisition = true,
-            },
-          },
-        },
-      },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
     },
+    config = function()
+      local lspconfig = require("lspconfig")
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.vtsls.setup({
+        capabilities = capabilities,
+        settings = {
+          typescript = {
+            maxTsServerMemory = 16384,
+            tsserver = {
+              maxTsServerMemory = 16384,
+              useSeparateSyntaxServer = true,
+              watchOptions = {
+                watchFile = "useFsEvents",
+                watchDirectory = "useFsEvents",
+                fallbackPolling = "dynamicPriority",
+                synchronousWatchDirectory = true,
+              },
+            },
+            suggest = {
+              includeCompletionsForModuleExports = false,
+              includeCompletionsForImportStatements = false,
+            },
+            inlayHints = {
+              enumMemberValues = { enabled = false },
+              functionLikeReturnTypes = { enabled = false },
+              parameterNames = { enabled = false },
+              parameterTypes = { enabled = false },
+              propertyDeclarationTypes = { enabled = false },
+              variableTypes = { enabled = false },
+            },
+            diagnostics = {
+              ignoredCodes = {},
+            },
+            implementationsCodeLens = { enabled = false },
+            referencesCodeLens = { enabled = false },
+            includePackageJsonAutoImports = "off",
+            preferences = {
+              importModuleSpecifier = "relative",
+              includeCompletionsForModuleExports = false,
+              includeCompletionsForImportStatements = false,
+            },
+          },
+          javascript = {
+            suggest = {
+              includeCompletionsForModuleExports = false,
+              includeCompletionsForImportStatements = false,
+            },
+            preferences = {
+              importModuleSpecifier = "relative",
+              includeCompletionsForModuleExports = false,
+              includeCompletionsForImportStatements = false,
+            },
+          },
+          vtsls = {
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
+            },
+          },
+        },
+        flags = {
+          debounce_text_changes = 150,
+        },
+        init_options = {
+          preferences = {
+            disableAutomaticTypingAcquisition = true,
+          },
+        },
+      })
+
+      lspconfig.jsonls.setup({
+        capabilities = capabilities,
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.eslint.setup({
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      })
+    end,
+  },
+  {
+    "b0o/schemastore.nvim",
   },
   {
     "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        rust = { "rustfmt" },
-        lua = { "stylua" },
-        nix = { "alejandra" },
-      },
-      formatters = {
-        stylua = {
-          command = "stylua",
-          mason = false,
+    event = { "BufReadPre", "BufNewFile" }, -- Load earlier
+    cmd = { "ConformInfo" },
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          rust = { "rustfmt" },
+          lua = { "stylua" },
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          json = { "prettier" },
+          html = { "prettier" },
+          css = { "prettier" },
+          markdown = { "prettier" },
         },
-        alejandra = {
-          command = "alejandra",
-          mason = false,
+        formatters = {
+          prettier = {
+            require_cwd = true,
+          },
         },
-      },
-    },
+      })
+
+      -- Explicit autocmd for format on save
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*",
+        callback = function(args)
+          require("conform").format({ bufnr = args.buf, async = true, lsp_fallback = true })
+        end,
+      })
+    end,
   },
 }
