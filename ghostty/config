@@ -1,32 +1,29 @@
-# Ghostty config - minimal, keyboard-friendly, Gruvbox-like
-# Adjust path/name if your Ghostty config is elsewhere.
-
 # Visuals & theme
 theme = "Gruvbox Dark"
-window-theme = "system"         
+window-theme = "system"
 maximize = true
 
 # Font
 font-family = "JetBrainsMono Nerd Font"
-font-size = 10
+font-size = 9
 
 # Window padding: small but visible
-window-padding-x = 4
-window-padding-y = 4
+window-padding-x = 2
+window-padding-y = 2
 window-padding-balance = true
 
 # Window chrome & decorations
-window-decoration = "server"  
+window-decoration = "server"
 window-titlebar-background = "000000"
 window-titlebar-foreground = "ffffff"
 
 # Background
 background = "000000"
-background-opacity = 0.74      
+background-opacity = 0.95
 background-blur = false
 
 # Splits / opacity
-unfocused-split-opacity = 1   
+unfocused-split-opacity = 1
 
 # Cursor + selection
 cursor-style = "block"
@@ -38,6 +35,9 @@ selection-invert-fg-bg = true
 shell-integration = "fish"
 working-directory = "inherit"
 
-# Animations (dev tip)
-# custom-shader-animation = "always"  
+window-new-tab-position = "end"
+window-show-tab-bar = "never"
+keybind = ctrl+alt+t=toggle_tab_overview
 
+# Animations (dev tip)
+# custom-shader-animation = "always"
