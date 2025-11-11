@@ -1,0 +1,59 @@
+# Mako Notification Daemon Configuration
+# Minimal Monochrome Theme
+
+# Font
+font=JetBrainsMono Nerd Font 11
+
+# Default Colors - Monochrome Dark Theme
+background-color=#0a0a0a
+text-color=#e0e0e0
+border-color=#303030
+progress-color=over #505050
+
+# Layout
+width=350
+height=150
+margin=12
+padding=12,16
+border-size=1
+border-radius=0
+
+# Position (top right, matching Waybar)
+anchor=top-right
+layer=overlay
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+max-visible=3
+
+# Icons
+icons=1
+max-icon-size=48
+icon-location=left
+
+# Markup
+markup=1
+actions=1
+
+# Format
+format=<b>%s</b>\n%b
+
+# Group by application
+group-by=app-name
+
+# Urgency-specific colors
+[urgency=low]
+background-color=#0a0a0a
+text-color=#909090
+border-color=#202020
+
+[urgency=normal]
+background-color=#0a0a0a
+text-color=#e0e0e0
+border-color=#303030
+
+[urgency=critical]
+background-color=#1a1a1a
+text-color=#ffffff
+border-color=#e0e0e0

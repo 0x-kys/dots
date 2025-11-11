@@ -92,13 +92,13 @@ vim.o.completeopt    = 'menuone,noselect,fuzzy,nosort' -- Use custom behavior
 -- force dark background
 vim.cmd("set background=dark")
 
--- if gruvbox not found then use retrobox
-local ok, _ = pcall(vim.cmd, "colorscheme gruvbox")
+-- if kanagawa not found then use minischeme
+local ok, _ = pcall(vim.cmd, "colorscheme kanagawa-dragon")
 if not ok then
-  vim.cmd("colorscheme retrobox")
+  vim.cmd("colorscheme minischeme")
 end
 
--- Do the transparent thingy
+-- Do the transparent thingy (keep background transparent)
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 

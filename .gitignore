@@ -1,2 +1,15 @@
-history.txt
-lazy-lock.json
+# Neovim
+nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/.DS_Store
+
+# Fish
+fish/.config/fish/fish_variables
+fish/.config/fish/completions/
+
+# Logs
+*.log
+
+# Secrets
+*secret*
+*token*
+*password*

@@ -203,15 +203,15 @@ end)
 now_if_args(function()
   add({
     source = 'saghen/blink.cmp',
-    version = "v1.*",
-    build = "cargo build --release",
-    hooks = {
-      post_checkout = function()
-        vim.fn.system('cargo build --release')
-      end,
-    },
+    checkout = 'v0.7.6',  -- Use a stable release with prebuilt binaries
   })
+  
   require('blink.cmp').setup({
+    keymap = { preset = 'default' },
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      nerd_font_variant = 'mono'
+    },
     completion = {
       trigger = {
         show_on_insert_on_trigger_character = false,
@@ -223,6 +223,12 @@ now_if_args(function()
       ghost_text = {
         enabled = false,
       },
+    },
+    fuzzy = {
+      prebuilt_binaries = {
+        download = true,
+        force_version = nil,
+      }
     },
   })
 
@@ -473,28 +479,78 @@ later(function()
 end)
 
 later(function()
-  add("ellisonleao/gruvbox.nvim")
-  require('gruvbox').setup({
-    terminal_colors = true,
+  add("rebelot/kanagawa.nvim")
+  require('kanagawa').setup({
+    compile = false,
     undercurl = true,
-    underline = true,
-    bold = true,
-    italic = {
-      strings = false,
-      emphasis = true,
-      comments = true,
-      operators = false,
-      folds = true,
+    commentStyle = { italic = true },
+    functionStyle = {},
+    keywordStyle = { italic = false },
+    statementStyle = { bold = true },
+    typeStyle = {},
+    transparent = true,
+    dimInactive = false,
+    terminalColors = true,
+    colors = {
+      palette = {},
+      theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
     },
-    strikethrough = true,
-    invert_selection = true,
-    invert_signs = false,
-    invert_tabline = false,
-    inverse = true,
-    contrast = "hard",
-    palette_overrides = {},
-    overrides = {},
-    dim_inactive = false,
-    transparent_mode = true,
+    overrides = function(colors)
+      local theme = colors.theme
+      return {
+        -- Keep pickers (telescope/mini.pick) opaque with background
+        TelescopeNormal = { bg = theme.ui.bg_p1 },
+        TelescopeBorder = { bg = theme.ui.bg_p1, fg = theme.ui.bg_p1 },
+        TelescopeTitle = { bg = theme.ui.special, fg = theme.ui.bg },
+        TelescopePromptNormal = { bg = theme.ui.bg_p2 },
+        TelescopePromptBorder = { bg = theme.ui.bg_p2, fg = theme.ui.bg_p2 },
+        
+        -- Mini.pick picker backgrounds (opaque)
+        MiniPickNormal = { bg = theme.ui.bg_p1 },
+        MiniPickBorder = { bg = theme.ui.bg_p1, fg = theme.ui.bg_p1 },
+        MiniPickPrompt = { bg = theme.ui.bg_p2 },
+        MiniPickBorderBusy = { bg = theme.ui.bg_p1, fg = theme.ui.special },
+        MiniPickBorderText = { bg = theme.ui.bg_p1, fg = theme.ui.special },
+        MiniPickHeader = { bg = theme.ui.special, fg = theme.ui.bg },
+        MiniPickMatchCurrent = { bg = theme.ui.bg_p2 },
+        MiniPickMatchMarked = { bg = theme.ui.bg_search },
+        MiniPickMatchRanges = { fg = theme.ui.special },
+        
+        -- Pmenu (completion menu) - opaque
+        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+        PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+        PmenuSbar = { bg = theme.ui.bg_m1 },
+        PmenuThumb = { bg = theme.ui.bg_p2 },
+        
+        -- Make everything else transparent
+        Normal = { bg = "NONE" },
+        NormalFloat = { bg = "NONE" },
+        FloatBorder = { bg = "NONE", fg = theme.ui.bg_p2 },
+        FloatTitle = { bg = "NONE", fg = theme.ui.special },
+        
+        -- Transparent sidebars
+        NormalNC = { bg = "NONE" },
+        NormalSB = { bg = "NONE" },
+        SignColumn = { bg = "NONE" },
+        
+        -- Transparent line numbers
+        LineNr = { bg = "NONE" },
+        CursorLineNr = { bg = "NONE" },
+        
+        -- Transparent statusline/tabline
+        StatusLine = { bg = "NONE" },
+        StatusLineNC = { bg = "NONE" },
+        TabLine = { bg = "NONE" },
+        TabLineFill = { bg = "NONE" },
+        TabLineSel = { bg = "NONE" },
+      }
+    end,
+    theme = "dragon",  -- dragon variant for darker, more monochrome look
+    background = {
+      dark = "dragon",
+      light = "lotus"
+    },
   })
+  
+  vim.cmd("colorscheme kanagawa-dragon")
 end)

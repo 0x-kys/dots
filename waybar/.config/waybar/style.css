@@ -1,0 +1,171 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+#workspaces,
+#window,
+#clock,
+#mpris,
+#tray,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#custom-gpu,
+#temperature,
+#custom-notification {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    padding: 4px 10px;
+    margin: 0;
+    border-radius: 0;
+}
+
+/* Left modules */
+#workspaces {
+    padding: 4px 4px;
+    margin-left: 0;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #505050;
+    background: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: transparent;
+}
+
+#workspaces button:hover {
+    color: #b0b0b0;
+    background: transparent;
+    box-shadow: none;
+}
+
+#window {
+    color: #909090;
+    font-weight: 400;
+    padding-left: 12px;
+    margin-left: 4px;
+}
+
+/* Center module */
+#clock {
+    color: #ffffff;
+    font-weight: 600;
+    padding: 4px 16px;
+    margin: 0 8px;
+}
+
+/* Right modules */
+#mpris {
+    color: #b0b0b0;
+    margin-right: 4px;
+}
+
+#tray {
+    padding: 4px 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#pulseaudio {
+    color: #d0d0d0;
+}
+
+#pulseaudio.muted {
+    color: #505050;
+}
+
+#network {
+    color: #d0d0d0;
+}
+
+#network.disconnected {
+    color: #505050;
+}
+
+#cpu {
+    color: #c0c0c0;
+}
+
+#cpu.warning {
+    color: #d0d0d0;
+}
+
+#cpu.critical {
+    color: #ffffff;
+    background-color: #1a1a1a;
+}
+
+#memory {
+    color: #c0c0c0;
+}
+
+#memory.warning {
+    color: #d0d0d0;
+}
+
+#memory.critical {
+    color: #ffffff;
+    background-color: #1a1a1a;
+}
+
+#custom-gpu {
+    color: #c0c0c0;
+}
+
+#temperature {
+    color: #c0c0c0;
+}
+
+#temperature.critical {
+    color: #ffffff;
+    background-color: #1a1a1a;
+}
+
+#clock.date {
+    color: #909090;
+    font-weight: 400;
+    margin-right: 0;
+}
+
+/* Notification/DND module */
+#custom-notification {
+    color: #d0d0d0;
+    padding: 4px 12px;
+}
+
+#custom-notification.dnd {
+    color: #505050;
+}
+
+#custom-notification.notification {
+    color: #e0e0e0;
+}
+
+#custom-notification.none {
+    color: #909090;
+}
+
+#custom-notification.disabled {
+    color: #303030;
+}
