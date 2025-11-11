@@ -31,7 +31,7 @@ echo ""
 for package in $PACKAGES; do
     if [ -d "$package" ]; then
         echo "  → Installing $package..."
-        stow -v "$package" 2>&1 | grep -v "BUG in find_stowed_path" || true
+        stow -t ~ "$package" 2>&1 | grep -v "BUG in find_stowed_path" || true
     else
         echo "  ⚠️  Package $package not found, skipping..."
     fi
