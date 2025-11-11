@@ -6,6 +6,10 @@ nvim/.config/nvim/.DS_Store
 fish/.config/fish/fish_variables
 fish/.config/fish/completions/
 
+# OpenCode
+opencode/.config/opencode/node_modules/
+opencode/.config/opencode/bun.lock
+
 # Logs
 *.log
 
