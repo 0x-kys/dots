@@ -4,7 +4,7 @@
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACKAGES="hyprland waybar mako nvim fish kitty"
+PACKAGES="hyprland waybar mako nvim fish kitty opencode"
 
 echo "🖤 monolith - minimal monochrome rice installer"
 echo "================================================"
