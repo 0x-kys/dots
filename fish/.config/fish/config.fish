@@ -4,6 +4,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Monochrome theme colors
+set -g fish_color_autosuggestion 585858
+
 set --export EDITOR nvim
 
 # bun
