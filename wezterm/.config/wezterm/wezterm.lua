@@ -16,7 +16,7 @@ config.color_scheme = "monolith"
 config.window_decorations = "NONE"
 
 -- Background: pure black, fully opaque
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.8
 config.macos_window_background_blur = 0
 
 -- ==========================================
@@ -67,13 +67,13 @@ config.cursor_blink_rate = 650
 config.color_schemes = {
   ["monolith"] = {
     -- Base colors
-    foreground = "#e0e0e0",  -- Light gray text (matches Waybar)
-    background = "#000000",  -- Pure black (matches Waybar/Hyprland)
-    cursor_bg = "#ffffff",   -- Pure white cursor
-    cursor_fg = "#000000",   -- Black cursor text
+    foreground = "#e0e0e0",    -- Light gray text (matches Waybar)
+    background = "#000000",    -- Pure black (matches Waybar/Hyprland)
+    cursor_bg = "#ffffff",     -- Pure white cursor
+    cursor_fg = "#000000",     -- Black cursor text
     cursor_border = "#ffffff", -- White cursor border
-    selection_fg = "#ffffff", -- White selected text
-    selection_bg = "#303030", -- Dark gray selection (matches borders)
+    selection_fg = "#ffffff",  -- White selected text
+    selection_bg = "#303030",  -- Dark gray selection (matches borders)
 
     -- Scrollbar
     scrollbar_thumb = "#505050",
