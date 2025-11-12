@@ -92,11 +92,14 @@ vim.o.completeopt    = 'menuone,noselect,fuzzy,nosort' -- Use custom behavior
 -- force dark background
 vim.cmd("set background=dark")
 
--- if kanagawa not found then use minischeme
-local ok, _ = pcall(vim.cmd, "colorscheme kanagawa-dragon")
-if not ok then
-  vim.cmd("colorscheme minischeme")
-end
+-- Set colorscheme to kanagawa-dragon
+vim.cmd("colorscheme kanagawa-dragon")
+
+-- Fallback colorscheme (commented out)
+-- local ok, _ = pcall(vim.cmd, "colorscheme kanagawa-dragon")
+-- if not ok then
+--   vim.cmd("colorscheme minischeme")
+-- end
 
 -- Do the transparent thingy (keep background transparent)
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
