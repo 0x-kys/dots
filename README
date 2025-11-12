@@ -1,0 +1,141 @@
+monolith
+========
+
+Minimal monochrome rice for Fedora + Hyprland.
+Pure black backgrounds, grayscale palette, sharp edges.
+
+
+THEME
+-----
+
+Colors:     Pure monochrome (black, white, grays)
+Font:       JetBrainsMono Nerd Font
+Style:      Sharp edges, minimal spacing, zero radius corners
+Background: Pure black (#000000)
+
+
+COMPONENTS
+----------
+
+Window Manager:   Hyprland
+Bar:              Waybar
+Notifications:    Mako
+Launcher:         Vicinae
+Terminal:         Wezterm
+Shell:            Fish
+Editor:           Neovim (Kanagawa Dragon)
+Screenshots:      Flameshot
+
+
+INSTALLATION
+------------
+
+This repository uses GNU Stow for symlink management.
+
+Install Stow:
+
+    sudo dnf install stow
+
+Clone and deploy:
+
+    git clone git@github.com:0x-kys/dots ~/dev/rndm/dots
+    cd ~/dev/rndm/dots
+    git checkout monolith
+
+Install all packages:
+
+    stow -t ~ hyprland waybar mako nvim fish kitty wezterm opencode
+
+Or use the install script:
+
+    ./install.sh
+
+Uninstall:
+
+    cd ~/dev/rndm/dots
+    stow -D -t ~ hyprland waybar mako nvim fish kitty wezterm opencode
+
+
+STRUCTURE
+---------
+
+    dots/
+    ├── hyprland/     Hyprland compositor config
+    ├── waybar/       Status bar config and scripts
+    ├── mako/         Notification daemon config
+    ├── nvim/         Neovim editor config
+    ├── fish/         Fish shell config
+    ├── kitty/        Kitty terminal config
+    ├── wezterm/      Wezterm terminal config
+    └── opencode/     OpenCode agent configurations
+
+Each package contains a .config/ subdirectory mirroring ~/.config/.
+
+
+FEATURES
+--------
+
+Waybar:
+  - Pure black monochrome theme
+  - System monitoring (CPU, RAM, GPU, temperature)
+  - MPRIS media controls
+  - DND toggle for notifications
+  - Network status, audio controls, system tray
+
+Hyprland:
+  - Minimal gaps (4px inner, 8px outer)
+  - Sharp borders (zero radius)
+  - Thin 1px borders (light gray active, dark gray inactive)
+  - Fast, snappy animations
+  - No automatic sleep or screen blanking
+
+Wezterm:
+  - Custom monochrome colorscheme
+  - Pure grayscale ANSI palette
+  - No colors, only blacks/whites/grays
+  - 80% opacity for subtle transparency
+
+Notifications:
+  - Mako with pure black background
+  - Monochrome styling
+  - DND mode accessible from Waybar
+
+
+KEYBINDS
+--------
+
+Super + Return      Open terminal
+Super + Space       Launch Vicinae
+Super + Q           Close window
+Super + F           Toggle floating
+Print               Screenshot (Flameshot)
+
+
+WORKFLOW
+--------
+
+All configs are symlinked. Changes made in ~/.config/ automatically
+update the repository.
+
+To save changes:
+
+    cd ~/dev/rndm/dots
+    git add -A
+    git commit -m "description of changes"
+    git push origin monolith
+
+
+NOTES
+-----
+
+- Configs use GNU Stow for symlink management
+- Background is pure black (#000000) across all applications
+- ANSI colors in terminal are grayscale only
+- No rounded corners anywhere in the system
+- Minimal spacing and padding throughout
+
+
+---
+Rice:    monolith
+Date:    November 2025
+System:  Fedora Workstation + Hyprland
