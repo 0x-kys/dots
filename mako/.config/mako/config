@@ -5,7 +5,7 @@
 font=JetBrainsMono Nerd Font 11
 
 # Default Colors - Monochrome Dark Theme
-background-color=#0a0a0a
+background-color=#000000
 text-color=#e0e0e0
 border-color=#303030
 progress-color=over #505050
@@ -44,12 +44,12 @@ group-by=app-name
 
 # Urgency-specific colors
 [urgency=low]
-background-color=#0a0a0a
+background-color=#000000
 text-color=#909090
 border-color=#202020
 
 [urgency=normal]
-background-color=#0a0a0a
+background-color=#000000
 text-color=#e0e0e0
 border-color=#303030
 

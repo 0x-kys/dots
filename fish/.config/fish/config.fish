@@ -21,3 +21,4 @@ starship init fish | source
 
 # uv
 fish_add_path "/home/syk/.local/bin"
+set -gx PATH ~/.config/emacs/bin $PATH

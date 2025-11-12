@@ -23,7 +23,7 @@ window#waybar {
 #custom-gpu,
 #temperature,
 #custom-notification {
-    background-color: #0a0a0a;
+    background-color: #000000;
     color: #e0e0e0;
     padding: 4px 10px;
     margin: 0;
