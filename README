@@ -134,6 +134,10 @@ NOTES
 - No rounded corners anywhere in the system
 - Minimal spacing and padding throughout
 
+TODO
+----
+- Add light theme switch on waybar
+- Setup emacs as secondary editor
 
 ---
 Rice:    monolith

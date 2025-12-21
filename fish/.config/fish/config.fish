@@ -13,11 +13,14 @@ set --export EDITOR nvim
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $HOME/.cargo/bin $PATH
 set --export ANDROID_HOME "$HOME/Android/Sdk"
+set --export JAVA_HOME "/usr/lib/jvm/java-21-openjdk"
 set --export PATH "$HOME/go/bin" $PATH
 
 set --export PATH $ANDROID_HOME/emulator $PATH
 set --export PATH $ANDROID_HOME/platform-tools $PATH
 set --export PATH $ANDROID_HOME/cmdline-tools/latest/bin $PATH
+
+set --export PATH $JAVA_HOME/bin $PATH
 
 source "$HOME/.cargo/env.fish"
 starship init fish | source

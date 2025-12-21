@@ -165,7 +165,10 @@ now(function()
         timeout = 300000,
       },
       discord = {
-        pipe_paths = nil,
+        pipe_paths = {
+          "/run/user/1000/.flatpak/dev.vencord.Vesktop/xdg-run/discord-ipc-0",
+          "/run/user/1000/.flatpak/dev.vencord.Vesktop/xdg-run/discord-ipc-1",
+        },
         reconnect = {
           enabled = true,
           interval = 5000,
@@ -241,12 +244,43 @@ now_if_args(function()
   local lspconfig = require('lspconfig')
   local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+  -- Common on_attach function for LSP keymaps
+  local on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, silent = true }
+    
+    -- Go to definition (use this instead of <Leader>ls)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = 'Go to definition' }))
+    
+    -- Go to references
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', opts, { desc = 'Go to references' }))
+    
+    -- Hover documentation
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, vim.tbl_extend('force', opts, { desc = 'Hover documentation' }))
+    
+    -- Go to implementation
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.tbl_extend('force', opts, { desc = 'Go to implementation' }))
+    
+    -- Go to type definition
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, vim.tbl_extend('force', opts, { desc = 'Go to type definition' }))
+    
+    -- Signature help
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, vim.tbl_extend('force', opts, { desc = 'Signature help' }))
+    
+    -- Rename symbol
+    vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'Rename symbol' }))
+    
+    -- Code action
+    vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('force', opts, { desc = 'Code action' }))
+  end
+
   lspconfig.gopls.setup({
     capabilities = capabilities,
+    on_attach = on_attach,
   })
 
   lspconfig.vtsls.setup({
     capabilities = capabilities,
+    on_attach = on_attach,
     settings = {
       typescript = {
         maxTsServerMemory = 16384,
@@ -315,6 +349,7 @@ now_if_args(function()
 
   lspconfig.jsonls.setup({
     capabilities = capabilities,
+    on_attach = on_attach,
     settings = {
       json = {
         schemas = require('schemastore').json.schemas(),
@@ -325,6 +360,7 @@ now_if_args(function()
 
   lspconfig.lua_ls.setup({
     capabilities = capabilities,
+    on_attach = on_attach,
   })
 
   lspconfig.eslint.setup({
@@ -347,23 +383,22 @@ now_if_args(function()
       format = { enable = true },
       lintTask = { enable = true },
       codeAction = {
-        disableRuleComment = { enable = true, location = "separate_line" },
+        disableRuleComment = { enable = true, location = "separateLine" },
         showRuleId = true,
       },
       onChangeHandlers = { default = "all" },
-      -- ADD TypeScript-specific settings
-      -- typescript = {
-      --   tsdk = vim.fn.getcwd() .. '/node_modules/typescript/lib',
-      -- },
     },
     on_attach = function(client, bufnr)
-      -- Your existing BufWritePre autocmd
+      -- Call common on_attach first for gd, gr, K keymaps
+      on_attach(client, bufnr)
+      
+      -- ESLint-specific: fix on save
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = bufnr,
         command = 'EslintFixAll',
       })
 
-      -- ADD: Ensure diagnostics show
+      -- ESLint-specific: ensure diagnostics show
       vim.api.nvim_create_autocmd("BufWritePost", {
         buffer = bufnr,
         callback = function()
@@ -464,6 +499,7 @@ later(function()
       "lua_ls",
       "eslint",
     },
+    automatic_enable = false,
   })
 end)
 

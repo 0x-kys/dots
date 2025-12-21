@@ -1,0 +1,152 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "git_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "left",
+    "model_parameters": []
+  },
+  "project_panel": {
+    "dock": "right"
+  },
+  "edit_predictions": {
+    "enabled_in_text_threads": false
+  },
+  "show_edit_predictions": false,
+  "cursor_shape": "bar",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": "JetBrains Mono",
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Github Dark High Contrast"
+  },
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    }
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false
+    },
+    "hunk_style": "unstaged_hollow"
+  },
+  "soft_wrap": "editor_width",
+  "relative_line_numbers": "enabled",
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "maxTsServerMemory": 16384,
+          "tsserver": {
+            "maxTsServerMemory": 16384,
+            "useSeparateSyntaxServer": true,
+            "watchOptions": {
+              "watchFile": "useFsEvents",
+              "watchDirectory": "useFsEvents",
+              "fallbackPolling": "dynamicPriority",
+              "synchronousWatchDirectory": true
+            }
+          },
+          "suggest": {
+            "includeCompletionsForModuleExports": false,
+            "includeCompletionsForImportStatements": false
+          },
+          "inlayHints": {
+            "enumMemberValues": { "enabled": false },
+            "functionLikeReturnTypes": { "enabled": false },
+            "parameterNames": { "enabled": "none" },
+            "parameterTypes": { "enabled": false },
+            "propertyDeclarationTypes": { "enabled": false },
+            "variableTypes": { "enabled": false }
+          },
+          "implementationsCodeLens": { "enabled": false },
+          "referencesCodeLens": { "enabled": false },
+          "preferences": {
+            "importModuleSpecifier": "relative",
+            "includeCompletionsForModuleExports": false,
+            "includeCompletionsForImportStatements": false
+          }
+        },
+        "javascript": {
+          "suggest": {
+            "includeCompletionsForModuleExports": false,
+            "includeCompletionsForImportStatements": false
+          },
+          "preferences": {
+            "importModuleSpecifier": "relative",
+            "includeCompletionsForModuleExports": false,
+            "includeCompletionsForImportStatements": false
+          }
+        },
+        "vtsls": {
+          "experimental": {
+            "completion": {
+              "enableServerSideFuzzyMatch": true
+            }
+          }
+        }
+      },
+      "initialization_options": {
+        "preferences": {
+          "disableAutomaticTypingAcquisition": true
+        }
+      }
+    },
+    "eslint": {
+      "settings": {
+        "workingDirectory": { "mode": "auto" },
+        "format": true,
+        "codeAction": {
+          "disableRuleComment": { "enable": true, "location": "separateLine" },
+          "showRuleId": true
+        }
+      }
+    },
+    "wakatime": {
+      "initialization_options": {
+        "api-key": ""
+      }
+    }
+  },
+  "languages": {
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    }
+  }
+}
